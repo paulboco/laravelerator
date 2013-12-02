@@ -1,9 +1,11 @@
-<?php namespace Paulboco\Alg;
+<?php namespace Laravelerator\Laravelerator;
 
 use Input;
 use View;
 use Redirect;
-use Paulboco\Alg\Services\Validation\ResourceValidator;
+use Laravelerator\Alg\Manifest;
+use Laravelerator\Alg\Template;
+use Laravelerator\Laravelerator\Services\Validation\ResourceValidator;
 
 class ResourceController extends BaseController {
 
@@ -39,7 +41,7 @@ class ResourceController extends BaseController {
 	{
 		if ($this->validator->fails())
 		{
-			return Redirect::action('Paulboco\Alg\ResourceController@create')
+			return Redirect::action('Laravelerator\Alg\ResourceController@create')
 				->withInput()
 				->withErrors($this->validator->errors());
 		}

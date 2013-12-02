@@ -1,9 +1,10 @@
-<?php namespace Paulboco\Alg;
+<?php namespace Laravelerator\Laravelerator;
 
 use Input;
 use Request;
 use Session;
 use View;
+use Laravelerator\Alg\Template;
 
 class AjaxController extends BaseController {
 

@@ -1,4 +1,4 @@
-<?php namespace Paulboco\Alg;
+<?php namespace Laravelerator\Laravelerator;
 
 use View;
 use Controller;

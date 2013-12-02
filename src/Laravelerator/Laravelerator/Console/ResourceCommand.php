@@ -1,9 +1,9 @@
-<?php namespace Paulboco\Alg\Console;
+<?php namespace Laravelerator\Alg\Console;
 
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
-use Paulboco\Alg\Manifest;
-use Paulboco\Alg\Template;
+use Laravelerator\Alg\Manifest;
+use Laravelerator\Alg\Template;
 
 class ResourceCommand extends BaseCommand {
 

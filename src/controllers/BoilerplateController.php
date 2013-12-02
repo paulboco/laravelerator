@@ -1,9 +1,11 @@
-<?php namespace Paulboco\Alg;
+<?php namespace Laravelerator\Laravelerator;
 
 use Input;
 use View;
 use Redirect;
-use Paulboco\Alg\Services\Validation\BoilerplateValidator;
+use Laravelerator\Alg\Manifest;
+use Laravelerator\Alg\Template;
+use Laravelerator\Laravelerator\Services\Validation\BoilerplateValidator;
 
 class BoilerplateController extends BaseController {
 
@@ -36,7 +38,7 @@ class BoilerplateController extends BaseController {
 	{
 		if ($this->validator->fails())
 		{
-			return Redirect::action('Paulboco\Alg\BoilerplateController@create')
+			return Redirect::action('Laravelerator\Laravelerator\BoilerplateController@create')
 				->withInput()
 				->withErrors($this->validator->errors());
 		}

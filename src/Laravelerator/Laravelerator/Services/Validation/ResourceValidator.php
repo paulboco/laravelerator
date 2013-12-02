@@ -1,4 +1,4 @@
-<?php namespace Paulboco\Alg\Services\Validation;
+<?php namespace Laravelerator\Laravelerator\Services\Validation;
 
 use Input;
 

@@ -1,6 +1,6 @@
 <?php
 
-use Paulboco\Alg\Schema;
+use Laravelerator\Alg\Schema;
 
 if ( ! function_exists('mute_base_path'))
 {

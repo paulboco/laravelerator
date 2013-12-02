@@ -6,6 +6,8 @@ use Illuminate\Foundation\AliasLoader;
 use Symfony\Component\Finder\Finder;
 use Laravelerator\Laravelerator\Services\Validation\CustomValidators;
 
+use Laravelerator\Alg\TemplateManager;
+
 class LaraveleratorServiceProvider extends ServiceProvider {
 
 	/**
@@ -24,10 +26,10 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	{
 		$this->package('laravelerator/laravelerator');
 
-		$this->aliasFacades();
+		// $this->aliasFacades();
 		$this->customValidators();
 		$this->viewComposers();
-		$this->storeCommandName();
+		// $this->storeCommandName();
 
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../macros.php';
@@ -41,8 +43,8 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->registerClasses();
-		$this->registerCommands();
+		// $this->registerClasses();
+		// $this->registerCommands();
 	}
 
 	/**
@@ -50,62 +52,62 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	 *
 	 * @return void
 	 */
-	protected function registerClasses()
-	{
-		// TemplateManager
-		$this->app['alg.templatemanager'] = $this->app->share(function($app)
-		{
-			return new TemplateManager(new Finder);
-		});
+	// protected function registerClasses()
+	// {
+	// 	// TemplateManager
+	// 	$this->app['alg.templatemanager'] = $this->app->share(function($app)
+	// 	{
+	// 		return new TemplateManager(new Finder);
+	// 	});
 
-		// SchemaParser (Yes, SchemaParser)
-		$this->app['alg.schemaparser'] = $this->app->share(function($app)
-		{
-			return new SchemaParser;
-		});
+	// 	// SchemaParser
+	// 	$this->app['alg.schemaparser'] = $this->app->share(function($app)
+	// 	{
+	// 		return new SchemaParser;
+	// 	});
 
-		// Tokenizer
-		$this->app['alg.tokenizer'] = $this->app->share(function($app)
-		{
-			return new Tokenizer($app['alg.schemaparser']);
-		});
+	// 	// Tokenizer
+	// 	$this->app['alg.tokenizer'] = $this->app->share(function($app)
+	// 	{
+	// 		return new Tokenizer($app['alg.schemaparser']);
+	// 	});
 
-		// ManifestCreator
-		$this->app['alg.manifestcreator'] = $this->app->share(function($app)
-		{
-			return new ManifestCreator($app['alg.tokenizer'], $app['alg.templatemanager']);
-		});
-	}
+	// 	// ManifestCreator
+	// 	$this->app['alg.manifestcreator'] = $this->app->share(function($app)
+	// 	{
+	// 		return new ManifestCreator($app['alg.tokenizer'], $app['alg.templatemanager']);
+	// 	});
+	// }
 
 	/**
 	 * Register Commands
 	 *
 	 * @return void
 	 */
-	protected function registerCommands()
-	{
-		$this->app['alg.console.resource'] = $this->app->share(function($app)
-		{
-			return new Console\ResourceCommand($app['alg.templatemanager'], $app['alg.manifestcreator']);
-		});
+	// protected function registerCommands()
+	// {
+	// 	$this->app['alg.console.resource'] = $this->app->share(function($app)
+	// 	{
+	// 		return new Console\ResourceCommand($app['alg.templatemanager'], $app['alg.manifestcreator']);
+	// 	});
 
-		$this->commands('alg.console.resource');
-	}
+	// 	$this->commands('alg.console.resource');
+	// }
 
 	/**
 	 * Add Facade Aliases
 	 *
 	 * @return void
 	 */
-	protected function aliasFacades()
-	{
-		$loader = AliasLoader::getInstance();
+	// protected function aliasFacades()
+	// {
+	// 	$loader = AliasLoader::getInstance();
 
-		$loader->alias('Paulboco\Alg\Manifest', 'Paulboco\Alg\Facades\Manifest');
-		$loader->alias('Paulboco\Alg\Template', 'Paulboco\Alg\Facades\Template');
-		$loader->alias('Paulboco\Alg\Token', 'Paulboco\Alg\Facades\Token');
-		$loader->alias('Paulboco\Alg\Schema', 'Paulboco\Alg\Facades\Schema');
-	}
+	// 	$loader->alias('Laravelerator\Alg\Manifest', 'Laravelerator\Alg\Facades\Manifest');
+	// 	$loader->alias('Laravelerator\Alg\Template', 'Laravelerator\Alg\Facades\Template');
+	// 	$loader->alias('Laravelerator\Alg\Token', 'Laravelerator\Alg\Facades\Token');
+	// 	$loader->alias('Laravelerator\Alg\Schema', 'Laravelerator\Alg\Facades\Schema');
+	// }
 
 	/**
 	 * Register Custom Validators
@@ -129,35 +131,35 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	{
 		View::composer(
 			'laravelerator::partials.write_path_display',
-			'Paulboco\Alg\Composers\WritePathDisplayComposer'
+			'Laravelerator\Laravelerator\Composers\WritePathDisplayComposer'
 		);
 
 		View::composer(
 			'laravelerator::partials.schema_notation',
-			'Paulboco\Alg\Composers\SchemaNotationComposer'
+			'Laravelerator\Laravelerator\Composers\SchemaNotationComposer'
 		);
 	}
 
-	protected function storeCommandName()
-	{
-		if ($this->app->runningInConsole())
-		{
-			if (count($_SERVER['argv']) > 1)
-			{
-				if (substr($_SERVER['argv'][1], 0, 4) == 'alg:')
-				{
-					$command = substr($_SERVER['argv'][1], 4);
-					$this->app->session->put('alg.command.name', $command);
-				}
-			}
-		}
-		elseif ( ! $this->app->request->ajax())
-		{
-			$command = $this->app->request->segment(2);
+	// protected function storeCommandName()
+	// {
+	// 	if ($this->app->runningInConsole())
+	// 	{
+	// 		if (count($_SERVER['argv']) > 1)
+	// 		{
+	// 			if (substr($_SERVER['argv'][1], 0, 4) == 'alg:')
+	// 			{
+	// 				$command = substr($_SERVER['argv'][1], 4);
+	// 				$this->app->session->put('alg.command.name', $command);
+	// 			}
+	// 		}
+	// 	}
+	// 	elseif ( ! $this->app->request->ajax())
+	// 	{
+	// 		$command = $this->app->request->segment(2);
 
-			$this->app->session->put('alg.command.name', $command);
-		}
-	}
+	// 		$this->app->session->put('alg.command.name', $command);
+	// 	}
+	// }
 
 	/**
 	 * Get the services provided by the provider.

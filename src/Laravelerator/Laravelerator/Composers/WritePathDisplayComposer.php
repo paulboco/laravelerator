@@ -1,7 +1,7 @@
-<?php namespace Paulboco\Alg\Composers;
+<?php namespace Laravelerator\Laravelerator\Composers;
 
 use Input;
-use Paulboco\Alg\Template;
+use Laravelerator\Alg\Template;
 
 class WritePathDisplayComposer {
 

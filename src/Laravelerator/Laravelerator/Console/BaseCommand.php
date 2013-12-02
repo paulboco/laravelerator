@@ -1,9 +1,9 @@
-<?php namespace Paulboco\Alg\Console;
+<?php namespace Laravelerator\Alg\Console;
 
 use Illuminate\Console\Command;
 use File;
-use Paulboco\Alg\Manifest;
-use Paulboco\Alg\Template;
+use Laravelerator\Alg\Manifest;
+use Laravelerator\Alg\Template;
 
 class BaseCommand extends Command {
 

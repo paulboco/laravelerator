@@ -10,7 +10,7 @@
 </div>
 <div class="row">
 	<div class="col-md-6">
-		{{ Form::open(['action' => 'Paulboco\Alg\BoilerplateController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
+		{{ Form::open(['action' => 'Laravelerator\Laravelerator\BoilerplateController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
 			{{ Form::hidden('table', '') }}
 			{{ Form::hidden('schema', '') }}
 			{{ Form::hidden('path', '') }}

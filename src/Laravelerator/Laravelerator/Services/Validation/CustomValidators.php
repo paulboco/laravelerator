@@ -1,8 +1,8 @@
-<?php namespace Paulboco\Alg\Services\Validation;
+<?php namespace Laravelerator\Laravelerator\Services\Validation;
 
 use App;
 use Illuminate\Validation\Validator as V;
-use Paulboco\Alg\Template;
+use Laravelerator\Alg\Template;
 
 class CustomValidators extends V {
 

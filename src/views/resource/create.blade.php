@@ -10,7 +10,7 @@
 </div>
 <div class="row">
 	<div class="col-md-6">
-		{{ Form::open(['action' => 'Paulboco\Alg\ResourceController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
+		{{ Form::open(['action' => 'Laravelerator\Laravelerator\ResourceController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
 			{{ Form::groupSelect('template', '* Select template', $templatesAvailable + ['foo' => 'foo'], $template, [], [4,8]) }}
 			{{ Form::groupText('table', '* Resource name', $table, [], [4,8]) }}
 			{{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
