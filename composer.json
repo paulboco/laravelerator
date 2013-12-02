@@ -1,0 +1,24 @@
+{
+    "name": "laravelerator/laravelerator",
+    "description": "Laravel Control Center",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paul Sellers",
+            "email": "laravelerator@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravel/framework": ">=4.0.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/controllers"
+        ],
+        "psr-0": {
+            "Laravelerator\\Laravelerator": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
