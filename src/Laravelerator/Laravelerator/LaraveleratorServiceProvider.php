@@ -1,12 +1,12 @@
-<?php namespace Paulboco\Alg;
+<?php namespace Laravelerator\Laravelerator;
 
 use View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Foundation\AliasLoader;
 use Symfony\Component\Finder\Finder;
-use Paulboco\Alg\Services\Validation\CustomValidators;
+use Laravelerator\Laravelerator\Services\Validation\CustomValidators;
 
-class AlgServiceProvider extends ServiceProvider {
+class LaraveleratorServiceProvider extends ServiceProvider {
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -22,7 +22,7 @@ class AlgServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('paulboco/alg');
+		$this->package('laravelerator/laravelerator');
 
 		$this->aliasFacades();
 		$this->customValidators();
