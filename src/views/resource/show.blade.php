@@ -1,4 +1,4 @@
-@extends('alg::layout')
+@extends('laravelerator::layout')
 
 @section('content')
 @if (isset($overwrites))
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	@endif
-	@include('alg::partials.display_tokens')
+	@include('laravelerator::partials.display_tokens')
 @endif
 @stop
 

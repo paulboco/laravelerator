@@ -1,4 +1,4 @@
-@extends('alg::layout')
+@extends('laravelerator::layout')
 
 @section('content')
 <div class="row">
@@ -40,4 +40,4 @@
 </div>
 @stop
 
-@include('alg::partials.scripts.create')
+@include('laravelerator::partials.scripts.create')

@@ -1,4 +1,4 @@
-@extends('alg::layout')
+@extends('laravelerator::layout')
 
 @section('content')
 <div class="row">
@@ -42,9 +42,9 @@
 	</div>
 
 	<div class="col-md-3">
-		@include('alg::partials.schema_notation')
+		@include('laravelerator::partials.schema_notation')
 	</div>
 </div>
 @stop
 
-@include('alg::partials.scripts.create')
+@include('laravelerator::partials.scripts.create')

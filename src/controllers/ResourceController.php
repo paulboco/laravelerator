@@ -29,7 +29,7 @@ class ResourceController extends BaseController {
 
 		$templatesAvailable = Template::getAvailable();
 
-		return View::make('alg::resource.create', get_defined_vars());
+		return View::make('laravelerator::resource.create', get_defined_vars());
 	}
 
 	/**
@@ -55,7 +55,7 @@ class ResourceController extends BaseController {
 			$overwrites = Manifest::getOverwrites();
 		}
 
-		return View::make('alg::resource.show', get_defined_vars());
+		return View::make('laravelerator::resource.show', get_defined_vars());
 	}
 
 

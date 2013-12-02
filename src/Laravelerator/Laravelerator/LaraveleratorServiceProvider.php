@@ -128,12 +128,12 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	protected function viewComposers()
 	{
 		View::composer(
-			'alg::partials.write_path_display',
+			'laravelerator::partials.write_path_display',
 			'Paulboco\Alg\Composers\WritePathDisplayComposer'
 		);
 
 		View::composer(
-			'alg::partials.schema_notation',
+			'laravelerator::partials.schema_notation',
 			'Paulboco\Alg\Composers\SchemaNotationComposer'
 		);
 	}

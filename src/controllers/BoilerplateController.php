@@ -26,7 +26,7 @@ class BoilerplateController extends BaseController {
 
 		$templatesAvailable = Template::getAvailable();
 
-		return View::make('alg::boilerplate.create', get_defined_vars());
+		return View::make('laravelerator::boilerplate.create', get_defined_vars());
 	}
 
 	/**
@@ -52,7 +52,7 @@ class BoilerplateController extends BaseController {
 			$overwrites = Manifest::getOverwrites();
 		}
 
-		return View::make('alg::boilerplate.show', get_defined_vars());
+		return View::make('laravelerator::boilerplate.show', get_defined_vars());
 	}
 
 

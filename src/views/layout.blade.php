@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>alg{{ $subTitle }}</title>
+	<title>laravelerator{{ $subTitle }}</title>
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	@include('alg::assets.style-dark')
-	@include('alg::assets.prettyprint-dark')
+	@include('laravelerator::assets.style-dark')
+	@include('laravelerator::assets.prettyprint-dark')
 </head>
 <body>
-	@include('alg::partials.navbar')
+	@include('laravelerator::partials.navbar')
 	<div class="container">
 		@yield('content')
 	</div>
