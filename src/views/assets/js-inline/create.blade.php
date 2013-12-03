@@ -7,7 +7,7 @@
 			var template = $('#id-field-template').val();
 			$.ajax({
 				type: 'GET',
-				url: '{{ url('alg/ajax/template') }}',
+				url: '{{ url('laravelerator/ajax/template') }}',
 				data: { template: template, _token: "{{ Session::token() }}" },
 				success: function(response) {
 					$("#template-description").html(response);
@@ -22,7 +22,7 @@
 			{
 				$.ajax({
 					type: 'GET',
-					url: '{{ url('alg/ajax/path') }}',
+					url: '{{ url('laravelerator/ajax/path') }}',
 					data: { path: path, _token: "{{ Session::token() }}" },
 					success: function(response) {
 						$("#path-status").html(response);

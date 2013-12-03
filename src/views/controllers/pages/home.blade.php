@@ -1,4 +1,4 @@
-@extends('laravelerator::layout')
+@extends('laravelerator::layouts.master')
 
 @section('content')
 	<div class="row">

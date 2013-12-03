@@ -130,12 +130,12 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	protected function viewComposers()
 	{
 		View::composer(
-			'laravelerator::partials.write_path_display',
+			'laravelerator::controllers.ajax.write_path_display',
 			'Laravelerator\Laravelerator\Composers\WritePathDisplayComposer'
 		);
 
 		View::composer(
-			'laravelerator::partials.schema_notation',
+			'laravelerator::controllers.shared.schema_notation',
 			'Laravelerator\Laravelerator\Composers\SchemaNotationComposer'
 		);
 	}

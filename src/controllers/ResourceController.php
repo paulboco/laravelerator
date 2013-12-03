@@ -31,7 +31,7 @@ class ResourceController extends BaseController {
 
 		$templatesAvailable = Template::getAvailable();
 
-		return View::make('laravelerator::resource.create', get_defined_vars());
+		return View::make('laravelerator::controllers.resource.create', get_defined_vars());
 	}
 
 	/**
@@ -41,7 +41,7 @@ class ResourceController extends BaseController {
 	{
 		if ($this->validator->fails())
 		{
-			return Redirect::action('Laravelerator\Alg\ResourceController@create')
+			return Redirect::action('Laravelerator\Laravelerator\ResourceController@create')
 				->withInput()
 				->withErrors($this->validator->errors());
 		}
@@ -57,7 +57,7 @@ class ResourceController extends BaseController {
 			$overwrites = Manifest::getOverwrites();
 		}
 
-		return View::make('laravelerator::resource.show', get_defined_vars());
+		return View::make('laravelerator::controllers.resource.show', get_defined_vars());
 	}
 
 

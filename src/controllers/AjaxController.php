@@ -13,7 +13,7 @@ class AjaxController extends BaseController {
 	 */
 	public function path()
 	{
-		return View::make('laravelerator::partials.write_path_display');
+		return View::make('laravelerator::controllers.ajax.write_path_display');
 	}
 
 	/**
@@ -23,7 +23,7 @@ class AjaxController extends BaseController {
 	{
     	$data = Template::getConfig();
 
-		return View::make('laravelerator::partials.template_description', $data);
+		return View::make('laravelerator::controllers.ajax.template_description', $data);
 	}
 
 

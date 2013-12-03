@@ -6,8 +6,7 @@
 				<pre>
 @foreach ($tokens as $key => $value)
 {{ $key }} => {{ $value }}&nbsp;
-@endforeach
-				</pre>
+@endforeach</pre>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-@extends('laravelerator::layout')
+@extends('laravelerator::layouts.master')
 
 @section('content')
 <div class="row">
@@ -40,4 +40,4 @@
 </div>
 @stop
 
-@include('laravelerator::partials.scripts.create')
+@include('laravelerator::assets.js-inline.create')

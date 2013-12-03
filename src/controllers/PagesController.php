@@ -9,7 +9,7 @@ class PagesController extends Controller {
 	{
 		View::share('subTitle', ' - home');
 
-		return View::make('laravelerator::pages.home');
+		return View::make('laravelerator::controllers.pages.home');
 	}
 
 

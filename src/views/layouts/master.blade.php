@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>laravelerator{{ $subTitle }}</title>
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-	@include('laravelerator::assets.style-dark')
-	@include('laravelerator::assets.prettyprint-dark')
+	@include('laravelerator::assets.css.style-dark')
+	@include('laravelerator::assets.css.prettyprint-dark')
 </head>
 <body>
-	@include('laravelerator::partials.navbar')
+	@include('laravelerator::layouts.partials.navbar')
 	<div class="container">
 		@yield('content')
 	</div>

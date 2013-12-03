@@ -1,4 +1,4 @@
-@extends('laravelerator::layout')
+@extends('laravelerator::layouts.master')
 
 @section('content')
 <div class="row">
@@ -42,9 +42,9 @@
 	</div>
 
 	<div class="col-md-3">
-		@include('laravelerator::partials.schema_notation')
+		@include('laravelerator::controllers.shared.schema_notation')
 	</div>
 </div>
 @stop
 
-@include('laravelerator::partials.scripts.create')
+@include('laravelerator::assets.js-inline.create')

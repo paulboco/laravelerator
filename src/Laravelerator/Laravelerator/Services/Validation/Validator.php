@@ -18,6 +18,7 @@ abstract class Validator {
 	 *
 	 * @param  array  $input
 	 * @return bool
+	 * @TODO   explicitly pass input.
 	 */
 	public function passes($input = null)
 	{

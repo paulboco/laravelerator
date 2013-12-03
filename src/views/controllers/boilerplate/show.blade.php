@@ -1,4 +1,4 @@
-@extends('laravelerator::layout')
+@extends('laravelerator::layouts.master')
 
 @section('content')
 @if (isset($overwrites))
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	@endif
-	@include('laravelerator::partials.display_tokens')
+	@include('laravelerator::controllers.shared.display_tokens')
 @endif
 @stop
 
