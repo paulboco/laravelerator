@@ -23,7 +23,8 @@ Form::macro('groupTextarea', function($name, $label = null, $value = null, $attr
 {
 	if ($rows)
 	{
-		$attributes = array_merge($attributes, ['rows' => $rows]);
+		$rows = ['rows' => $rows];
+		$attributes = array_merge($attributes, $rows);
 	}
 
 	$element = Form::textarea($name, $value, fieldAttributes($name, $attributes));
@@ -52,7 +53,8 @@ Form::macro('groupPassword', function($name, $label = null, $attributes = [], $c
 
 Form::macro('groupSelect', function($name, $label = null, $options, $value = null, $attributes = [], $cols)
 {
-	$element = Form::select($name, $options, $value, fieldAttributes($name, $attributes));
+	$attributes = fieldAttributes($name, $attributes);
+	$element = Form::select($name, $options, $value, $attributes);
 
 	return groupWrapper($name, $label, $element, $cols);
 });
@@ -65,9 +67,12 @@ Form::macro('groupSelect', function($name, $label = null, $options, $value = nul
 
 Form::macro('groupSelectMultiple', function($name, $label = null, $options, $value = null, $attributes = [], $cols)
 {
-	$attributes = array_merge($attributes, ['multiple' => true]);
+	$multiple = ['multiple' => true];
 
-	$element = Form::select($name, $options, $value, fieldAttributes($name, $attributes));
+	$attributes = array_merge($attributes, $multiple);
+	$attributes = fieldAttributes($name, $attributes);
+
+	$element = Form::select($name, $options, $value, $attributes);
 
 	return groupWrapper($name, $label, $element, $cols);
 });
