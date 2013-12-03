@@ -52,7 +52,7 @@
 		font-family: 'Audiowide', monospace;
 	}
 
-	pre, .popover-content, input#command {
+	pre, .popover-content, input#compiled-command {
 		font-family: 'Source Code Pro', monospace;
 	}
 
@@ -129,7 +129,7 @@
 		color: gray;
 	}
 
-	input#command {
+	input#compiled-command {
 		cursor: pointer;
 		height: 50px;
 		padding-left: 15px;

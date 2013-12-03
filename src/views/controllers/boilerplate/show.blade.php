@@ -30,7 +30,7 @@
 			<div class="col-md-12">
 				<h3>Compiled command <small>click command to select</small></h3>
 				<div class="directories">
-					<input type="text" class="form-control" id="command" value="{{{ $compiledCommand }}}">
+					<input type="text" class="form-control" id="compiled-command" value="{{{ $compiledCommand }}}">
 				</div>
 			</div>
 		</div>
@@ -74,7 +74,7 @@
 @section('scripts')
 <script>
 	$(document).ready(function() {
-		$("#command").click(function() {
+		$("#compiled-command").click(function() {
 			$(this).select();
 		});
 	})

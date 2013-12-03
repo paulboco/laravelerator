@@ -40,4 +40,4 @@
 </div>
 @stop
 
-@include('laravelerator::assets.js-inline.create')
+@include('laravelerator::assets.js.laravelerator')
