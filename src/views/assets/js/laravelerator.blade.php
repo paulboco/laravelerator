@@ -2,7 +2,7 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 
-		function displayTemplateInfo()
+		function displayTemplateDescription()
 		{
 			var template = $('#id-field-template').val();
 			$.ajax({
@@ -48,12 +48,12 @@
 		}
 
 		// display data on page load
-		displayTemplateInfo();
+		displayTemplateDescription();
 		displayWritePath();
 		setMockButtonState();
 
 		$("#id-field-template").change(function() {
-			displayTemplateInfo();
+			displayTemplateDescription();
 			$('#field-error-template').remove();
 		});
 

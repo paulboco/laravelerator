@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="col-md-3">
-		@include('laravelerator::controllers.shared.schema_notation')
+		@include('laravelerator::controllers._shared.schema_notation')
 	</div>
 </div>
 @stop

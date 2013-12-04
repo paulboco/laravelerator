@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	@endif
-	@include('laravelerator::controllers.shared.display_tokens')
+	@include('laravelerator::controllers._shared.display_tokens')
 @endif
 @stop
 

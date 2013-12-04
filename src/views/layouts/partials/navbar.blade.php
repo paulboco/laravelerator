@@ -2,7 +2,6 @@
 	<div class="navbar-header">
 		<a class="navbar-brand" href="{{ action('Laravelerator\Laravelerator\PagesController@home') }}">LARAVELERATOR</a>
 	</div>
-
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav navbar-left">
 			<li><a href="{{ action('Laravelerator\Laravelerator\BoilerplateController@create') }}">Boilerplate</a></li>

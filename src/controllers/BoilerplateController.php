@@ -56,7 +56,7 @@ class BoilerplateController extends BaseController {
 			$overwrites = Manifest::getOverwrites();
 		}
 
-		return View::make('laravelerator::controllers.boilerplate.show', get_defined_vars());
+		return View::make('laravelerator::controllers._shared.show', get_defined_vars());
 	}
 
 

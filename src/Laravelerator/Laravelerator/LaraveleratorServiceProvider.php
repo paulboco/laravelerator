@@ -135,7 +135,7 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 		);
 
 		View::composer(
-			'laravelerator::controllers.shared.schema_notation',
+			'laravelerator::controllers._shared.schema_notation',
 			'Laravelerator\Laravelerator\Composers\SchemaNotationComposer'
 		);
 	}
