@@ -39,7 +39,9 @@ class ResourceController extends BaseController {
 	 */
 	public function show()
 	{
-		if ($this->validator->fails())
+		$input = Input::all();
+
+		if ($this->validator->fails($input))
 		{
 			return Redirect::action('Laravelerator\Laravelerator\ResourceController@create')
 				->withInput()

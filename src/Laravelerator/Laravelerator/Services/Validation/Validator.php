@@ -20,10 +20,8 @@ abstract class Validator {
 	 * @return bool
 	 * @TODO   explicitly pass input.
 	 */
-	public function passes($input = null)
+	public function passes($input)
 	{
-		$input = $input ?: Input::all();
-
 		$validator = V::make($input, static::$rules, static::$messages);
 
 		if ($validator->fails())
@@ -36,7 +34,7 @@ abstract class Validator {
 		return true;
 	}
 
-	public function fails($input = null)
+	public function fails($input)
 	{
 		return ! $this->passes($input);
 	}

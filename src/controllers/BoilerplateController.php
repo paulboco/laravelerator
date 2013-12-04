@@ -36,7 +36,9 @@ class BoilerplateController extends BaseController {
 	 */
 	public function show()
 	{
-		if ($this->validator->fails())
+		$input = Input::all();
+
+		if ($this->validator->fails($input))
 		{
 			return Redirect::action('Laravelerator\Laravelerator\BoilerplateController@create')
 				->withInput()
