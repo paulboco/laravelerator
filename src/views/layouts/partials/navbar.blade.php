@@ -4,7 +4,6 @@
 	</div>
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="{{ action('Laravelerator\Laravelerator\BoilerplateController@create') }}">Boilerplate</a></li>
 			<li><a href="{{ action('Laravelerator\Laravelerator\ResourceController@create') }}">Resource</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">

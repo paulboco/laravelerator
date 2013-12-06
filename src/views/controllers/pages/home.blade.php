@@ -16,20 +16,6 @@
 					</ul>
 				</li>
 				<li class="list-group-item">
-					<h3>alg:boilerplate <small>Get off to a good start</small></h3>
-					<ul>
-						<li>
-							What arguments are required? Namespace for one.
-						</li>
-						<li>
-							Creates layout/default and partials/navbar
-						</li>
-						<li>
-							Creates cache before and after filters
-						</li>
-					</ul>
-				</li>
-				<li class="list-group-item">
 					<h3>alg:resource <small>Database code generation</small></h3>
 					<ul>
 						<li>

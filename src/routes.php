@@ -5,9 +5,6 @@ Route::group(array('prefix' => 'laravelerator'), function()
 	Route::get('resource/create', 'Laravelerator\Laravelerator\ResourceController@create');
 	Route::post('resource/show', 'Laravelerator\Laravelerator\ResourceController@show');
 
-	Route::get('boilerplate/create', 'Laravelerator\Laravelerator\BoilerplateController@create');
-	Route::post('boilerplate/show', 'Laravelerator\Laravelerator\BoilerplateController@show');
-
 	Route::get('ajax/path', [
 		'before' => 'ajax|csrf',
 		'uses' => 'Laravelerator\Laravelerator\AjaxController@path'
