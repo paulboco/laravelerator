@@ -1,5 +1,4 @@
 <style>
-	@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:400|Audiowide);
 
 	html {
 		min-height: 101%;
