@@ -86,12 +86,12 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	 */
 	// protected function registerCommands()
 	// {
-	// 	$this->app['alg.console.resource'] = $this->app->share(function($app)
+	// 	$this->app['alg.console.generate'] = $this->app->share(function($app)
 	// 	{
-	// 		return new Console\ResourceCommand($app['alg.templatemanager'], $app['alg.manifestcreator']);
+	// 		return new Console\GenerateCommand($app['alg.templatemanager'], $app['alg.manifestcreator']);
 	// 	});
 
-	// 	$this->commands('alg.console.resource');
+	// 	$this->commands('alg.console.generate');
 	// }
 
 	/**

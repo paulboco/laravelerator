@@ -2,8 +2,8 @@
 
 Route::group(array('prefix' => 'laravelerator'), function()
 {
-	Route::get('resource/create', 'Laravelerator\Laravelerator\ResourceController@create');
-	Route::post('resource/show', 'Laravelerator\Laravelerator\ResourceController@show');
+	Route::get('generate/create', 'Laravelerator\Laravelerator\GenerateController@create');
+	Route::post('generate/show', 'Laravelerator\Laravelerator\GenerateController@show');
 
 	Route::get('ajax/path', [
 		'before' => 'ajax|csrf',

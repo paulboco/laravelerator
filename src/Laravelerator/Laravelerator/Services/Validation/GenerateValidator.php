@@ -2,7 +2,7 @@
 
 use Input;
 
-class ResourceValidator extends Validator {
+class GenerateValidator extends Validator {
 
 	/**
 	 * Validation rules

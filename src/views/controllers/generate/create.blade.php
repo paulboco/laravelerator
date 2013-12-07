@@ -4,15 +4,15 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="page-header">
-			<h1>Resource <small>Create code based on a database table.</small></h1>
+			<h1>Generate <small>Create code from a template.</small></h1>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-6">
-		{{ Form::open(['action' => 'Laravelerator\Laravelerator\ResourceController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
+		{{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
 			{{ Form::groupSelect('template', '* Select template', $templatesAvailable + ['foo' => 'foo'], $template, [], [4,8]) }}
-			{{ Form::groupText('table', '* Resource name', $table, [], [4,8]) }}
+			{{ Form::groupText('table', '* Table name', $table, [], [4,8]) }}
 			{{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
 			{{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], 4) }}
 			{{ Form::groupText('path', 'Write Path', $path, [], [4,8]) }}

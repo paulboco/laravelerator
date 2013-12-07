@@ -5,18 +5,18 @@ use View;
 use Redirect;
 use Laravelerator\Alg\Manifest;
 use Laravelerator\Alg\Template;
-use Laravelerator\Laravelerator\Services\Validation\ResourceValidator;
+use Laravelerator\Laravelerator\Services\Validation\GenerateValidator;
 
-class ResourceController extends BaseController {
+class GenerateController extends BaseController {
 
 	protected $validator;
 
 
-	public function __construct(ResourceValidator $validator)
+	public function __construct(GenerateValidator $validator)
 	{
 		$this->validator = $validator;
 
-		View::share('subTitle', ':resource');
+		View::share('subTitle', ':generate');
 	}
 
 	public function create()
@@ -31,7 +31,7 @@ class ResourceController extends BaseController {
 
 		$templatesAvailable = Template::getAvailable();
 
-		return View::make('laravelerator::controllers.resource.create', get_defined_vars());
+		return View::make('laravelerator::controllers.generate.create', get_defined_vars());
 	}
 
 	/**
@@ -43,7 +43,7 @@ class ResourceController extends BaseController {
 
 		if ($this->validator->fails($input))
 		{
-			return Redirect::action('Laravelerator\Laravelerator\ResourceController@create')
+			return Redirect::action('Laravelerator\Laravelerator\GenerateController@create')
 				->withInput()
 				->withErrors($this->validator->errors());
 		}

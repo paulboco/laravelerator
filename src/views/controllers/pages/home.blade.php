@@ -16,7 +16,7 @@
 					</ul>
 				</li>
 				<li class="list-group-item">
-					<h3>alg:resource <small>Database code generation</small></h3>
+					<h3>alg:generate <small>Database code generation</small></h3>
 					<ul>
 						<li>
 							Formerly known as alg:table

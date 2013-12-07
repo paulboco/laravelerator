@@ -4,7 +4,7 @@
 	</div>
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav navbar-left">
-			<li><a href="{{ action('Laravelerator\Laravelerator\ResourceController@create') }}">Resource</a></li>
+			<li><a href="{{ action('Laravelerator\Laravelerator\GenerateController@create') }}">Generate</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="{{ url('/') }}">{{ url('/') }}</a></li>
