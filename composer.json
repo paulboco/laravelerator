@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.4.0",
         "laravel/framework": ">=4.0.0",
-        "laravelerator/alg": "dev-master"
+        "laravelerator/alg": "@dev"
     },
     "autoload": {
         "classmap": [
@@ -20,6 +20,5 @@
         "psr-0": {
             "Laravelerator\\Laravelerator": "src/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }
