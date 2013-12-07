@@ -12,9 +12,6 @@
 	<div class="col-md-6">
 		{{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
 			{{ Form::groupSelect('template', '* Select template', $templatesAvailable + ['foo' => 'foo'], $template, [], [4,8]) }}
-			{{ Form::groupText('table', '* Table name', $table, [], [4,8]) }}
-			{{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
-			{{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], 4) }}
 			{{ Form::groupText('path', 'Write Path', $path, [], [4,8]) }}
 			<!-- path status -->
 			<div class="row real-write-path">
@@ -22,6 +19,9 @@
 					<div id="path-status"></div>
 				</div>
 			</div>
+			{{ Form::groupText('table', '* Table name', $table, [], [4,8]) }}
+			{{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
+			{{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], 4) }}
 			<div class="form-group">
 				<label for="mock" class="col-md-4 control-label">Mock</label>
 				<div class="col-md-8">
