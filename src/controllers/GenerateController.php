@@ -59,7 +59,7 @@ class GenerateController extends BaseController {
 			$overwrites = Manifest::getOverwrites();
 		}
 
-		return View::make('laravelerator::controllers._shared.show', get_defined_vars());
+		return View::make('laravelerator::controllers.generate.show', get_defined_vars());
 	}
 
 

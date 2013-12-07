@@ -81,7 +81,6 @@ class CustomValidators extends V {
 	protected function replacePathExists($message, $attribute, $rule, $parameters)
 	{
 		$path = $this->getData()['path'];
-
 		$path = Template::getWritePath($path);
 
 		return str_replace(':path', $path, $message);
@@ -99,7 +98,6 @@ class CustomValidators extends V {
 	protected function replaceHasTemplates($message, $attribute, $rule, $parameters)
 	{
 		$template = $this->getData()['template'];
-
 		$path = Template::getTemplatePath($template);
 
 		return str_replace(':path', $path, $message);

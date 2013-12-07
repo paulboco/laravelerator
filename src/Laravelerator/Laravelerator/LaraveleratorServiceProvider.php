@@ -26,10 +26,8 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	{
 		$this->package('laravelerator/laravelerator');
 
-		// $this->aliasFacades();
 		$this->customValidators();
 		$this->viewComposers();
-		// $this->storeCommandName();
 
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../macros.php';
@@ -43,71 +41,7 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		// $this->registerClasses();
-		// $this->registerCommands();
 	}
-
-	/**
-	 * Register class dependecies
-	 *
-	 * @return void
-	 */
-	// protected function registerClasses()
-	// {
-	// 	// TemplateManager
-	// 	$this->app['alg.templatemanager'] = $this->app->share(function($app)
-	// 	{
-	// 		return new TemplateManager(new Finder);
-	// 	});
-
-	// 	// SchemaParser
-	// 	$this->app['alg.schemaparser'] = $this->app->share(function($app)
-	// 	{
-	// 		return new SchemaParser;
-	// 	});
-
-	// 	// Tokenizer
-	// 	$this->app['alg.tokenizer'] = $this->app->share(function($app)
-	// 	{
-	// 		return new Tokenizer($app['alg.schemaparser']);
-	// 	});
-
-	// 	// ManifestCreator
-	// 	$this->app['alg.manifestcreator'] = $this->app->share(function($app)
-	// 	{
-	// 		return new ManifestCreator($app['alg.tokenizer'], $app['alg.templatemanager']);
-	// 	});
-	// }
-
-	/**
-	 * Register Commands
-	 *
-	 * @return void
-	 */
-	// protected function registerCommands()
-	// {
-	// 	$this->app['alg.console.generate'] = $this->app->share(function($app)
-	// 	{
-	// 		return new Console\GenerateCommand($app['alg.templatemanager'], $app['alg.manifestcreator']);
-	// 	});
-
-	// 	$this->commands('alg.console.generate');
-	// }
-
-	/**
-	 * Add Facade Aliases
-	 *
-	 * @return void
-	 */
-	// protected function aliasFacades()
-	// {
-	// 	$loader = AliasLoader::getInstance();
-
-	// 	$loader->alias('Laravelerator\Alg\Manifest', 'Laravelerator\Alg\Facades\Manifest');
-	// 	$loader->alias('Laravelerator\Alg\Template', 'Laravelerator\Alg\Facades\Template');
-	// 	$loader->alias('Laravelerator\Alg\Token', 'Laravelerator\Alg\Facades\Token');
-	// 	$loader->alias('Laravelerator\Alg\Schema', 'Laravelerator\Alg\Facades\Schema');
-	// }
 
 	/**
 	 * Register Custom Validators
@@ -135,31 +69,10 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 		);
 
 		View::composer(
-			'laravelerator::controllers._shared.schema_notation',
+			'laravelerator::controllers.generate.partials.schema_notation',
 			'Laravelerator\Laravelerator\Composers\SchemaNotationComposer'
 		);
 	}
-
-	// protected function storeCommandName()
-	// {
-	// 	if ($this->app->runningInConsole())
-	// 	{
-	// 		if (count($_SERVER['argv']) > 1)
-	// 		{
-	// 			if (substr($_SERVER['argv'][1], 0, 4) == 'alg:')
-	// 			{
-	// 				$command = substr($_SERVER['argv'][1], 4);
-	// 				$this->app->session->put('alg.command.name', $command);
-	// 			}
-	// 		}
-	// 	}
-	// 	elseif ( ! $this->app->request->ajax())
-	// 	{
-	// 		$command = $this->app->request->segment(2);
-
-	// 		$this->app->session->put('alg.command.name', $command);
-	// 	}
-	// }
 
 	/**
 	 * Get the services provided by the provider.
