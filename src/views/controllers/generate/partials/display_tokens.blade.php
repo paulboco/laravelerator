@@ -1,4 +1,4 @@
-@if ($tokens = Laravelerator\Alg\Token::get())
+@if ($tokens = Laravelerator\Alg\Token::getAll())
 	<div class="row">
 		<div class="col-md-12">
 			<h3>Tokens created</h3>
