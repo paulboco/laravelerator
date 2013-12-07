@@ -10,7 +10,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "laravel/framework": ">=4.0.0"
+        "laravel/framework": ">=4.0.0",
+        "laravelerator/alg": "dev-master"
     },
     "autoload": {
         "classmap": [
