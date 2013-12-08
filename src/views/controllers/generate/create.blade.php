@@ -22,6 +22,7 @@
 			{{ Form::groupText('table', '* Table name', $table, [], [4,8]) }}
 			{{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
 			{{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], 4) }}
+			<!-- mock -->
 			<div class="form-group">
 				<label for="mock" class="col-md-4 control-label">Mock</label>
 				<div class="col-md-8">
@@ -29,6 +30,7 @@
 					{{ Form::hidden('mock', $mock, ['id' => 'mock-hidden']) }}
 				</div>
 			</div>
+			<!-- button -->
 			<div class="form-group">
 				<div class="col-md-offset-4 col-md-8">
 					{{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
