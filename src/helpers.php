@@ -15,7 +15,7 @@ if ( ! function_exists('mute_base_path'))
 	{
 		$base = base_path() . '/';
 
-		$replace = $strip ? '' : '<span class="mute-path">' . $base . '</span>';
+		$replace = $strip ? '' : '<span class="mute-basepath">' . $base . '</span>';
 
 		return str_replace($base, $replace, $string);
 	}

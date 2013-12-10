@@ -51,10 +51,19 @@
 		font-family: 'Audiowide', monospace;
 	}
 
-	pre, .popover-content, input#compiled-command {
+	a.panel-title {
+		text-decoration: none;
+	}
+
+	pre,
+	input#compiled-command,
+	.popover-content,
+	.panel-title
+	 {
 		font-family: 'Source Code Pro', monospace;
 	}
 
+	div.panel-heading.file-path,
 	input.form-control,
 	select.form-control,
 	textarea.form-control,
@@ -66,6 +75,7 @@
 	.overwrites pre {
 		background-color: #404040 !important;
 		border-color: #555 !important;
+
 	}
 
 	button#mock-button.active {
@@ -77,6 +87,10 @@
 		padding: .5px;
 		background-color: lime;
 		border: solid 2px green;
+	}
+
+	.panel-body {
+		border:	0 !important;
 	}
 
 	.popover, .popover-title {
@@ -135,9 +149,8 @@
 		font-size: 1.05em;
 	}
 
-	pre.file-path {
-		margin: 20px 0 0;
-		background-color: transparent;
+	h4.file-path {
+		background-color: red;
 		border: none;
 	}
 
@@ -145,8 +158,12 @@
 		word-wrap: break-word;
 	}
 
-	span.mute-path {
+	span.mute-basepath {
 		color: gray;
+	}
+
+	h5 {
+		color: lime;
 	}
 
 </style>
