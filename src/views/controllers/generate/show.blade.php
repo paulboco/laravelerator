@@ -45,16 +45,6 @@
 			</div>
 		</div>
 	@endif
-	@if (isset($files))
-		<div class="row">
-			<div class="col-md-12">
-				<h3>Files to be created</h3>
-				<div class="directories">
-					<pre>{{ mute_base_path(implode("\n", array_keys($files))) }}</pre>
-				</div>
-			</div>
-		</div>
-	@endif
 	@include('laravelerator::controllers.generate.partials.generated_files')
 	@include('laravelerator::controllers.generate.partials.display_tokens')
 @endif

@@ -1,5 +1,4 @@
 <style>
-
 	html {
 		min-height: 101%;
 	}
@@ -16,16 +15,18 @@
 
 	em,
 	input.btn-default:hover,
-	pre.file-path,
+	button#mock-button.active,
 	.form-control,
 	.panel,
 	.list-group-item,
 	h1.success,
 	div.navbar-header a.navbar-brand:hover,
 	div.navbar-collapse ul.navbar-nav li a:hover,
+	div#path-status span.path-found,
+	div.directories,
 	.popover,
 	.directories pre {
-		color: lime;
+		color: lime !important;
 	}
 
 	h1.error,
@@ -47,19 +48,16 @@
 		color: #888;
 	}
 
-	h1, h2, h3, h4, h5, h6, .navbar-brand, .popover {
+	h1, h2, h3, h4, h5, .navbar-brand, .popover {
 		font-family: 'Audiowide', monospace;
-	}
-
-	a.panel-title {
-		text-decoration: none;
 	}
 
 	pre,
 	input#compiled-command,
-	.popover-content,
-	.panel-title
+	div.directories,
+	.popover-content
 	 {
+		font-size: 1.05em;
 		font-family: 'Source Code Pro', monospace;
 	}
 
@@ -71,15 +69,12 @@
 	input.btn,
 	.panel,
 	.list-group-item,
+	div.directories,
 	.directories pre,
 	.overwrites pre {
 		background-color: #404040 !important;
 		border-color: #555 !important;
-
-	}
-
-	button#mock-button.active {
-		color: lime !important;
+		border-radius: 4px;
 	}
 
 	div.hr {
@@ -106,12 +101,19 @@
 		border-left-color: lime !important;
 	}
 
+	.panel-heading.directories {
+		cursor: pointer;
+	}
+
+	div.panel-heading.directories:hover {
+		background-color: #303030 !important;
+	}
+
 	pre {
 		padding: 15px;
 		background-color: #f7f7f7;
 		border-color: #ddd;
 		line-height: 2.5em;
-		font-size: 1.05em;
 		color: #000;
 	}
 
@@ -134,10 +136,7 @@
 		margin-bottom: 30px;
 	}
 
-	div#path-status span.path-found {
-		color: lime;
-	}
-
+	span.mute-basepath,
 	div#path-status span.path-not-found {
 		color: gray;
 	}
@@ -146,25 +145,10 @@
 		cursor: pointer;
 		height: 50px;
 		padding-left: 15px;
-		font-size: 1.05em;
-	}
-
-	h6.file-path {
-		background-color: red;
-		border: none;
 	}
 
 	span.help-block {
 		word-wrap: break-word;
-	}
-
-	span.mute-basepath {
-		color: gray;
-	}
-
-	h6 a {
-		font-size: .95em;
-		color: lime !important;
 	}
 
 </style>
