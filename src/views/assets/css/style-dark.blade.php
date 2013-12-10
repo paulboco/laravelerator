@@ -47,7 +47,7 @@
 		color: #888;
 	}
 
-	h1, h2, h3, h4, h5, .navbar-brand, .popover {
+	h1, h2, h3, h4, h5, h6, .navbar-brand, .popover {
 		font-family: 'Audiowide', monospace;
 	}
 
@@ -149,7 +149,7 @@
 		font-size: 1.05em;
 	}
 
-	h4.file-path {
+	h6.file-path {
 		background-color: red;
 		border: none;
 	}
@@ -162,8 +162,9 @@
 		color: gray;
 	}
 
-	h5 {
-		color: lime;
+	h6 a {
+		font-size: .95em;
+		color: lime !important;
 	}
 
 </style>
