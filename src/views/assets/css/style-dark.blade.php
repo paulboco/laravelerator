@@ -106,7 +106,7 @@
 	}
 
 	div.panel-heading.directories:hover {
-		background-color: #303030 !important;
+		background-color: #383838 !important;
 	}
 
 	pre {
