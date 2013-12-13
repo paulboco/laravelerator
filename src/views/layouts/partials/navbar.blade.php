@@ -7,7 +7,8 @@
 			<li><a href="{{ action('Laravelerator\Laravelerator\GenerateController@create') }}">Generate</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="{{ url('/') }}">{{ url('/') }}</a></li>
+			<li><a href="http://laravel.com/docs" target="_blank">Docs</a></li>
+			<li><a href="/">{{ url('/') }}</a></li>
 		</ul>
 	</div>
 </nav>
