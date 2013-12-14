@@ -5,7 +5,7 @@
 			<div class="directories">
 				<pre>
 @foreach ($tokens as $key => $value)
-{{ $key }} => {{ $value }}&nbsp;
+{{ $key }}&nbsp;
 @endforeach</pre>
 			</div>
 		</div>
