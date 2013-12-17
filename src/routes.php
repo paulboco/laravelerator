@@ -6,8 +6,21 @@
 |--------------------------------------------------------------------------
 */
 
-Route::group(['prefix' => 'laravelerator'], function()
+Route::group(
+	[
+		'prefix' => 'laravelerator',
+		'namespace' => 'Laravelerator\Laravelerator'
+	],
+	function()
 {
+	/*
+	|--------------------------------------------------------------------------
+	| Generate
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::get('generate/create', ['as' => 'foo', 'uses' => 'GenerateController@create']);
+	Route::post('generate/show', 'GenerateController@show');
 	/*
 	|--------------------------------------------------------------------------
 	| Ajax
@@ -16,32 +29,24 @@ Route::group(['prefix' => 'laravelerator'], function()
 
 	Route::group(['before' => 'ajax|csrf'], function()
 	{
-		Route::get('ajax/path', 'Laravelerator\Laravelerator\AjaxController@path');
-		Route::get('ajax/template', 'Laravelerator\Laravelerator\AjaxController@template');
+		Route::get('ajax/template', 'AjaxController@template');
+		Route::get('ajax/path', 'AjaxController@path');
 	});
 
 	/*
 	|--------------------------------------------------------------------------
-	| Generate
+	| Pages
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('generate/create', 'Laravelerator\Laravelerator\GenerateController@create');
-	Route::post('generate/show', 'Laravelerator\Laravelerator\GenerateController@show');
-
-	/*
-	|--------------------------------------------------------------------------
-	| Home
-	|--------------------------------------------------------------------------
-	*/
-
-	Route::get('/', 'Laravelerator\Laravelerator\PagesController@home');
+	Route::get('routes', 'PagesController@routes');
+	Route::get('/', 'PagesController@home');
 });
 
 
 /*
 |--------------------------------------------------------------------------
-| Ajax
+| Filters
 |--------------------------------------------------------------------------
 */
 

@@ -22,12 +22,12 @@ class GenerateController extends BaseController {
 	public function create()
 	{
 		// Set testing defaults here
-		$template = Input::old('template', 'crud');
+		$template = Input::old('template', 'scaffold');
 		$table = Input::old('table', 'problems');
 		$namespace = Input::old('namespace', 'Shiphed');
-		$schema = Input::old('schema', '');
+		$schema = Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n");
 		$path = Input::old('path', 'app');
-		$mock = Input::old('mock', 'mock');
+		$mock = Input::old('mock', '');
 
 		$templatesAvailable = Template::getAvailable();
 
