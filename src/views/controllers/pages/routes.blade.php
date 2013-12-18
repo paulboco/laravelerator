@@ -15,8 +15,8 @@
                         <th>URI</th>
                         <th>Name</th>
                         <th>Action</th>
-                        <th>Before Filters</th>
-                        <th>After Filters</th>
+                        <th>Before</th>
+                        <th>After</th>
                     </tr>
                 </thead>
                 <tbody class="no-wrap">
@@ -25,9 +25,9 @@
                             <td>{{ $route['domain'] }}</td>
                             <td>{{ $route['uri'] }}</td>
                             <td>{{ $route['name'] }}</td>
-                            <td>{{ $route['actionName'] }}</td>
-                            <td>{{ $route['beforeFilters'] }}</td>
-                            <td>{{ $route['afterFilters'] }}</td>
+                            <td>{{ $route['action'] }}</td>
+                            <td>{{ $route['before'] }}</td>
+                            <td>{{ $route['after'] }}</td>
                         </tr>
                     @endforeach
                 </tbody>

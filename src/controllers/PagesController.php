@@ -22,9 +22,9 @@ class PagesController extends Controller {
                 'domain' => $route->domain(),
                 'uri' => $route->methods()[0] . ' ' . $route->getUri(),
                 'name' => $route->getName(),
-                'actionName' => $route->getActionName(),
-                'beforeFilters' => implode(', ', array_keys($route->beforeFilters())),
-                'afterFilters' => implode(', ', array_keys($route->afterFilters())),
+                'action' => $route->getActionName(),
+                'before' => implode(', ', array_keys($route->beforeFilters())),
+                'after' => implode(', ', array_keys($route->afterFilters())),
             ];
         }
 
