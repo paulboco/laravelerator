@@ -25,7 +25,8 @@
 	div#path-status span.path-found,
 	div.directories,
 	.popover,
-	.directories pre {
+	.directories pre,
+	.table > tbody > tr > td {
 		color: lime !important;
 	}
 
@@ -44,23 +45,26 @@
 		color: #bbb;
 	}
 
-	h1 small, h2 small, h3 small {
+	h1 small, h2 small, h3 small, th {
 		color: #888;
 	}
 
-	h1, h2, h3, h4, h5, .navbar-brand, .popover {
+	h1, h2, h3, h4, h5, .navbar-brand, .popover, th {
 		font-family: 'Audiowide', monospace;
 	}
 
 	pre,
 	input#compiled-command,
 	div.directories,
-	.popover-content
-	 {
+	.popover-content,
+	.table > tbody > tr > td {
 		font-size: 1.05em;
 		font-family: 'Source Code Pro', monospace;
 	}
 
+	table,
+	table tr,
+	table td,
 	div.panel-heading.file-path,
 	input.form-control,
 	select.form-control,
@@ -149,6 +153,14 @@
 
 	span.help-block {
 		word-wrap: break-word;
+	}
+
+	tbody.no-wrap > tr > td {
+		white-space: nowrap;
+	}
+
+	.table > thead > tr > th {
+		border: 0;
 	}
 
 </style>

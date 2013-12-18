@@ -1,5 +1,7 @@
 @extends('laravelerator::layouts.master')
 
+@section('subTitle', '- Generate')
+
 @section('content')
 @if (isset($overwrites))
 	<div class="row">

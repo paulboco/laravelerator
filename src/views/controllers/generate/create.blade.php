@@ -1,5 +1,7 @@
 @extends('laravelerator::layouts.master')
 
+@section('subTitle', '- Generate')
+
 @section('content')
 <div class="row">
 	<div class="col-md-12">

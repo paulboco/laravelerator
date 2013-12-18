@@ -15,8 +15,6 @@ class GenerateController extends BaseController {
 	public function __construct(GenerateValidator $validator)
 	{
 		$this->validator = $validator;
-
-		View::share('subTitle', ':generate');
 	}
 
 	public function create()
