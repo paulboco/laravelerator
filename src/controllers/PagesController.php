@@ -16,6 +16,7 @@ class PagesController extends Controller {
 
     public function routes()
     {
+        // this is bullshit
         View::share('subTitle', ' - routes');
 
         $router = App::make('router')->getRoutes()->getRoutes();
@@ -32,39 +33,11 @@ class PagesController extends Controller {
                 // 'action' => $route->getAction(),
             ];
         }
+
 dm($route, 7);
 dv($routes, 8);
+
         return View::make('laravelerator::controllers.pages.routes', compact('routes'));
-
-dd($router);
-
-
-
-
-dm($router);
-
-dv($router->getRoutes());
-
-die;
-
-
-
-
-
-// dp($route->getFacadeRoot());
-        $foo = 'yes';
-dd($foo);
-        $artisan = App::make('artisan');
-dd($artisan);
-
-        // $app = App::make('artisan');
-        // $artisan = null;
-        // $artisan = Artisan::call(
-        //     'routes',
-        //     ['--env' => 'production']
-        // );
-// dd($app);
-
     }
 
 
