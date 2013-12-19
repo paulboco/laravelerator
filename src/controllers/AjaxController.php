@@ -17,16 +17,6 @@ class AjaxController extends BaseController {
     }
 
     /**
-     * Ajax request for selected template description
-     */
-    public function template()
-    {
-        $data = Template::getConfig();
-
-        return View::make('laravelerator::controllers.ajax.template_description', $data);
-    }
-
-    /**
      * Ajax request for available templates
      */
     public function templatesAvailable()

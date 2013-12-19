@@ -12,6 +12,7 @@
                 <li class="list-group-item">
                     <h3>alg:generate <small>Database code generation</small></h3>
                     <ul>
+                        <li>Make generate a SPA</li>
                         <li>Validate schema</li>
                         <li>
                             template and path are required args.<br>

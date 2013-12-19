@@ -4,19 +4,6 @@
 	<script type="text/javascript">
 	$(document).ready(function() {
 
-		// function displayTemplateDescription()
-		// {
-		// 	var template = $('#id-field-template').val();
-		// 	$.ajax({
-		// 		type: 'GET',
-		// 		url: '{{ url('laravelerator/ajax/template') }}',
-		// 		data: { template: template, _token: "{{ Session::token() }}" },
-		// 		success: function(response) {
-		// 			$("#template-description").html(response);
-		// 		}
-		// 	});
-		// }
-
 		function displayWritePath()
 		{
 			var path = $('#id-field-path').val();
@@ -49,15 +36,8 @@
 				$('#mock-button').html('Disengaged').removeClass('active');
 		}
 
-		// display data on page load
-		// displayTemplateDescription();
 		displayWritePath();
 		setMockButtonState();
-
-		// $("#id-field-template").change(function() {
-		// 	displayTemplateDescription();
-		// 	$('#field-error-template').remove();
-		// });
 
 		$("#id-field-path").on('change input', function() {
 			displayWritePath();

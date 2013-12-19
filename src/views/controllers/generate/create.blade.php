@@ -13,9 +13,7 @@
 <div class="row" ng-controller="TemplateController">
     <div class="col-md-6">
         {{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
-
             {{ Form::groupSelect('template', '* Select template', [null => '-- choose template --'], null, ['ng-model' => 'template', 'ng-options' => 't.title for t in templates track by t.basename'], [4,8]) }}
-            {{-- Form::groupSelect('template', '* Select template', $templatesAvailable + ['foo' => 'foo'], $template, [], [4,8]) --}}
             {{ Form::groupText('path', 'Write Path', $path, [], [4,8]) }}
             <!-- path status -->
             <div class="row real-write-path">
@@ -42,18 +40,9 @@
             </div>
         {{ Form::close() }}
     </div>
-
     <div class="col-md-3">
-        <aside ng-if="template">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h4>@{{ template.title }}</h4>
-                    <p>@{{ template.description }}</p>
-                </div>
-            </div>
-        </aside>
+        @include('laravelerator::controllers.generate.partials.template_description')
     </div>
-
     <div class="col-md-3">
         @include('laravelerator::controllers.generate.partials.schema_notation')
     </div>
@@ -67,36 +56,16 @@
     <script type="text/javascript">
     function TemplateController($scope, $http) {
 
-        // $scope.templatesAvailable = 'templatesAvailable';
-// alert($scope.templates);
-        $http.get('{{ action('Laravelerator\Laravelerator\AjaxController@templatesAvailable') }}').success(function(templates) {
+        $http({
+            method  : 'GET',
+            params  : {'_token': '{{ Session::token() }}'},
+            url     : '{{ action('Laravelerator\Laravelerator\AjaxController@templatesAvailable') }}',
+            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })
+        .success(function(templates, status, headers, config) {
             console.log(templates);
             $scope.templates = templates;
         });
-
-        // $scope.remaining = function() {
-        //     var count = 0;
-
-        //     angular.forEach($scope.todos, function(todo) {
-        //         count += todo.completed ? 0 : 1;
-        //     });
-
-        //     return count;
-        // }
-
-        // $scope.addTodo = function() {
-        //     var todo = {
-        //         body: $scope.newTodoTask,
-        //         completed: false
-        //     };
-
-        //     $scope.todos.push(todo);
-
-        //     $http.post('todos', todo);
-
-        //     $scope.newTodoTask = '';
-        // };
-
     }
 </script>
 @stop
