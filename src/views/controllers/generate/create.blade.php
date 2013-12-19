@@ -44,7 +44,7 @@
     </div>
 
     <div class="col-md-3">
-        <aside ng-if="template.title">
+        <aside ng-if="template">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <h4>@{{ template.title }}</h4>
