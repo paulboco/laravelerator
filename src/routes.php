@@ -42,8 +42,10 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::group(['before' => 'ajax|csrf'], function()
+	//TODO: Add CSRF token when finished testing
+	Route::group(['before' => 'ajax'], function()
 	{
+		Route::get('ajax/templatesavailable', 'AjaxController@templatesAvailable');
 		Route::get('ajax/template', 'AjaxController@template');
 		Route::get('ajax/path', 'AjaxController@path');
 	});
@@ -67,5 +69,5 @@ Route::group(
 
 Route::filter('ajax', function()
 {
-	if ( ! Request::ajax()) App::abort(404);
+	// if ( ! Request::ajax()) App::abort(404);
 });

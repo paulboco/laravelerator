@@ -1,19 +1,21 @@
 @section('scripts')
+	@parent
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 
-		function displayTemplateDescription()
-		{
-			var template = $('#id-field-template').val();
-			$.ajax({
-				type: 'GET',
-				url: '{{ url('laravelerator/ajax/template') }}',
-				data: { template: template, _token: "{{ Session::token() }}" },
-				success: function(response) {
-					$("#template-description").html(response);
-				}
-			});
-		}
+		// function displayTemplateDescription()
+		// {
+		// 	var template = $('#id-field-template').val();
+		// 	$.ajax({
+		// 		type: 'GET',
+		// 		url: '{{ url('laravelerator/ajax/template') }}',
+		// 		data: { template: template, _token: "{{ Session::token() }}" },
+		// 		success: function(response) {
+		// 			$("#template-description").html(response);
+		// 		}
+		// 	});
+		// }
 
 		function displayWritePath()
 		{
@@ -48,14 +50,14 @@
 		}
 
 		// display data on page load
-		displayTemplateDescription();
+		// displayTemplateDescription();
 		displayWritePath();
 		setMockButtonState();
 
-		$("#id-field-template").change(function() {
-			displayTemplateDescription();
-			$('#field-error-template').remove();
-		});
+		// $("#id-field-template").change(function() {
+		// 	displayTemplateDescription();
+		// 	$('#field-error-template').remove();
+		// });
 
 		$("#id-field-path").on('change input', function() {
 			displayWritePath();

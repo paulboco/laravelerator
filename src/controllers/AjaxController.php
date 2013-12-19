@@ -26,5 +26,13 @@ class AjaxController extends BaseController {
         return View::make('laravelerator::controllers.ajax.template_description', $data);
     }
 
+    /**
+     * Ajax request for available templates
+     */
+    public function templatesAvailable()
+    {
+        return Template::getAvailable();
+    }
+
 
 }

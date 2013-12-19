@@ -53,11 +53,13 @@
 @stop
 
 @section('scripts')
-<script>
-	$(document).ready(function() {
-		$("#compiled-command").click(function() {
-			$(this).select();
-		});
-	})
-</script>
+	@parent
+
+	<script>
+		$(document).ready(function() {
+			$("#compiled-command").click(function() {
+				$(this).select();
+			});
+		})
+	</script>
 @stop
