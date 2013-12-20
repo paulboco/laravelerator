@@ -11,36 +11,45 @@
     </div>
 </div>
 <div class="row" ng-controller="TemplateController">
-    <div class="col-md-6">
+    <div class="col-md-5">
         {{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@show', 'class' => 'form-horizontal', 'role' => 'form']) }}
-            {{ Form::groupSelect('template', '* Select template', [null => '-- choose template --'], null, ['ng-model' => 'template', 'ng-options' => 't.title for t in templates track by t.basename'], [4,8]) }}
-            {{ Form::groupText('path', 'Write Path', $path, [], [4,8]) }}
+            <div class="form-group">
+                {{ Form::label('template', '* Template') }}
+                {{ Form::select('template', [null => '-- choose template --'], null, ['class' => 'form-control', 'ng-model' => 'template', 'ng-options' => 't.title for t in templates track by t.basename']) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('path', '* Write Path') }}
+                {{ Form::text('path', $path, ['class' => 'form-control']); }}
+            </div>
             <!-- path status -->
             <div class="row real-write-path">
-                <div class="col-md-offset-4 col-md-8">
-                    <div id="path-status"></div>
-                </div>
+                <div id="path-status"></div>
             </div>
-            {{ Form::groupText('table', '* Table name', $table, [], [4,8]) }}
-            {{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
-            {{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], 4) }}
+            <div class="form-group">
+                {{ Form::label('table', '* Table Name') }}
+                {{ Form::text('table', $table, ['class' => 'form-control']); }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('namespace', '* Namespace') }}
+                {{ Form::text('namespace', $namespace, ['class' => 'form-control']); }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('schema', '* Schema') }}
+                {{ Form::textarea('schema', $schema, ['class' => 'form-control']); }}
+            </div>
             <!-- mock -->
             <div class="form-group">
-                <label for="mock" class="col-md-4 control-label">Mock</label>
-                <div class="col-md-8">
-                    <button id="mock-button" type="button" class="form-control btn btn-primary" data-toggle="button"></button>
-                    {{ Form::hidden('mock', $mock, ['id' => 'mock-hidden']) }}
-                </div>
+                {{ Form::label('mock', 'Mock') }}
+                <button id="mock-button" type="button" class="form-control btn btn-primary" data-toggle="button"></button>
+                {{ Form::hidden('mock', $mock, ['id' => 'mock-hidden']) }}
             </div>
             <!-- button -->
             <div class="form-group">
-                <div class="col-md-offset-4 col-md-8">
-                    {{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
-                </div>
+                {{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
             </div>
         {{ Form::close() }}
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         @include('laravelerator::controllers.generate.partials.template_description')
     </div>
     <div class="col-md-3">

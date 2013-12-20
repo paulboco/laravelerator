@@ -6,7 +6,7 @@
 
 		function displayWritePath()
 		{
-			var path = $('#id-field-path').val();
+			var path = $('#path').val();
 			if (typeof path != 'undefined' )
 			{
 				$.ajax({
@@ -39,7 +39,7 @@
 		displayWritePath();
 		setMockButtonState();
 
-		$("#id-field-path").on('change input', function() {
+		$("#path").on('change input', function() {
 			displayWritePath();
 			$('#field-error-path').remove();
 		});
