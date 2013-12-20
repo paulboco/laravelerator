@@ -19,7 +19,7 @@
 	.form-control,
 	.panel,
 	.list-group-item,
-	h1.success,
+	h1,
 	div.navbar-header a.navbar-brand:hover,
 	div.navbar-collapse ul.navbar-nav li a:hover,
 	div#path-status span.path-found,
@@ -39,7 +39,7 @@
 		color: Gold !important;
 	}
 
-	h1, h2, h3, h4, h5, label,
+	h2, h3, h4, h5, label,
 	input.btn-default
 	{
 		color: #bbb;
@@ -140,6 +140,10 @@
 		margin-bottom: 30px;
 	}
 
+	.select-placeholder {
+		color: gray !important;
+	}
+
 	span.mute-basepath,
 	div#path-status span.path-not-found {
 		color: gray;
@@ -163,6 +167,7 @@
 		border: 0;
 	}
 
+	/* angularJS */
 	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	  display: none !important;
 	}
