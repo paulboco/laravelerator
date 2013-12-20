@@ -10,9 +10,11 @@
             </div>
             <ul class="list-group" style="font-size:larger;">
                 <li class="list-group-item">
-                    <h3>General</h3>
+                    <h3>Concept</h3>
                     <ul>
-                        <li>Explore the use of Facades</li>
+                        <li>Generate code from templates</li>
+                        <li>Templates are like packages</li>
+                        <li>Build repository of templates</li>
                     </ul>
                 </li>
                 <li class="list-group-item">
