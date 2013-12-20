@@ -53,19 +53,20 @@
 
 @section('scripts')
     @parent
-    <script type="text/javascript">
-    function TemplateController($scope, $http) {
 
-        $http({
-            method  : 'GET',
-            params  : {'_token': '{{ Session::token() }}'},
-            url     : '{{ action('Laravelerator\Laravelerator\AjaxController@templatesAvailable') }}',
-            headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
-        })
-        .success(function(templates, status, headers, config) {
-            console.log(templates);
-            $scope.templates = templates;
-        });
-    }
-</script>
+    <!-- Get available templates -->
+    <script type="text/javascript">
+        function TemplateController($scope, $http) {
+            var url = '{{ action('Laravelerator\Laravelerator\AjaxController@templatesAvailable') }}';
+            $http({
+                method  : 'GET',
+                params  : {'_token': '{{ Session::token() }}'},
+                url     : url
+            })
+            .success(function(templates, status, headers, config) {
+                console.log(templates);
+                $scope.templates = templates;
+            });
+        }
+    </script>
 @stop
