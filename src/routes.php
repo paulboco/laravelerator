@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  _       ___  ______   ___   _   _  _____  _      _____ ______   ___  _____  _____ ______
 | |     / _ \ | ___ \ / _ \ | | | ||  ___|| |    |  ___|| ___ \ / _ \|_   _||  _  || ___ \
@@ -10,7 +9,6 @@
 \_____/\_| |_/\_| \_|\_| |_/ \___/ \____/ \_____/\____/ \_| \_|\_| |_/ \_/   \___/ \_| \_|
 
 */
-
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +41,10 @@ Route::group(
 	*/
 
 	//TODO: Add CSRF token when finished testing
-	Route::group(['before' => 'csrf'], function()
+	Route::group(['before' => 'csrf|json'], function()
 	{
-		Route::get('ajax/templatesavailable', ['before' => 'json', 'uses' => 'AjaxController@templatesAvailable']);
-		Route::get('ajax/path', ['before' => 'ajax', 'uses' => 'AjaxController@path']);
+		Route::get('ajax/templatesavailable', 'AjaxController@templatesAvailable');
+		Route::get('ajax/path', 'AjaxController@path');
 	});
 
 	/*

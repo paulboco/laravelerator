@@ -27,7 +27,7 @@ class GenerateController extends BaseController {
 		$path = Input::old('path', 'app');
 		$mock = Input::old('mock', '');
 
-		$templatesAvailable = Template::getAvailable();
+		// $templatesAvailable = Template::getAvailable();
 
 		return View::make('laravelerator::controllers.generate.create', get_defined_vars());
 	}

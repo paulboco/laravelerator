@@ -17,7 +17,7 @@
 
 	@media screen {
 		pre.prettyprint { display: block; background-color: #404040 }
-		pre .nocode { background-color: none; color: #000 }
+		pre .nocode { background-color: transparent; color: #000 }
 		pre .str { color: #ffa0a0 } /* string  - pink */
 		pre .kwd { color: #f0e68c }
 		pre .com { color: #87ceeb } /* comment - skyblue */

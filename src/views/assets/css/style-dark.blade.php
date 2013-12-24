@@ -22,7 +22,7 @@
 	h1,
 	div.navbar-header a.navbar-brand:hover,
 	div.navbar-collapse ul.navbar-nav li a:hover,
-	div#path-status span.path-found,
+	span#path-status.path-found,
 	div.directories,
 	.popover,
 	.directories pre,
@@ -33,7 +33,7 @@
 	h1.error,
 	span.help-block,
 	div.has-error label.control-label,
-	div#path-status span.path-outside-root,
+	span#path-status.path-not-found,
 	.overwrites pre,
 	button#mock-button {
 		color: Gold !important;
@@ -135,17 +135,11 @@
 		border-bottom-color: #444;
 	}
 
-	div#path-status  {
-		margin-top: -10px;
-		margin-bottom: 30px;
-	}
-
 	.select-placeholder {
 		color: gray !important;
 	}
 
-	span.mute-basepath,
-	div#path-status span.path-not-found {
+	span.mute-basepath {
 		color: gray;
 	}
 

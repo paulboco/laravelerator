@@ -7,6 +7,11 @@ use Controller;
 
 class PagesController extends Controller {
 
+    public function ang()
+    {
+        return View::make('laravelerator::controllers.pages.ang-app');
+    }
+
 	public function home()
 	{
 		return View::make('laravelerator::controllers.pages.home');
