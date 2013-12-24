@@ -7,14 +7,10 @@ use Controller;
 
 class PagesController extends Controller {
 
-    public function ang()
-    {
-        return View::make('laravelerator::controllers.pages.ang-app');
-    }
-
 	public function home()
 	{
-		return View::make('laravelerator::controllers.pages.home');
+		return View::make('laravelerator::layouts.master')
+            ->nest('content', 'laravelerator::controllers.pages.home');;
 	}
 
     public function routes()
@@ -33,7 +29,8 @@ class PagesController extends Controller {
             ];
         }
 
-        return View::make('laravelerator::controllers.pages.routes', compact('routes'));
+        return View::make('laravelerator::layouts.master')
+            ->nest('content', 'laravelerator::controllers.pages.routes', compact('routes'));;
     }
 
 

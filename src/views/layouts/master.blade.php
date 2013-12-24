@@ -14,11 +14,10 @@
 <body>
     @include('laravelerator::layouts.partials.navbar')
     <div class="container">
-        @yield('content')
+        {{ $content }}
     </div>
     @section('scripts')
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
-        <!--script src="http://code.jquery.com/jquery-2.0.3.min.js"></script-->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js" type="text/javascript"></script>
         <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
     @show
