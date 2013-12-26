@@ -4,11 +4,6 @@ use Response;
 
 class AssetsController extends BaseController {
 
-    public function __construct()
-    {
-        $this->assetsPath = realpath(__DIR__ . '/../views/assets');
-    }
-
     public function css($file)
     {
         return $this->fetchAsset('css', $file);
@@ -21,11 +16,11 @@ class AssetsController extends BaseController {
 
     protected function fetchAsset($type, $file)
     {
+        $this->assetsPath = realpath(__DIR__ . '/../views/assets');
         $assetPath = $this->assetsPath . '/' . $type . '/' . $file;
         $contents = file_get_contents($assetPath);
 
         $response = Response::make($contents);
-
         $response->header('Content-Type', 'text/' . $type);
 
         return $response;

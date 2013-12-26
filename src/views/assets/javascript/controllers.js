@@ -1,15 +1,14 @@
 // Instantiate app
-var laraveleratorApp = angular.module('laravelerator', []);
+var laraveleratorApp = angular.module('laravelerator', []).
 
 // headController
-laraveleratorApp.controller('headController', function($scope, Data) {
+controller('headController', ['$scope', 'Data', function($scope, Data) {
     $scope.data = Data;
-});
+}]).
 
 // pagesController
-laraveleratorApp.controller('pagesController', function ($scope, $http, Data) {
+controller('pagesController', ['$scope', '$http', 'Data', function ($scope, $http, Data) {
     $scope.template = '';
-    $scope.html = '';
     $scope.data = Data;
 
     var urlBase = '/angular/';
@@ -22,30 +21,27 @@ laraveleratorApp.controller('pagesController', function ($scope, $http, Data) {
     // make this a service
     $scope.loadPage = function (page) {
         $scope.loaded = false;
-        $scope.loadingClass = 'show';
+        $scope.data.subTitle = '- ' + page.title;
+        $scope.data.currentUrl = page.url;
         $scope.template = page.url;
         $http({ method: 'GET', url: page.url, cache: page.cache})
-          .success(function (html) {
-              $scope.html = html;
-              $scope.data.subTitle = '- ' + page.title;
-              $scope.data.currentUrl = page.url;
-              $scope.loaded = true;
-              $scope.loadingClass = 'hide';
-          })
-          .error(function (html, status) {
-              $scope.html = 'Unable to load view: ' + status;
-          });
-    }
+            .success(function (html) {
+                $scope.loaded = true;
+            })
+            .error(function (html, status) {
+                $scope.html = 'Unable to load view: ' + status;
+            });
+    };
 
     // Load home page on start
     $scope.loadPage($scope.pages[0]);
-});
+}]).
 
 // navbarController
-laraveleratorApp.controller('navbarController', function ($scope, Data) {
+controller('navbarController', ['$scope', 'Data', function ($scope, Data) {
     $scope.isActive = function(url) {
         if (Data.currentUrl) {
             return url == Data.currentUrl;
         }
-    }
-});
+    };
+}]);

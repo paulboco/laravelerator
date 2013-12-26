@@ -1,5 +1,12 @@
 <?php
 
+Route::group(['prefix' => 'angular', 'namespace' => 'Laravelerator\Laravelerator'], function()
+{
+    Route::get('/', 'AngularController@spa');
+    Route::get('home', 'AngularController@home');
+    Route::get('routes', 'AngularController@routes');
+});
+
 /*
  _       ___  ______   ___   _   _  _____  _      _____ ______   ___  _____  _____ ______
 | |     / _ \ | ___ \ / _ \ | | | ||  ___|| |    |  ___|| ___ \ / _ \|_   _||  _  || ___ \
