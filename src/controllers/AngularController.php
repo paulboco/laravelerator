@@ -1,9 +1,15 @@
 <?php namespace Laravelerator\Laravelerator;
 
 use App;
+use Input;
 use View;
 
 class AngularController extends BaseController {
+
+    public function __construct()
+    {
+        // sleep(2);
+    }
 
     public function spa()
     {
@@ -12,13 +18,29 @@ class AngularController extends BaseController {
 
     public function home()
     {
-sleep(1);
         return View::make('laravelerator::controllers.pages.home');
+    }
+
+    public function generateCreate()
+    {
+        // Set testing defaults here
+        $template = Input::old('template', 'scaffold');
+        $table = Input::old('table', 'problems');
+        $namespace = Input::old('namespace', 'Shiphed');
+        $schema = Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n");
+        $path = Input::old('path', 'app');
+        $mock = Input::old('mock', 'true');
+
+        return View::make('laravelerator::controllers.generate.create', get_defined_vars());
+    }
+
+    public function generateStore()
+    {
+        return View::make('laravelerator::controllers.generate.store');
     }
 
     public function routes()
     {
-sleep(1);
         $router = App::make('router')->getRoutes()->getRoutes();
 
         foreach ($router as $key => $route)

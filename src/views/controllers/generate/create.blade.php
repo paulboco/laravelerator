@@ -1,8 +1,3 @@
-@extends('laravelerator::layouts.master')
-
-@section('subTitle', '- Generate')
-
-@section('content')
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
@@ -10,38 +5,33 @@
         </div>
     </div>
 </div>
-<div class="row" ng-controller="GenerateController">
+<div class="row" data-ng-controller="GenerateController">
     <div class="col-md-4">
-        {{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@show', 'role' => 'form']) }}
+        {{ Form::open(['action' => 'Laravelerator\Laravelerator\AngularController@generateStore', 'role' => 'form']) }}
+            <!-- template -->
             <div class="form-group">
                 {{ Form::label('template', '* Template') }}
-                {{ Form::select('template', [null => '-- choose template --'], null, ['class' => 'form-control', 'ng-model' => 'template', 'ng-options' => 't.title for t in templates track by t.basename']) }}
+                {{ Form::select('template', [null => '-- choose template --'], null, ['class' => 'form-control', 'ng-model' => 'template', 'ng-options' => 't.title for t in templatesAvailable track by t.basename']) }}
             </div>
-
-
-
-
-            <!-- angular -->
-            <div class="form-group" sng-controller="PathController">
+            <!-- write path -->
+            <div class="form-group write-path">
                 {{ Form::label('path', '* Write Path') }}
                 {{ Form::text('path', $path, ['class' => 'form-control',  'ng-model' => 'path', 'ng-change' => 'fetch()', 'ng-init' => $path]); }}
             </div>
             <div class="form-group">
                 <span id="path-status" class="@{{pathDisplay.class}}">@{{pathDisplay.realpath}}<br>@{{pathDisplay.msg}}</span>
             </div>
-
-
-
-
-
+            <!-- table name -->
             <div class="form-group">
                 {{ Form::label('table', '* Table Name') }}
-                {{ Form::text('table', $table, ['class' => 'form-control']); }}
+                {{ Form::text('table', $table, ['data-ng-model' => 'table', 'class' => 'form-control', 'required' => false]); }}
             </div>
+            <!-- namespace -->
             <div class="form-group">
                 {{ Form::label('namespace', '* Namespace') }}
                 {{ Form::text('namespace', $namespace, ['class' => 'form-control']); }}
             </div>
+            <!-- schema -->
             <div class="form-group">
                 {{ Form::label('schema', '* Schema') }}
                 {{ Form::textarea('schema', $schema, ['class' => 'form-control', 'rows' => 5]); }}
@@ -49,8 +39,8 @@
             <!-- mock -->
             <div class="form-group">
                 {{ Form::label('mock', 'Mock') }}
-                <button id="mock-button" type="button" class="form-control btn btn-primary" data-toggle="button"></button>
-                {{ Form::hidden('mock', $mock, ['id' => 'mock-hidden']) }}
+                <a id="mock-button" class="form-control btn" data-ng-class="{true: '', false: 'active'}[!mock]" data-ng-click="mock = !mock">@{{mock && 'Engaged' || 'Disengaged'}}</a>
+                <input type="hidden" name="mock" value="@{{ mock }}">
             </div>
             <!-- button -->
             <div class="form-group">
@@ -58,48 +48,10 @@
             </div>
         {{ Form::close() }}
     </div>
-    <div class="col-md-5">
+    <div class="col-md-offset-1 col-md-4">
         @include('laravelerator::controllers.generate.partials.template_description')
     </div>
     <div class="col-md-3">
         @include('laravelerator::controllers.generate.partials.schema_notation')
     </div>
 </div>
-@stop
-
-@include('laravelerator::assets.js.laravelerator')
-
-@section('scripts')
-    @parent
-
-    <!-- Get available templates -->
-    <script type="text/javascript">
-        function GenerateController($scope, $http) {
-            // Load the templates
-            var url = '{{ action('Laravelerator\Laravelerator\AjaxController@templatesAvailable') }}';
-            $http({
-                method  : 'GET',
-                params  : {'_token': '{{ Session::token() }}'},
-                url     : url
-            })
-            .success(function(templates) {
-                $scope.templates = templates;
-            });
-
-            // Fetch write path info
-            $scope.fetch = function() {
-                var url = '{{ action('Laravelerator\Laravelerator\AjaxController@path') }}';
-                $http({
-                    method  : 'GET',
-                    params  : {'_token': '{{ Session::token() }}', 'path': $scope.path},
-                    url     : url
-                })
-                .success(function(data) {
-                    $scope.pathDisplay = data;
-                });
-            };
-
-            $scope.fetch();
-        }
-    </script>
-@stop

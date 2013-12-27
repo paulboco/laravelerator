@@ -1,4 +1,4 @@
-<!doctype html ng-app="laravelerator">
+<!doctype html data-ng-app="laravelerator">
 <html lang="en">
 <head>
     <meta charset="utf-8">

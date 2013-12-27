@@ -3,7 +3,7 @@ html {
 }
 
 body {
-	margin-top: 40px;
+	margin-top: 51px;
 	background-color: #4e4e4e;
 }
 
@@ -14,12 +14,11 @@ body {
 
 em,
 input.btn-default:hover,
-button#mock-button.active,
+a#mock-button.active,
 .form-control,
 .panel,
 .list-group-item,
 h1,
-div.navbar-header a.navbar-brand:hover,
 div.navbar-collapse ul.navbar-nav li a:hover,
 span#path-status.path-found,
 div.directories,
@@ -34,7 +33,7 @@ span.help-block,
 div.has-error label.control-label,
 span#path-status.path-not-found,
 .overwrites pre,
-button#mock-button {
+a#mock-button {
 	color: Gold !important;
 }
 
@@ -70,6 +69,7 @@ select.form-control,
 textarea.form-control,
 button.form-control,
 input.btn,
+a.btn,
 .panel,
 .list-group-item,
 div.directories,
@@ -113,6 +113,10 @@ div.panel-heading.directories:hover {
 	background-color: #383838 !important;
 }
 
+div.form-group.write-path {
+	margin-bottom: 3px;
+}
+
 pre {
 	padding: 15px;
 	background-color: #f7f7f7;
@@ -132,6 +136,7 @@ a.navbar-brand {
 }
 
 div.page-header {
+	margin: 10px 0 20px;
 	border-bottom-color: #444;
 }
 
@@ -162,8 +167,8 @@ tbody.no-wrap > tr > td {
 }
 
 div.loading {
-	padding-top: 40px;
-	color: lime;
+/*	padding-top: 40px;
+*/	color: lime;
 }
 
 /* angularJS */

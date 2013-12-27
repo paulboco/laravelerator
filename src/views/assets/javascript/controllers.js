@@ -1,21 +1,21 @@
 // Instantiate app
-var laraveleratorApp = angular.module('laravelerator', []).
+var laraveleratorApp = angular.module('laravelerator', [])
 
-// headController
-controller('headController', ['$scope', 'Data', function($scope, Data) {
+// HeadController
+.controller('HeadController', ['$scope', 'Data', function($scope, Data) {
     $scope.data = Data;
-}]).
+}])
 
-// pagesController
-controller('pagesController', ['$scope', '$http', 'Data', function ($scope, $http, Data) {
+// PagesController
+.controller('PagesController', ['$scope', '$http', 'Data', '$timeout', function ($scope, $http, Data, $timeout) {
     $scope.template = '';
     $scope.data = Data;
 
-    var urlBase = '/angular/';
     $scope.pages = [
         { title: 'Home', url: urlBase + 'home', cache: true },
+        { title: 'Generate', url: urlBase + 'generate/create', cache: false },
         { title: 'Routes', url: urlBase + 'routes', cache: true },
-        { title: 'Domain Root', url: '/', cache: false, href: '/index.php' },
+        { title: 'Domain Root', url: '/', cache: false },
     ];
 
     // make this a service
@@ -35,13 +35,45 @@ controller('pagesController', ['$scope', '$http', 'Data', function ($scope, $htt
 
     // Load home page on start
     $scope.loadPage($scope.pages[0]);
-}]).
+}])
 
-// navbarController
-controller('navbarController', ['$scope', 'Data', function ($scope, Data) {
+// NavbarController
+.controller('NavbarController', ['$scope', 'Data', function ($scope, Data) {
     $scope.isActive = function(url) {
         if (Data.currentUrl) {
             return url == Data.currentUrl;
         }
     };
 }]);
+
+function GenerateController($scope, $http) {
+
+    // init
+    $scope.mock = 'true';
+
+    // Load the available templates
+    var url = urlBase + 'ajax/templatesavailable';
+    $http({
+        method  : 'GET',
+        params  : {'_token': csrfToken},
+        url     : url
+    })
+    .success(function(templatesAvailable) {
+        $scope.templatesAvailable = templatesAvailable;
+    });
+
+    // Fetch write path info
+    $scope.fetch = function() {
+        var url = urlBase + 'ajax/path';
+        $http({
+            method  : 'GET',
+            params  : {'_token': csrfToken, 'path': $scope.path},
+            url     : url
+        })
+        .success(function(data) {
+            $scope.pathDisplay = data;
+        });
+    };
+
+    $scope.fetch();
+}

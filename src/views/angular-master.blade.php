@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en" ng-app="laravelerator">
-<head ng-controller="headController">
+<html lang="en" data-ng-app="laravelerator">
+<head data-ng-controller="HeadController">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,15 +13,19 @@
     @show
 </head>
 
-<body ng-controller="pagesController">
+<body data-ng-controller="PagesController">
     @include('laravelerator::angular-nav')
     <div class="container">
-        <div class="loading" ng-hide="loaded">
-            Loading ...
+        <div class="loading  page-header" data-ng-hide="loaded">
+            <h1><small>Loading ...</small></h1>
         </div>
-        <ng-include ng-show="loaded" src="template"></ng-include>
+        <data-ng-include data-ng-show="loaded" src="template"></data-ng-include>
     </div>
     @section('scripts')
+        <script type="text/javascript">
+            var urlBase = '/laravelerator/';
+            var csrfToken = '{{ Session::token() }}';
+         </script>
         <script src="/laravelerator/assets/javascript/angular.js"></script>
         <script src="/laravelerator/assets/javascript/controllers.js"></script>
         <script src="/laravelerator/assets/javascript/services.js"></script>

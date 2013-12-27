@@ -1,12 +1,5 @@
 <?php
 
-Route::group(['prefix' => 'angular', 'namespace' => 'Laravelerator\Laravelerator'], function()
-{
-    Route::get('/', 'AngularController@spa');
-    Route::get('home', 'AngularController@home');
-    Route::get('routes', 'AngularController@routes');
-});
-
 /*
  _       ___  ______   ___   _   _  _____  _      _____ ______   ___  _____  _____ ______
 | |     / _ \ | ___ \ / _ \ | | | ||  ___|| |    |  ___|| ___ \ / _ \|_   _||  _  || ___ \
@@ -47,8 +40,10 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('generate/create', ['as' => 'foo', 'uses' => 'GenerateController@create']);
-	Route::post('generate/show', 'GenerateController@show');
+    Route::get('generate/create', 'AngularController@generateCreate');
+    Route::post('generate', 'AngularController@generateStore');
+	// Route::get('generate/create', ['as' => 'foo', 'uses' => 'GenerateController@create']);
+	// Route::post('generate/show', 'GenerateController@show');
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,8 +51,7 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	//TODO: Add CSRF token when finished testing
-	Route::group(['before' => 'csrf|json'], function()
+	Route::group(['before' => 'csrf|isJson'], function()
 	{
 		Route::get('ajax/templatesavailable', 'AjaxController@templatesAvailable');
 		Route::get('ajax/path', 'AjaxController@path');
@@ -69,8 +63,11 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('routes', 'PagesController@routes');
-	Route::get('/', 'PagesController@home');
+    Route::get('/', 'AngularController@spa');
+    Route::get('home', 'AngularController@home');
+    Route::get('routes', 'AngularController@routes');
+	// Route::get('routes', 'PagesController@routes');
+	// Route::get('/', 'PagesController@home');
 });
 
 
@@ -80,13 +77,13 @@ Route::group(
 |--------------------------------------------------------------------------
 */
 
-Route::filter('ajax', function()
+Route::filter('isAjax', function()
 {
 	if ( ! Request::ajax()) die('is not ajax');
 	if ( ! Request::ajax()) App::abort(404);
 });
 
-Route::filter('json', function()
+Route::filter('isJson', function()
 {
 	if ( ! Request::json()) die('is not json');
 	if ( ! Request::json()) App::abort(404);
