@@ -28,6 +28,7 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
             label: 'Generate',
             controller: 'GenerateController',
             data: {
+                template: '',
                 path: 'app',
                 table: 'problems',
                 namespace: 'Shiphed',

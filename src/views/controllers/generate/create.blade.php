@@ -8,11 +8,15 @@
 <div class="row">
     <div class="col-md-4">
         {{ Form::open(['action' => 'Laravelerator\Laravelerator\AngularController@generateStore', 'role' => 'form']) }}
+
             <!-- template -->
             <div class="form-group">
                 {{ Form::label('template', '* Template') }}
-                {{ Form::select('template', [null => '-- choose template --'], null, ['class' => 'form-control', 'ng-model' => 'template', 'ng-options' => 't.title for t in templatesAvailable track by t.basename']) }}
+                <select ng-model="$state.current.data.template" ng-options="t.title for t in templatesAvailable track by t.basename" class="form-control">
+                    <option value="">-- choose template --</option>
+                </select>
             </div>
+
             <!-- write path -->
             <div class="form-group write-path">
                 {{ Form::label('path', '* Write Path') }}
@@ -21,27 +25,32 @@
             <div class="form-group">
                 <span id="path-status" class="@{{pathDisplay.class}}">@{{pathDisplay.realpath}}<br>@{{pathDisplay.msg}}</span>
             </div>
+
             <!-- table name -->
             <div class="form-group">
                 {{ Form::label('table', '* Table Name') }}
                 <input data-ng-model="$state.current.data.table" name="table" class="form-control">
             </div>
+
             <!-- namespace -->
             <div class="form-group">
                 {{ Form::label('namespace', '* Namespace') }}
                 <input data-ng-model="$state.current.data.namespace" name="namespace" class="form-control">
             </div>
+
             <!-- schema -->
             <div class="form-group">
                 {{ Form::label('schema', '* Schema') }}
                 <textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5"></textarea>
             </div>
+
             <!-- mock -->
             <div class="form-group">
                 {{ Form::label('mock', 'Mock') }}
                 <a id="mock-button" class="form-control btn" data-ng-class="{true: '', false: 'active'}[!$state.current.data.mock]" data-ng-click="$state.current.data.mock = !$state.current.data.mock">@{{$state.current.data.mock && 'Engaged' || 'Disengaged'}}</a>
                 <input type="hidden" name="mock" value="@{{ $state.current.data.mock }}">
             </div>
+
             <!-- button -->
             <div class="form-group">
                 {{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
