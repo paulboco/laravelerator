@@ -25,6 +25,16 @@ Route::group(
 	],
 	function()
 {
+
+	/////////////////////////////////
+	// states for ui-router
+	////////////////////////////////
+
+	Route::get('states', 'AngularController@states');
+
+
+
+
 	/*
 	|--------------------------------------------------------------------------
 	| Assets
@@ -40,7 +50,7 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-    Route::get('generate/create', 'AngularController@generateCreate');
+    Route::get('generate', 'AngularController@generateCreate');
     Route::post('generate', 'AngularController@generateStore');
 	// Route::get('generate/create', ['as' => 'foo', 'uses' => 'GenerateController@create']);
 	// Route::post('generate/show', 'GenerateController@show');

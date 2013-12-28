@@ -1,13 +1,13 @@
 // Instantiate app
-var laraveleratorApp = angular.module('laravelerator', [])
+var laraveleratorApp = angular.module('laravelerator', []);
 
 // HeadController
-.controller('HeadController', ['$scope', 'Data', function($scope, Data) {
+laraveleratorApp.controller('HeadController', ['$scope', 'Data', function($scope, Data) {
     $scope.data = Data;
-}])
+}]);
 
 // PagesController
-.controller('PagesController', ['$scope', '$http', 'Data', '$timeout', function ($scope, $http, Data, $timeout) {
+laraveleratorApp.controller('PagesController', ['$scope', '$http', 'Data', '$timeout', function ($scope, $http, Data, $timeout) {
     $scope.template = '';
     $scope.data = Data;
 
@@ -19,30 +19,28 @@ var laraveleratorApp = angular.module('laravelerator', [])
     ];
 
     // make this a service
-    $scope.loadPage = function (page) {
+    $scope.loadPage = function(page) {
         $scope.loaded = false;
         $scope.data.subTitle = '- ' + page.title;
         $scope.data.currentUrl = page.url;
         $scope.template = page.url;
         $http({ method: 'GET', url: page.url, cache: page.cache})
-            .success(function (html) {
+            .success(function() {
                 $scope.loaded = true;
             })
-            .error(function (html, status) {
+            .error(function(html, status) {
                 $scope.html = 'Unable to load view: ' + status;
             });
     };
 
     // Load home page on start
     $scope.loadPage($scope.pages[0]);
-}])
+}]);
 
 // NavbarController
-.controller('NavbarController', ['$scope', 'Data', function ($scope, Data) {
+laraveleratorApp.controller('NavbarController', ['$scope', 'Data', function ($scope, Data) {
     $scope.isActive = function(url) {
-        if (Data.currentUrl) {
-            return url == Data.currentUrl;
-        }
+        return url == Data.currentUrl;
     };
 }]);
 

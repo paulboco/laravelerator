@@ -8,7 +8,11 @@ class AngularController extends BaseController {
 
     public function __construct()
     {
-        // sleep(2);
+    }
+
+    public function states()
+    {
+        return View::make('laravelerator::angular-states-master');
     }
 
     public function spa()
@@ -18,6 +22,8 @@ class AngularController extends BaseController {
 
     public function home()
     {
+        sleep(2);
+
         return View::make('laravelerator::controllers.pages.home');
     }
 
@@ -25,11 +31,11 @@ class AngularController extends BaseController {
     {
         // Set testing defaults here
         $template = Input::old('template', 'scaffold');
-        $table = Input::old('table', 'problems');
-        $namespace = Input::old('namespace', 'Shiphed');
-        $schema = Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n");
+        // $table = Input::old('table', 'problems');
+        // $namespace = Input::old('namespace', 'Shiphed');
+        // $schema = Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n");
         $path = Input::old('path', 'app');
-        $mock = Input::old('mock', 'true');
+        // $mock = Input::old('mock', 'true');
 
         return View::make('laravelerator::controllers.generate.create', get_defined_vars());
     }
@@ -41,6 +47,8 @@ class AngularController extends BaseController {
 
     public function routes()
     {
+        sleep(2);
+
         $router = App::make('router')->getRoutes()->getRoutes();
 
         foreach ($router as $key => $route)
