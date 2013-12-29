@@ -1,15 +1,25 @@
 <?php namespace Laravelerator\Laravelerator;
 
+use Request;
+
 class AssetsController extends BaseController {
 
-    public function css($file)
+    public function fetch($type)
     {
-        return $this->fetchAsset('css', $file);
+        $file = Request::query('f');
+
+        return $this->fetchAsset($type, $file);
     }
 
-    public function javascript($file)
+    protected function fetchAsset($type, $file)
     {
-        return $this->fetchAsset('javascript', $file);
+        $basePath = realpath(__DIR__ . '/../views/assets');
+        $assetPath = $basePath . '/' . $type . '/' . $file;
+        $contents = file_get_contents($assetPath);
+
+        $headers = ['Content-Type' => 'text/' . $type];
+
+        return $this->sendResponse($contents, $headers);
     }
 
 

@@ -1,71 +1,34 @@
-// Instantiate app
-var laraveleratorApp = angular.module('laravelerator', []);
+// Page Controller
+app.controller('PageController', ['$scope', function($scope) {
 
-// HeadController
-laraveleratorApp.controller('HeadController', ['$scope', 'Data', function($scope, Data) {
-    $scope.data = Data;
-}]);
-
-// PagesController
-laraveleratorApp.controller('PagesController', ['$scope', '$http', 'Data', '$timeout', function ($scope, $http, Data, $timeout) {
-    $scope.template = '';
-    $scope.data = Data;
-
-    $scope.pages = [
-        { title: 'Home', url: urlBase + 'home', cache: true },
-        { title: 'Generate', url: urlBase + 'generate/create', cache: false },
-        { title: 'Routes', url: urlBase + 'routes', cache: true },
-        { title: 'Domain Root', url: '/', cache: false },
+    // Define navbar items
+    $scope.items = [
+        {label: 'Home', url: 'home'},
+        {label: 'Generate', url: 'generate'},
+        {label: 'Routes', url: 'routes'}
     ];
 
-    // make this a service
-    $scope.loadPage = function(page) {
-        $scope.loaded = false;
-        $scope.data.subTitle = '- ' + page.title;
-        $scope.data.currentUrl = page.url;
-        $scope.template = page.url;
-        $http({ method: 'GET', url: page.url, cache: page.cache})
-            .success(function() {
-                $scope.loaded = true;
-            })
-            .error(function(html, status) {
-                $scope.html = 'Unable to load view: ' + status;
-            });
-    };
+    $scope.$on('$stateChangeStart', function() {
+        $scope.stateLoading = true;
+    });
 
-    // Load home page on start
-    $scope.loadPage($scope.pages[0]);
+    $scope.$on('$stateChangeSuccess', function() {
+        $scope.stateLoading = false;
+    });
 }]);
 
-// NavbarController
-laraveleratorApp.controller('NavbarController', ['$scope', 'Data', function ($scope, Data) {
-    $scope.isActive = function(url) {
-        return url == Data.currentUrl;
-    };
-}]);
-
-function GenerateController($scope, $http) {
-
-    // init
-    $scope.mock = 'true';
-
-    // Load the available templates
-    var url = urlBase + 'ajax/templatesavailable';
-    $http({
-        method  : 'GET',
-        params  : {'_token': csrfToken},
-        url     : url
-    })
-    .success(function(templatesAvailable) {
-        $scope.templatesAvailable = templatesAvailable;
+// Generate Controller
+app.controller('GenerateController', ['$scope', '$http', 'ajaxService', function($scope, $http, ajaxService) {
+    ajaxService.getTemplates().then(function(d) {
+        $scope.templatesAvailable = d;
     });
 
     // Fetch write path info
-    $scope.fetch = function() {
+    $scope.fetch = function(path) {
         var url = urlBase + 'ajax/path';
         $http({
             method  : 'GET',
-            params  : {'_token': csrfToken, 'path': $scope.path},
+            params  : {'_token': csrfToken, 'path': path},
             url     : url
         })
         .success(function(data) {
@@ -73,5 +36,5 @@ function GenerateController($scope, $http) {
         });
     };
 
-    $scope.fetch();
-}
+    $scope.fetch($scope.$state.current.data.path);
+}]);

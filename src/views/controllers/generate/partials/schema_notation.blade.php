@@ -8,14 +8,3 @@
 		@endforeach
 	</ul>
 </aside>
-
-@section ('scripts')
-	@parent
-
-	<script type="text/javascript">
-		$(document).ready(function () {
-			// trigger 'Laravel equivalent' popover
-			$('[data-toggle="popover"]').popover({trigger: 'hover'});
-		});
-	</script>
-@stop

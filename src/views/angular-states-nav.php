@@ -4,7 +4,7 @@
     </div>
     <ul class="nav navbar-nav navbar-left">
         <li ui-sref-active="active" ng-repeat="item in items" class>
-            <a href ui-sref="{{ item.url }}">{{ item.title }}</a>
+            <a href ui-sref="{{ item.url }}">{{ item.label }}</a>
         </li>
     </ul>
 </nav>

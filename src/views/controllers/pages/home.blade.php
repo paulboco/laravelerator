@@ -5,6 +5,12 @@
         </div>
         <ul class="list-group" style="font-size:larger;">
             <li class="list-group-item">
+                <h3>To Do</h3>
+                <ul>
+                    <li>Fetch available templates once. Attach them when defining data on the states.</li>
+                </ul>
+            </li>
+            <li class="list-group-item">
                 <h3>Concept</h3>
                 <ul>
                     <li>Generate code from templates</li>

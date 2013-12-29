@@ -20,8 +20,7 @@
 Route::group(
 	[
 		'prefix' => 'laravelerator',
-		'namespace' => 'Laravelerator\Laravelerator',
-		'domain' => 'laravel-alg.dev'
+		'namespace' => 'Laravelerator\Laravelerator'
 	],
 	function()
 {
@@ -41,8 +40,7 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('assets/css/{file}', 'AssetsController@css');
-	Route::get('assets/javascript/{file}', 'AssetsController@javascript');
+	Route::get('assets/{type}', 'AssetsController@fetch');
 
 	/*
 	|--------------------------------------------------------------------------
