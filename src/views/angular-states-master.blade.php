@@ -24,6 +24,7 @@
         <script src="/laravelerator/assets/javascript?f=vendor/ui-router.js"></script>
         <script src="/laravelerator/assets/javascript?f=states.js"></script>
         <script src="/laravelerator/assets/javascript?f=services.js"></script>
+        <script src="/laravelerator/assets/javascript?f=directives.js"></script>
         <script src="/laravelerator/assets/javascript?f=controllers.js"></script>
         <script type="text/javascript">
             app.constant('laravel', {

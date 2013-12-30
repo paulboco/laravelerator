@@ -9,6 +9,10 @@
     <div class="col-md-4">
         {{ Form::open(['action' => 'Laravelerator\Laravelerator\AngularController@generateStore', 'role' => 'form']) }}
 
+            <!-- INPUT TABLE -->
+            <input-table></input-table>
+            <!-- INPUT TABLE -->
+
             <!-- template -->
             <div class="form-group">
                 {{ Form::label('template', '* Template') }}

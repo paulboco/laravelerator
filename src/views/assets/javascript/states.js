@@ -42,7 +42,7 @@ app.config(function($stateProvider, $urlRouterProvider, laravel) {
                 title: 'Generate',
                 template: '',
                 path: 'app',
-                table: 'problems',
+                table: '',
                 namespace: 'Shiphed',
                 schema: "id : increments\nusername : string(100)\npassword : string(100)\n",
                 mock: 'true'
