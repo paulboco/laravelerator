@@ -27,7 +27,6 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 		$this->package('laravelerator/laravelerator');
 
 		$this->customValidators();
-		$this->viewComposers();
 
 		include __DIR__.'/../../routes.php';
 		include __DIR__.'/../../macros.php';
@@ -54,24 +53,6 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 		{
 			return new CustomValidators($translator, $data, $rules, $messages);
 		});
-	}
-
-	/**
-	 * Define View Composers
-	 *
-	 * @return void
-	 */
-	protected function viewComposers()
-	{
-		View::composer(
-			'laravelerator::controllers.ajax.write_path_display',
-			'Laravelerator\Laravelerator\Composers\WritePathDisplayComposer'
-		);
-
-		View::composer(
-			'laravelerator::controllers.generate.partials.schema_notation',
-			'Laravelerator\Laravelerator\Composers\SchemaNotationComposer'
-		);
 	}
 
 	/**

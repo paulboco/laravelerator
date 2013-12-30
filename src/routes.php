@@ -25,15 +25,6 @@ Route::group(
 	function()
 {
 
-	/////////////////////////////////
-	// states for ui-router
-	////////////////////////////////
-
-	Route::get('states', 'AngularController@states');
-
-
-
-
 	/*
 	|--------------------------------------------------------------------------
 	| Assets
@@ -44,40 +35,29 @@ Route::group(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Generate
+	| Ajax
+	|--------------------------------------------------------------------------
+	*/
+
+	Route::group(['before' => 'isJson'], function()
+	{
+		Route::get('ajax/templates', 'AjaxController@templates');
+		Route::get('ajax/path', 'AjaxController@path');
+		Route::get('ajax/routes', 'AjaxController@routes');
+	});
+
+	/*
+	|--------------------------------------------------------------------------
+	| Angular
 	|--------------------------------------------------------------------------
 	*/
 
     Route::get('generate', 'AngularController@generateCreate');
     Route::post('generate', 'AngularController@generateStore');
-	// Route::get('generate/create', ['as' => 'foo', 'uses' => 'GenerateController@create']);
-	// Route::post('generate/show', 'GenerateController@show');
-
-	/*
-	|--------------------------------------------------------------------------
-	| Ajax
-	|--------------------------------------------------------------------------
-	*/
-
-	Route::group(['before' => 'csrf|isJson'], function()
-	{
-		Route::get('ajax/templatesavailable', 'AjaxController@templatesAvailable');
-		Route::get('ajax/path', 'AjaxController@path');
-	});
-
-	/*
-	|--------------------------------------------------------------------------
-	| Pages
-	|--------------------------------------------------------------------------
-	*/
-
-    Route::get('/', 'AngularController@spa');
-    Route::get('home', 'AngularController@home');
     Route::get('routes', 'AngularController@routes');
-	// Route::get('routes', 'PagesController@routes');
-	// Route::get('/', 'PagesController@home');
+    Route::get('home', 'AngularController@home');
+    Route::get('/', 'AngularController@spa');
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -85,14 +65,8 @@ Route::group(
 |--------------------------------------------------------------------------
 */
 
-Route::filter('isAjax', function()
-{
-	if ( ! Request::ajax()) die('is not ajax');
-	if ( ! Request::ajax()) App::abort(404);
-});
-
 Route::filter('isJson', function()
 {
-	if ( ! Request::json()) die('is not json');
+	// if ( ! Request::json()) die('is not json');
 	if ( ! Request::json()) App::abort(404);
 });

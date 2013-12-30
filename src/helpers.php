@@ -2,6 +2,34 @@
 
 use Laravelerator\Alg\Schema;
 
+if ( ! function_exists('get_routes'))
+{
+	/**
+	 * Get an array of all registered routes.
+	 *
+	 * @return string
+	 */
+	function get_routes()
+	{
+        $router = App::make('router')->getRoutes()->getRoutes();
+
+        foreach ($router as $key => $route)
+        {
+            $routes[$key] = [
+                'domain' => $route->domain(),
+                'uri' => $route->methods()[0] . ' ' . $route->getUri(),
+                'name' => $route->getName(),
+                'action' => $route->getActionName(),
+                'before' => implode(', ', array_keys($route->beforeFilters())),
+                'after' => implode(', ', array_keys($route->afterFilters())),
+            ];
+        }
+
+        return $routes;
+	}
+}
+
+
 if ( ! function_exists('mute_base_path'))
 {
 	/**

@@ -1,8 +1,10 @@
-// Page Controller
+/**
+ * Page Controller
+ */
 app.controller('PageController', ['$scope', function($scope) {
 
     // Define navbar items
-    $scope.items = [
+    $scope.navItems = [
         {label: 'Home', url: 'home'},
         {label: 'Generate', url: 'generate'},
         {label: 'Routes', url: 'routes'}
@@ -17,24 +19,41 @@ app.controller('PageController', ['$scope', function($scope) {
     });
 }]);
 
-// Generate Controller
-app.controller('GenerateController', ['$scope', '$http', 'ajaxService', function($scope, $http, ajaxService) {
-    ajaxService.getTemplates().then(function(d) {
-        $scope.templatesAvailable = d;
+/**
+ * Generate Controller
+ */
+app.controller(
+    'GenerateController',
+    ['$scope', 'templatesService', 'pathDisplayService', 'schemaService',
+    function($scope, templatesService, pathDisplayService, schemaService) {
+
+    // Get available templates
+    templatesService.all().then(function(templates) {
+        $scope.templates = templates;
     });
 
-    // Fetch write path info
+    // Get path display
     $scope.fetch = function(path) {
-        var url = urlBase + 'ajax/path';
-        $http({
-            method  : 'GET',
-            params  : {'_token': csrfToken, 'path': path},
-            url     : url
-        })
-        .success(function(data) {
-            $scope.pathDisplay = data;
+        pathDisplayService.get(path).then(function(pathDisplay) {
+            $scope.pathDisplay = pathDisplay;
         });
     };
 
+    // Get schema notation
+    schemaService.all().then(function(schema) {
+        $scope.schema = schema;
+    });
+
     $scope.fetch($scope.$state.current.data.path);
+}]);
+
+/**
+ * Routes Controller
+ */
+app.controller('RoutesController', ['$scope', '$http', 'routesService', function($scope, $http, routesService) {
+
+    // Get registered routes
+    routesService.all().then(function(routes) {
+        $scope.routes = routes;
+    });
 }]);

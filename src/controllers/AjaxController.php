@@ -1,12 +1,18 @@
 <?php namespace Laravelerator\Laravelerator;
 
 use Input;
-use Request;
-use Session;
-use View;
+use Response;
 use Laravelerator\Alg\Template;
 
 class AjaxController extends BaseController {
+
+    /**
+     * Ajax request for available templates
+     */
+    public function templates()
+    {
+        return Template::getAvailable();
+    }
 
     /**
      * Ajax request for write path display
@@ -43,12 +49,10 @@ class AjaxController extends BaseController {
     }
 
     /**
-     * Ajax request for available templates
+     * Ajax request for registered routes
      */
-    public function templatesAvailable()
+    public function routes()
     {
-        return Template::getAvailable();
+        return get_routes();
     }
-
-
 }

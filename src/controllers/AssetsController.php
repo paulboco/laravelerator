@@ -4,6 +4,13 @@ use Request;
 
 class AssetsController extends BaseController {
 
+    protected $mime = [
+        'css' => 'text/css',
+        'javascript' => 'text/javascript',
+        'json' => 'application/json',
+    ];
+
+
     public function fetch($type)
     {
         $file = Request::query('f');
@@ -17,7 +24,7 @@ class AssetsController extends BaseController {
         $assetPath = $basePath . '/' . $type . '/' . $file;
         $contents = file_get_contents($assetPath);
 
-        $headers = ['Content-Type' => 'text/' . $type];
+        $headers = ['Content-Type' => $this->mime[$type]];
 
         return $this->sendResponse($contents, $headers);
     }

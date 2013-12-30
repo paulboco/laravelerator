@@ -1,0 +1,98 @@
+[
+    {
+        "notation":"field : increments",
+        "laravel":"$table->increments('id');"
+    },
+    {
+        "notation":"field : bigIncrements",
+        "laravel":"$table->bigIncrements('id');"
+    },
+    {
+        "notation":"field : string",
+        "laravel":"$table->string('email');"
+    },
+    {
+        "notation":"field : string(100)",
+        "laravel":"$table->string('name', 100);"
+    },
+    {
+        "notation":"field : integer",
+        "laravel":"$table->integer('votes');"
+    },
+    {
+        "notation":"field : bigInteger",
+        "laravel":"$table->bigInteger('votes');"
+    },
+    {
+        "notation":"field : smallInteger",
+        "laravel":"$table->smallInteger('votes');"
+    },
+    {
+        "notation":"field : float",
+        "laravel":"$table->float('amount');"
+    },
+    {
+        "notation":"field : double(15.8)",
+        "laravel":"$table->double('column', 15, 8);"
+    },
+    {
+        "notation":"field : decimal(5.2)",
+        "laravel":"$table->decimal('amount', 5, 2);"
+    },
+    {
+        "notation":"field : boolean",
+        "laravel":"$table->boolean('confirmed');"
+    },
+    {
+        "notation":"field : date",
+        "laravel":"$table->date('created_at');"
+    },
+    {
+        "notation":"field : dateTime",
+        "laravel":"$table->dateTime('created_at');"
+    },
+    {
+        "notation":"field : time",
+        "laravel":"$table->time('sunrise');"
+    },
+    {
+        "notation":"field : timestamp",
+        "laravel":"$table->timestamp('added_on');"
+    },
+    {
+        "notation":"field : text",
+        "laravel":"$table->text('description');"
+    },
+    {
+        "notation":"field : binary",
+        "laravel":"$table->binary('data');"
+    },
+    {
+        "notation":"field : enum([foo|bar])",
+        "laravel":"$table->enum('choices', array('foo', 'bar'));"
+    },
+    {
+        "notation":"timestamps",
+        "laravel":"$table->timestamps();"
+    },
+    {
+        "notation":"softDeletes",
+        "laravel":"$table->softDeletes();"
+    },
+    {
+        "notation":"nullable",
+        "laravel":"->nullable()"
+    },
+    {
+        "notation":"default('value')",
+        "laravel":"->default($mixed)"
+    },
+    {
+        "notation":"unsigned",
+        "laravel":"->unsigned()"
+    },
+    {
+        "notation":"after('field') mysql only",
+        "laravel":"->after('email')"
+    }
+]

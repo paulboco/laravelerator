@@ -12,7 +12,7 @@
             <!-- template -->
             <div class="form-group">
                 {{ Form::label('template', '* Template') }}
-                <select ng-model="$state.current.data.template" ng-options="t.title for t in templatesAvailable track by t.basename" class="form-control">
+                <select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" class="form-control">
                     <option value="">-- choose template --</option>
                 </select>
             </div>

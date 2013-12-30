@@ -1,3 +1,6 @@
+/**
+ * Laravelerator Module
+ */
 var app = angular.module('laravelerator', ['ui.router'])
     .run(['$rootScope', '$state', '$stateParams',
     function ($rootScope,   $state,   $stateParams) {
@@ -9,36 +12,51 @@ var app = angular.module('laravelerator', ['ui.router'])
         $rootScope.$stateParams = $stateParams;
 }]);
 
-// Config
-app.config(function($stateProvider, $urlRouterProvider) {
+/**
+ * Configuration
+ */
+app.config(function($stateProvider, $urlRouterProvider, laravel) {
 
     // For any unmatched url, redirect to /laravelerator/home
-    $urlRouterProvider.otherwise("/laravelerator/home");
+    $urlRouterProvider.otherwise(laravel.urlBase + 'home');
 
     // Now set up the states
     $stateProvider
         .state('home', {
-            url: "/laravelerator/home",
-            templateUrl: "/laravelerator/home",
-            label: 'Home'
+            url: laravel.urlBase + 'home',
+            templateUrl: laravel.urlBase + 'home',
+            data: {
+                title: 'Home'
+            }
         })
         .state('generate', {
-            url: "/laravelerator/generate",
-            templateUrl: "/laravelerator/generate",
-            label: 'Generate',
+            url: laravel.urlBase + 'generate',
+            templateUrl: laravel.urlBase + 'generate',
             controller: 'GenerateController',
+            resolve:{
+                templatesService: 'templatesService',
+                pathDisplayService: 'pathDisplayService',
+                schemaService: 'schemaService'
+            },
             data: {
+                title: 'Generate',
                 template: '',
                 path: 'app',
                 table: 'problems',
                 namespace: 'Shiphed',
                 schema: "id : increments\nusername : string(100)\npassword : string(100)\n",
                 mock: 'true'
-            }
+            },
         })
         .state('routes', {
-            url: "/laravelerator/routes",
-            templateUrl: "/laravelerator/routes",
-            label: 'Routes'
+            url: laravel.urlBase + 'routes',
+            templateUrl: laravel.urlBase + 'routes',
+            controller: 'RoutesController',
+            resolve:{
+                routesService: 'routesService'
+            },
+            data: {
+                title: 'Routes'
+            }
         });
 });
