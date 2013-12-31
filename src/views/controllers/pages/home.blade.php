@@ -7,7 +7,7 @@
             <li class="list-group-item">
                 <h3>To Do</h3>
                 <ul>
-                    <li>Fetch available templates once. Attach them when defining data on the states.</li>
+                    <li class="todo-priority">Generate: First page is template selection. Full description and code example.</li>
                 </ul>
             </li>
             <li class="list-group-item">
