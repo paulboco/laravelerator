@@ -19,6 +19,7 @@
             <thead>
                 <tr>
                     <th>Domain</th>
+                    <th>Verb</th>
                     <th>URI</th>
                     <th>Name</th>
                     <th>Action</th>
@@ -29,7 +30,11 @@
             <tbody class="no-wrap">
                     <tr data-ng-repeat="route in routes | filter:search">
                         <td>{{ route.domain }}</td>
-                        <td>{{ route.uri }}</td>
+                        <td>{{ route.verb }}</td>
+                        <td ng-switch="route.verb==='GET'">
+                            <a ng-href="{{route.uri}}" ng-switch-when="true" target="_blank">{{ route.uri }}</a>
+                            <span ng-switch-when="false">{{ route.uri }}</span>
+                        </td>
                         <td>{{ route.name }}</td>
                         <td>{{ route.action }}</td>
                         <td>{{ route.before }}</td>

@@ -17,7 +17,8 @@ if ( ! function_exists('get_routes'))
         {
             $routes[$key] = [
                 'domain' => $route->domain(),
-                'uri' => $route->methods()[0] . ' ' . $route->getUri(),
+                'verb' => $route->methods()[0],
+                'uri' => $route->getUri(),
                 'name' => $route->getName(),
                 'action' => $route->getActionName(),
                 'before' => implode(', ', array_keys($route->beforeFilters())),
