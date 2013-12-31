@@ -60,3 +60,9 @@ app.config(function($stateProvider, $urlRouterProvider, laravel) {
             }
         });
 });
+
+app.config(function($sceProvider) {
+  // Completely disable SCE.  For demonstration purposes only!
+  // Do not use in new projects.
+  $sceProvider.enabled(false);
+});

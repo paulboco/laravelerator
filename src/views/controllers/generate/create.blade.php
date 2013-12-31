@@ -10,22 +10,11 @@
         {{ Form::open(['action' => 'Laravelerator\Laravelerator\AngularController@generateStore', 'role' => 'form']) }}
 
             <!-- template -->
-            <div class="form-group">
-                {{ Form::label('template', '* Template') }}
-                <select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control">
-                    <option value="">-- choose template --</option>
-                </select>
-            </div>
+            <select-template></select-template>
 
             <div data-ng-show="$state.current.data.template">
                 <!-- write path -->
-                <div class="form-group write-path">
-                    {{ Form::label('path', '* Write Path') }}
-                    <input data-ng-model="$state.current.data.path" data-ng-change="fetch($state.current.data.path)" name="path" class="form-control">
-                </div>
-                <div class="form-group">
-                    <span id="path-status" class="@{{pathDisplay.class}}">@{{pathDisplay.realpath}}<br>@{{pathDisplay.msg}}</span>
-                </div>
+                <input-path></input-path>
 
                 <!-- table name -->
                 <input-table data-ng-show="$state.current.data.template.fields.table"></input-table>

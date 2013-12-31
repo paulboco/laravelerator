@@ -1,3 +1,39 @@
+app.directive("selectTemplate", function() {
+    return {
+        restrict: "E",
+        require: "^state",
+        controller:  function($state) {
+            $state.current.data.templateClass = function() {
+                if ($state.current.data.template === '')
+                    return 'has-warning';
+            };
+        },
+
+        template: '<div ng-class="$state.current.data.templateClass()" class="form-group">' +
+                  '<label for="template" class="control-label">* Template</label>' +
+                  '<select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control">' +
+                  '</select>' +
+                  '</div>'
+    };
+});
+
+app.directive("inputPath", function() {
+    return {
+        restrict: "E",
+        require: "^state",
+        template: '<div class="form-group write-path">' +
+                  '<label for="path" class="control-label">* Write Path</label>' +
+                  '<input data-ng-model="$state.current.data.path" data-ng-change="fetch($state.current.data.path)" name="path" class="form-control">' +
+                  '</div>' +
+                  '<div class="form-group">' +
+                  '<span id="path-status" class="{{pathDisplay.class}}">{{pathDisplay.realpath}}' +
+                  '<br>{{pathDisplay.msg}}' +
+                  '</span>' +
+                  '</div>'
+
+    };
+});
+
 app.directive("inputTable", function() {
     return {
         restrict: "E",

@@ -32,6 +32,10 @@ th {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
+div.form-group.write-path {
+    margin-bottom: 2px;
+}
+
 .table > tbody > tr > td {
     font-size: 1.05em;
     font-family: 'Source Code Pro', monospace;
