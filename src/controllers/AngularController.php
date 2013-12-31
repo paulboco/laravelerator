@@ -1,16 +1,15 @@
 <?php namespace Laravelerator\Laravelerator;
 
-use App;
 use View;
 
 class AngularController extends BaseController {
 
     /**
-     * Master page
+     * Single Page App view
      */
     public function spa()
     {
-        return View::make('laravelerator::angular-states-master');
+        return View::make('laravelerator::angular.spa');
     }
 
     /**
