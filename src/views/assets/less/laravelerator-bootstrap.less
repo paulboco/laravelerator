@@ -1,0 +1,232 @@
+/*
+* pikock http://www.pikock.com/ , autreplanete http://www.autreplanete.com/ 
+*  
+**/
+
+
+// Grays
+@gray-darker: #222222;
+@gray-dark: #333333;
+@gray: #555555;
+@gray-light: #999999;
+@gray-lighter: #eeeeee;
+
+
+// Brand Colors
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-warning: #f0ad4e;
+@brand-danger: #d9534f;
+@brand-info: #5bc0de;
+
+
+// Scaffolding
+@body-bg: #4e4e4e;
+@text-color: #00ff00;
+@link-color: #ffff00;
+@link-hover-color: darken(@link-color, 15%);
+@padding-base-vertical: 6px;
+@padding-base-horizontal: 12px;
+@padding-large-vertical: 10px;
+@padding-large-horizontal: 16px;
+@padding-small-vertical: 5px;
+@padding-small-horizontal: 10px;
+@border-radius-base: 4px;
+@border-radius-large: 6px;
+@border-radius-small: 3px;
+@line-height-large: 1.33;
+@line-height-small: 1.5;
+@component-active-bg: @brand-primary;
+
+
+// Typography
+@font-family-sans-serif: sans-serif;
+@font-family-serif: serif;
+@font-family-monospace: monospace;
+@font-family-base: @font-family-sans-serif;
+@font-size-base: 14px;
+@font-size-large: ceil(@font-size-base * 1.25);
+@font-size-small: ceil(@font-size-base * 0.85);
+@line-height-base: 1.428571429;
+@line-height-computed: floor(@font-size-base * @line-height-base);
+@headings-font-family: @font-family-base;
+@headings-font-weight: 500;
+@headings-line-height: 1.1;
+
+
+// Buttons
+@btn-font-weight: normal;
+@btn-default-color: #00ff00;
+@btn-default-bg: #404040;
+@btn-default-border: #595959;
+@btn-primary-color: #fff;
+@btn-primary-bg: @brand-primary;
+@btn-primary-border: darken(@btn-primary-bg, 5%);
+@btn-success-color: #fff;
+@btn-success-bg: @brand-success;
+@btn-success-border: darken(@btn-success-bg, 5%);
+@btn-warning-color: #fff;
+@btn-warning-bg: @brand-warning;
+@btn-warning-border: darken(@btn-warning-bg, 5%);
+@btn-danger-color: #fff;
+@btn-danger-bg: @brand-danger;
+@btn-danger-border: darken(@btn-danger-bg, 5%);
+@btn-info-color: #fff;
+@btn-info-bg: @brand-info;
+@btn-info-border: darken(@btn-info-bg, 5%);
+@btn-link-disabled-color: @gray-light;
+
+
+// Dropdowns
+@dropdown-bg: #404040;
+@dropdown-border: #595959;
+@dropdown-divider-bg: #595959;
+@dropdown-link-active-color: #000;
+@dropdown-link-active-bg: #00ff00;
+@dropdown-link-color: #00ff00;
+@dropdown-link-hover-color: #000;
+@dropdown-link-hover-bg: #00ff00;
+@dropdown-link-disabled-color: @gray-light;
+@dropdown-header-color: @gray-light;
+@dropdown-caret-color: #000;
+
+
+// Forms
+@input-bg: #404040;
+@input-bg-disabled: @gray-lighter;
+@input-color: #00ff00;
+@input-border: #595959;
+@input-border-radius: @border-radius-base;
+@input-color-placeholder: @gray-light;
+@input-height-base: (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large: (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small: (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
+@legend-color: @gray-dark;
+@legend-border-color: #e5e5e5;
+@input-group-addon-bg: @gray-lighter;
+@input-group-addon-border-color: @input-border;
+
+
+// Table
+@table-cell-padding: 8px;
+@table-condensed-cell-padding: 5px;
+@table-cell-padding: 8px;
+@table-condensed-cell-padding: 5px;
+@table-bg: #404040;
+@table-bg-accent: #454545;
+@table-bg-hover: #353535;
+@table-bg-active: @table-bg-hover;
+@table-border-color: #474747;
+
+
+// Navbar
+@navbar-height: 50px;
+@navbar-margin-bottom: @line-height-computed;
+@navbar-default-color: #777;
+@navbar-default-bg: #f8f8f8;
+@navbar-default-border: darken(@navbar-default-bg, 6.5%);
+@navbar-border-radius: @border-radius-base;
+@navbar-padding-horizontal: floor(@grid-gutter-width / 2);
+@navbar-padding-vertical: ((@navbar-height - @line-height-computed) / 2);
+@navbar-default-link-color: #777;
+@navbar-default-link-hover-color: #333;
+@navbar-default-link-hover-bg: transparent;
+@navbar-default-link-active-color: #555;
+@navbar-default-link-active-bg: darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-disabled-color: #ccc;
+@navbar-default-link-disabled-bg: transparent;
+@navbar-default-brand-color: @navbar-default-link-color;
+@navbar-default-brand-hover-color: darken(@navbar-default-link-color, 10%);
+@navbar-default-brand-hover-bg: transparent;
+@navbar-default-toggle-hover-bg: #ddd;
+@navbar-default-toggle-icon-bar-bg: #ccc;
+@navbar-default-toggle-border-color: #ddd;
+
+
+// Navs Tabs
+@nav-link-padding: 10px 15px;
+@nav-link-hover-bg: @gray-lighter;
+@nav-disabled-link-color: @gray-light;
+@nav-disabled-link-hover-color: @gray-light;
+@nav-tabs-border-color: #ddd;
+@nav-tabs-link-hover-border-color: @gray-lighter;
+@nav-tabs-active-link-hover-bg: @body-bg;
+@nav-tabs-active-link-hover-color: @gray;
+@nav-tabs-active-link-hover-border-color: #ddd;
+@nav-tabs-justified-link-border-color: #ddd;
+@nav-tabs-justified-active-link-border-color: @body-bg;
+@nav-pills-active-link-hover-bg: @component-active-bg;
+@nav-pills-active-link-hover-color: #fff;
+
+
+// Jumbotron
+@jumbotron-padding: 30px;
+@jumbotron-color: inherit;
+@jumbotron-bg: @gray-lighter;
+
+
+// Pagination
+@pagination-bg: #fff;
+@pagination-border: #ddd;
+@pagination-hover-bg: @gray-lighter;
+@pagination-active-bg: @brand-primary;
+@pagination-active-color: #fff;
+@pagination-disabled-color: @gray-light;
+@pager-border-radius: 15px;
+@pager-disabled-color: @gray-light;
+
+
+// Form States
+@state-warning-text: #FFD700;
+@state-warning-bg: #fcf8e3;
+@state-warning-border: darken(spin(@state-warning-bg, -10), 3%);
+@state-danger-text: #b94a48;
+@state-danger-bg: #f2dede;
+@state-danger-border: darken(spin(@state-danger-bg, -10), 3%);
+@state-success-text: #468847;
+@state-success-bg: #dff0d8;
+@state-success-border: darken(spin(@state-success-bg, -10), 5%);
+@state-info-text: #3a87ad;
+@state-info-bg: #d9edf7;
+@state-info-border: darken(spin(@state-info-bg, -10), 7%);
+
+
+// ToolTip
+@tooltip-max-width: 200px;
+@tooltip-color: #fff;
+@tooltip-bg: #000;
+@tooltip-arrow-width: 5px;
+@tooltip-arrow-color: @tooltip-bg;
+
+
+// Popover
+@popover-bg: #fff;
+@popover-max-width: 276px;
+@popover-border-color: rgba(0,0,0,.2);
+@popover-fallback-border-color: #ccc;
+@popover-title-bg: darken(@popover-bg, 3%);
+@popover-arrow-width: 10px;
+@popover-arrow-color: #fff;
+@popover-arrow-outer-width: (@popover-arrow-width + 1);
+@popover-arrow-outer-color: rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color: #999;
+
+
+// List Group
+@list-group-bg: #404040;
+@list-group-border: #595959;
+@list-group-border-radius: @border-radius-base;
+@list-group-hover-bg: #00ff00;
+@list-group-active-color: #000;
+@list-group-active-bg: #00ff00;
+@list-group-active-border: @list-group-active-bg;
+@list-group-link-color: #555;
+@list-group-link-heading-color: #333;
+
+
+// Sprites
+@icon-font-path: '../app/fonts/';
+@icon-font-name: glyphicons-halflings-regular;
+
+
+// My Variables
