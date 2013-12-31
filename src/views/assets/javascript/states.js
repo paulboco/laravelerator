@@ -43,8 +43,8 @@ app.config(function($stateProvider, $urlRouterProvider, laravel) {
                 template: '',
                 path: 'app',
                 table: '',
-                namespace: 'Shiphed',
-                schema: "id : increments\nusername : string(100)\npassword : string(100)\n",
+                namespace: '',
+                schema: '',
                 mock: 'true'
             },
         })

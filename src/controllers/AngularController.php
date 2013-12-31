@@ -1,5 +1,6 @@
 <?php namespace Laravelerator\Laravelerator;
 
+use Input;
 use View;
 
 class AngularController extends BaseController {
@@ -33,7 +34,9 @@ class AngularController extends BaseController {
      */
     public function generateStore()
     {
-        return View::make('laravelerator::controllers.generate.store');
+        $input = Input::all();
+dd($input);
+        return $input;
     }
 
     /**

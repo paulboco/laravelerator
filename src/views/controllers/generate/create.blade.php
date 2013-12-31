@@ -12,45 +12,41 @@
             <!-- template -->
             <div class="form-group">
                 {{ Form::label('template', '* Template') }}
-                <select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" class="form-control">
+                <select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control">
                     <option value="">-- choose template --</option>
                 </select>
             </div>
 
-            <!-- write path -->
-            <div class="form-group write-path">
-                {{ Form::label('path', '* Write Path') }}
-                <input data-ng-model="$state.current.data.path" data-ng-change="fetch($state.current.data.path)" name="path" class="form-control">
-            </div>
-            <div class="form-group">
-                <span id="path-status" class="@{{pathDisplay.class}}">@{{pathDisplay.realpath}}<br>@{{pathDisplay.msg}}</span>
-            </div>
+            <div data-ng-show="$state.current.data.template">
+                <!-- write path -->
+                <div class="form-group write-path">
+                    {{ Form::label('path', '* Write Path') }}
+                    <input data-ng-model="$state.current.data.path" data-ng-change="fetch($state.current.data.path)" name="path" class="form-control">
+                </div>
+                <div class="form-group">
+                    <span id="path-status" class="@{{pathDisplay.class}}">@{{pathDisplay.realpath}}<br>@{{pathDisplay.msg}}</span>
+                </div>
 
-            <!-- table name -->
-            <input-table></input-table>
+                <!-- table name -->
+                <input-table data-ng-show="$state.current.data.template.fields.table"></input-table>
 
-            <!-- namespace -->
-            <div class="form-group">
-                {{ Form::label('namespace', '* Namespace') }}
-                <input data-ng-model="$state.current.data.namespace" name="namespace" class="form-control">
-            </div>
+                <!-- namespace -->
+                <input-namespace data-ng-show="$state.current.data.template.fields.namespace" data-ng-show="false"></input-namespace>
 
-            <!-- schema -->
-            <div class="form-group">
-                {{ Form::label('schema', '* Schema') }}
-                <textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5"></textarea>
-            </div>
+                <!-- schema -->
+                <input-schema data-ng-show="$state.current.data.template.fields.schema" data-ng-show="false"></input-schema>
 
-            <!-- mock -->
-            <div class="form-group">
-                {{ Form::label('mock', 'Mock') }}
-                <a id="mock-button" class="form-control btn" data-ng-class="{true: '', false: 'active'}[!$state.current.data.mock]" data-ng-click="$state.current.data.mock = !$state.current.data.mock">@{{$state.current.data.mock && 'Engaged' || 'Disengaged'}}</a>
-                <input type="hidden" name="mock" value="@{{ $state.current.data.mock }}">
-            </div>
+                <!-- mock -->
+                <div class="form-group">
+                    {{ Form::label('mock', 'Mock') }}
+                    <a id="mock-button" class="form-control btn" data-ng-class="{true: '', false: 'active'}[!$state.current.data.mock]" data-ng-click="$state.current.data.mock = !$state.current.data.mock">@{{$state.current.data.mock && 'Engaged' || 'Disengaged'}}</a>
+                    <input type="hidden" name="mock" value="@{{ $state.current.data.mock }}">
+                </div>
 
-            <!-- button -->
-            <div class="form-group">
-                {{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
+                <!-- button -->
+                <div class="form-group">
+                    {{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
+                </div>
             </div>
         {{ Form::close() }}
     </div>

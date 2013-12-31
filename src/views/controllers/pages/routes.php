@@ -32,7 +32,7 @@
                         <td>{{ route.domain }}</td>
                         <td>{{ route.verb }}</td>
                         <td ng-switch="route.verb==='GET'">
-                            <a ng-href="{{route.uri}}" ng-switch-when="true" target="_blank">{{ route.uri }}</a>
+                            <a ng-switch-when="true"ng-href="{{route.uri}}" target="_blank">{{ route.uri }}</a>
                             <span ng-switch-when="false">{{ route.uri }}</span>
                         </td>
                         <td>{{ route.name }}</td>
