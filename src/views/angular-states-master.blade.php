@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-ng-bind="$state.current.data.title + ' - Angular States'">Angular States</title>
-    <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=laravelerator-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=fonts.css">
-    <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=style-dark.css">
+    <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=laravelerator-style-dark.css">
 </head>
 <body data-ng-controller="PageController">
     @include('laravelerator::angular-states-nav')

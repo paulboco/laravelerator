@@ -9,10 +9,6 @@
     <div class="col-md-4">
         {{ Form::open(['action' => 'Laravelerator\Laravelerator\AngularController@generateStore', 'role' => 'form']) }}
 
-            <!-- INPUT TABLE -->
-            <input-table></input-table>
-            <!-- INPUT TABLE -->
-
             <!-- template -->
             <div class="form-group">
                 {{ Form::label('template', '* Template') }}
@@ -31,10 +27,7 @@
             </div>
 
             <!-- table name -->
-            <div class="form-group">
-                {{ Form::label('table', '* Table Name') }}
-                <input data-ng-model="$state.current.data.table" name="table" class="form-control">
-            </div>
+            <input-table></input-table>
 
             <!-- namespace -->
             <div class="form-group">

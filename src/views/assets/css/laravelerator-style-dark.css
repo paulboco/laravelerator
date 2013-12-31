@@ -36,3 +36,15 @@ th {
     font-size: 1.05em;
     font-family: 'Source Code Pro', monospace;
 }
+
+/******************************************************************
+panel
+*/
+
+.panel {
+    background-color: #404040;
+}
+
+.panel-default {
+    border-color: #595959;
+}
