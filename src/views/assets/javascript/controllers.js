@@ -1,6 +1,9 @@
-/**
- * Page Controller
- */
+/*
+|--------------------------------------------------------------------------
+| Page controller
+|--------------------------------------------------------------------------
+*/
+
 app.controller('PageController', ['$scope', function($scope) {
 
     // Define navbar items
@@ -19,9 +22,12 @@ app.controller('PageController', ['$scope', function($scope) {
     });
 }]);
 
-/**
- * Generate Controller
- */
+/*
+|--------------------------------------------------------------------------
+| Generate controller
+|--------------------------------------------------------------------------
+*/
+
 app.controller(
     'GenerateController',
     ['$scope', 'templatesService', 'pathDisplayService', 'schemaService',
@@ -47,9 +53,12 @@ app.controller(
     $scope.fetch($scope.$state.current.data.path);
 }]);
 
-/**
- * Routes Controller
- */
+/*
+|--------------------------------------------------------------------------
+| Routes controller
+|--------------------------------------------------------------------------
+*/
+
 app.controller('RoutesController', ['$scope', '$http', 'routesService', function($scope, $http, routesService) {
 
     // Get registered routes

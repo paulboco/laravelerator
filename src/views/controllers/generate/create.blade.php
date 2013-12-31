@@ -26,6 +26,7 @@
                 <input-schema data-ng-show="$state.current.data.template.fields.schema" data-ng-show="false"></input-schema>
 
                 <!-- mock -->
+                <button-mock><button-mock>
                 <div class="form-group">
                     {{ Form::label('mock', 'Mock') }}
                     <a id="mock-button" class="form-control btn" data-ng-class="{true: '', false: 'active'}[!$state.current.data.mock]" data-ng-click="$state.current.data.mock = !$state.current.data.mock">@{{$state.current.data.mock && 'Engaged' || 'Disengaged'}}</a>
@@ -39,7 +40,7 @@
             </div>
         {{ Form::close() }}
     </div>
-    <div class="col-md-offset-1 col-md-4">
+    <div class="col-md-5">
         @include('laravelerator::controllers.generate.partials.template_description')
     </div>
     <div class="col-md-3">

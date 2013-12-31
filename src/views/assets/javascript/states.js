@@ -1,7 +1,10 @@
-/**
- * Laravelerator Module
- */
-var app = angular.module('laravelerator', ['ui.router'])
+/*
+|--------------------------------------------------------------------------
+| Laravelerator Module
+|--------------------------------------------------------------------------
+*/
+
+var app = angular.module('laravelerator', ['ui.router', 'ngSanitize'])
     .run(['$rootScope', '$state', '$stateParams',
     function ($rootScope,   $state,   $stateParams) {
         // It's very handy to add references to $state and $stateParams to the $rootScope
@@ -12,9 +15,12 @@ var app = angular.module('laravelerator', ['ui.router'])
         $rootScope.$stateParams = $stateParams;
 }]);
 
-/**
- * Configuration
- */
+/*
+|--------------------------------------------------------------------------
+| Configuration
+|--------------------------------------------------------------------------
+*/
+
 app.config(function($stateProvider, $urlRouterProvider, laravel) {
 
     // For any unmatched url, redirect to /laravelerator/home
@@ -59,10 +65,4 @@ app.config(function($stateProvider, $urlRouterProvider, laravel) {
                 title: 'Routes'
             }
         });
-});
-
-app.config(function($sceProvider) {
-  // Completely disable SCE.  For demonstration purposes only!
-  // Do not use in new projects.
-  $sceProvider.enabled(false);
 });

@@ -1,3 +1,9 @@
+/*
+|--------------------------------------------------------------------------
+| Templates select
+|--------------------------------------------------------------------------
+*/
+
 app.directive("selectTemplate", function() {
     return {
         restrict: "E",
@@ -17,6 +23,12 @@ app.directive("selectTemplate", function() {
     };
 });
 
+/*
+|--------------------------------------------------------------------------
+| Path input
+|--------------------------------------------------------------------------
+*/
+
 app.directive("inputPath", function() {
     return {
         restrict: "E",
@@ -30,9 +42,14 @@ app.directive("inputPath", function() {
                   '<br>{{pathDisplay.msg}}' +
                   '</span>' +
                   '</div>'
-
     };
 });
+
+/*
+|--------------------------------------------------------------------------
+| Table input
+|--------------------------------------------------------------------------
+*/
 
 app.directive("inputTable", function() {
     return {
@@ -51,6 +68,12 @@ app.directive("inputTable", function() {
     };
 });
 
+/*
+|--------------------------------------------------------------------------
+| Namespace input
+|--------------------------------------------------------------------------
+*/
+
 app.directive("inputNamespace", function() {
     return {
         restrict: "E",
@@ -61,9 +84,18 @@ app.directive("inputNamespace", function() {
                     return 'has-warning';
             };
         },
-        template: '<div ng-class="$state.current.data.namespaceClass()" class="form-group"><label for="namespace" class="control-label">* Namespace</label><input data-ng-model="$state.current.data.namespace" name="namespace" type="text" class="form-control"></div>'
+        template: '<div ng-class="$state.current.data.namespaceClass()" class="form-group">' +
+                  '<label for="namespace" class="control-label">* Namespace</label>' +
+                  '<input data-ng-model="$state.current.data.namespace" name="namespace" type="text" class="form-control">' +
+                  '</div>'
     };
 });
+
+/*
+|--------------------------------------------------------------------------
+| Schema input
+|--------------------------------------------------------------------------
+*/
 
 app.directive("inputSchema", function() {
     return {
@@ -75,6 +107,32 @@ app.directive("inputSchema", function() {
                     return 'has-warning';
             };
         },
-        template: '<div ng-class="$state.current.data.schemaClass()" class="form-group"><label for="schema" class="control-label">* Schema</label><textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5"></textarea></div>'
+        template: '<div ng-class="$state.current.data.schemaClass()" class="form-group">' +
+                  '<label for="schema" class="control-label">* Schema</label>' +
+                  '<textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5"></textarea>' +
+                  '</div>'
+    };
+});
+
+/*
+|--------------------------------------------------------------------------
+| Mock button
+|--------------------------------------------------------------------------
+*/
+
+app.directive("buttonMock", function() {
+    return {
+        restrict: "E",
+        require: "^state",
+        controller:  function($state) {
+            $state.current.data.mockClass = function() {
+                if ($state.current.data.mock)
+                    return 'active';
+            };
+        },
+        template: '<div class="form-group">' +
+                  '<label for="mock" class="control-label">Mock</label>' +
+                  '<a id="mock-button" class="form-control btn" data-ng-class="$state.current.data.mockClass" data-ng-click="$state.current.data.mock = !$state.current.data.mock">{{$state.current.data.mock && "Engaged" || "Disengaged"}}</a>' +
+                  '<input type="hidden" name="mock" value="{{ $state.current.data.mock }}">'
     };
 });
