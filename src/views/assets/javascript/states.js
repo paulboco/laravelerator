@@ -41,8 +41,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'GenerateController',
             resolve:{
                 templatesService: 'templatesService',
-                pathDisplayService: 'pathDisplayService',
-                schemaService: 'schemaService'
+                pathDisplayService: 'pathDisplayService'
+                // schemaService: 'schemaService'
             },
             data: {
                 title: 'Generate',

@@ -63,7 +63,7 @@ app.directive("tableInput", function() {
         },
         template: '<div ng-class="$state.current.data.tableClass()" class="form-group">' +
                   '<label for="table" class="control-label">* Table Name</label>' +
-                  '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control" required novalidate>' +
+                  '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control" required>' +
                   '</div>'
     };
 });

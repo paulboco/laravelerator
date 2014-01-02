@@ -33,10 +33,11 @@ app.controller(
     ['$scope', 'LARAVEL', 'templatesService', 'pathDisplayService', 'schemaService',
     function($scope, LARAVEL, templatesService, pathDisplayService, schemaService) {
 
+    // set the csrf token
     $scope.token = LARAVEL.token;
 
     $scope.submit = function() {
-console.log($scope.form.template);
+console.log($scope.form);
         alert('here');
     };
 
@@ -53,8 +54,16 @@ console.log($scope.form.template);
     };
 
     // Get schema notation
-    schemaService.all().then(function(schema) {
-        $scope.schema = schema;
+    $scope.getSchema = function() {
+        schemaService.all().then(function(schema) {
+            $scope.schema = schema;
+        });
+    };
+
+    // Load the schema notation only when required
+    $scope.$on('$includeContentRequested', function(event, data) {
+        if ($scope.form.template.$modelValue.fields.schema)
+            $scope.getSchema();
     });
 
     $scope.fetch($scope.$state.current.data.path);

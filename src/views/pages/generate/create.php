@@ -5,43 +5,44 @@
         </div>
     </div>
 </div>
+<form name="form" ng-submit="submit()" novalidate>
 <div class="row">
     <div class="col-md-4">
         <!-- select template -->
-        <form name="form-1" ng-submit="submit()">
-            <template-select></template-select>
-        </form>
-        <div data-ng-show="$state.current.data.template">
+        <template-select></template-select>
+        <div data-ng-if="$state.current.data.template">
             <data-ng-include src="'/laravelerator/template-description'"></data-ng-include>
         </div>
     </div>
     <div class="col-md-3">
-        <!-- <data-ng-include src="'/laravelerator/template-description'"></data-ng-include> -->
-        <div data-ng-show="$state.current.data.template">
-            <form name="form-2" ng-submit="submit()">
+        <div data-ng-if="$state.current.data.template">
                 <!-- write path -->
                 <path-input></path-input>
 
                 <!-- table name -->
-                <table-input data-ng-show="$state.current.data.template.fields.table"></table-input>
+                <table-input
+                    data-ng-if="$state.current.data.template.fields.table"></table-input>
 
                 <!-- namespace -->
-                <namespace-input data-ng-show="$state.current.data.template.fields.namespace" data-ng-show="false"></namespace-input>
+                <namespace-input
+                    data-ng-if="$state.current.data.template.fields.namespace"></namespace-input>
 
                 <!-- schema -->
-                <schema-input data-ng-show="$state.current.data.template.fields.schema" data-ng-show="false"></schema-input>
+                <schema-input
+                    data-ng-if="$state.current.data.template.fields.schema"></schema-input>
 
                 <!-- mock -->
                 <mock-button></mock-button>
 
                 <!-- button -->
                 <div class="form-group">
-                    <input class="btn btn-default" type="submit" value="Submit" ng-disabled="form-2.$invalid">
+                    <button class="btn btn-default" ng-disabled="form.$invalid">Submit</button>
                 </div>
             </div>
-        </form>
     </div>
-    <div class="col-md-offset-1 col-md-3" data-ng-if="$state.current.data.template.fields.schema">
+    <div class="col-md-offset-1 col-md-3"
+        data-ng-if="$state.current.data.template.fields.schema">
         <data-ng-include src="'/laravelerator/schema-notation'"></data-ng-include>
     </div>
 </div>
+</form>
