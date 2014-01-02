@@ -30,8 +30,15 @@ app.controller('PageController', ['$scope', function($scope) {
 
 app.controller(
     'GenerateController',
-    ['$scope', 'templatesService', 'pathDisplayService', 'schemaService',
-    function($scope, templatesService, pathDisplayService, schemaService) {
+    ['$scope', 'LARAVEL', 'templatesService', 'pathDisplayService', 'schemaService',
+    function($scope, LARAVEL, templatesService, pathDisplayService, schemaService) {
+
+    $scope.token = LARAVEL.token;
+
+    $scope.submit = function() {
+console.log($scope.form.template);
+        alert('here');
+    };
 
     // Get available templates
     templatesService.all().then(function(templates) {

@@ -17,7 +17,7 @@ app.directive("templateSelect", function() {
 
         template: '<div ng-class="$state.current.data.templateClass()" class="form-group">' +
                   '<label for="template" class="control-label">* Template</label>' +
-                  '<select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control">' +
+                  '<select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control" required>' +
                   '</select>' +
                   '</div>'
     };
@@ -63,7 +63,7 @@ app.directive("tableInput", function() {
         },
         template: '<div ng-class="$state.current.data.tableClass()" class="form-group">' +
                   '<label for="table" class="control-label">* Table Name</label>' +
-                  '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control">' +
+                  '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control" required novalidate>' +
                   '</div>'
     };
 });
@@ -86,7 +86,7 @@ app.directive("namespaceInput", function() {
         },
         template: '<div ng-class="$state.current.data.namespaceClass()" class="form-group">' +
                   '<label for="namespace" class="control-label">* Namespace</label>' +
-                  '<input data-ng-model="$state.current.data.namespace" name="namespace" type="text" class="form-control">' +
+                  '<input data-ng-model="$state.current.data.namespace" name="namespace" type="text" class="form-control" required>' +
                   '</div>'
     };
 });
@@ -109,7 +109,7 @@ app.directive("schemaInput", function() {
         },
         template: '<div ng-class="$state.current.data.schemaClass()" class="form-group">' +
                   '<label for="schema" class="control-label">* Schema</label>' +
-                  '<textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5"></textarea>' +
+                  '<textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5" required></textarea>' +
                   '</div>'
     };
 });

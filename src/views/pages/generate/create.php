@@ -7,13 +7,18 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        <form method="POST" action="/laravelerator/generate" accept-charset="UTF-8" role="form">
-            <input name="_token" type="hidden" value="{{LARAVEL.token}}">
-
-            <!-- template -->
+        <!-- select template -->
+        <form name="form-1" ng-submit="submit()">
             <template-select></template-select>
-
-            <div data-ng-show="$state.current.data.template">
+        </form>
+        <div data-ng-show="$state.current.data.template">
+            <data-ng-include src="'/laravelerator/template-description'"></data-ng-include>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <!-- <data-ng-include src="'/laravelerator/template-description'"></data-ng-include> -->
+        <div data-ng-show="$state.current.data.template">
+            <form name="form-2" ng-submit="submit()">
                 <!-- write path -->
                 <path-input></path-input>
 
@@ -31,15 +36,12 @@
 
                 <!-- button -->
                 <div class="form-group">
-                    <input class="btn btn-default" type="submit" value="Submit">
+                    <input class="btn btn-default" type="submit" value="Submit" ng-disabled="form-2.$invalid">
                 </div>
             </div>
         </form>
     </div>
-    <div class="col-md-5">
-        <data-ng-include src="'/laravelerator/template-description'"></data-ng-include>
-    </div>
-    <div class="col-md-3" data-ng-if="$state.current.data.template.fields.schema">
+    <div class="col-md-offset-1 col-md-3" data-ng-if="$state.current.data.template.fields.schema">
         <data-ng-include src="'/laravelerator/schema-notation'"></data-ng-include>
     </div>
 </div>
