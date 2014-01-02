@@ -4,7 +4,7 @@
 |--------------------------------------------------------------------------
 */
 
-app.directive("selectTemplate", function() {
+app.directive("templateSelect", function() {
     return {
         restrict: "E",
         require: "^state",
@@ -29,7 +29,7 @@ app.directive("selectTemplate", function() {
 |--------------------------------------------------------------------------
 */
 
-app.directive("inputPath", function() {
+app.directive("pathInput", function() {
     return {
         restrict: "E",
         require: "^state",
@@ -51,7 +51,7 @@ app.directive("inputPath", function() {
 |--------------------------------------------------------------------------
 */
 
-app.directive("inputTable", function() {
+app.directive("tableInput", function() {
     return {
         restrict: "E",
         require: "^state",
@@ -74,7 +74,7 @@ app.directive("inputTable", function() {
 |--------------------------------------------------------------------------
 */
 
-app.directive("inputNamespace", function() {
+app.directive("namespaceInput", function() {
     return {
         restrict: "E",
         require: "^state",
@@ -97,7 +97,7 @@ app.directive("inputNamespace", function() {
 |--------------------------------------------------------------------------
 */
 
-app.directive("inputSchema", function() {
+app.directive("schemaInput", function() {
     return {
         restrict: "E",
         require: "^state",
@@ -120,19 +120,63 @@ app.directive("inputSchema", function() {
 |--------------------------------------------------------------------------
 */
 
-app.directive("buttonMock", function() {
+app.directive("mockButton", function() {
     return {
         restrict: "E",
         require: "^state",
         controller:  function($state) {
             $state.current.data.mockClass = function() {
                 if ($state.current.data.mock)
-                    return 'active';
+                    return 'toggle-on';
+                else
+                    return 'toggle-off';
+            };
+            $state.current.data.mockLabel = function() {
+                return $state.current.data.mock && "Engaged" || "Disengaged";
+            };
+            $state.current.data.mockToggle = function() {
+                $state.current.data.mock = !$state.current.data.mock;
+                return $state.current.data.mock;
             };
         },
         template: '<div class="form-group">' +
                   '<label for="mock" class="control-label">Mock</label>' +
-                  '<a id="mock-button" class="form-control btn" data-ng-class="$state.current.data.mockClass" data-ng-click="$state.current.data.mock = !$state.current.data.mock">{{$state.current.data.mock && "Engaged" || "Disengaged"}}</a>' +
+                  '<a id="mock-button" class="form-control btn active" data-ng-class="$state.current.data.mockClass()" data-ng-click="$state.current.data.mockToggle()">{{$state.current.data.mockLabel()}}</a>' +
                   '<input type="hidden" name="mock" value="{{ $state.current.data.mock }}">'
+    };
+});
+
+/*
+|--------------------------------------------------------------------------
+| Toggle button
+|--------------------------------------------------------------------------
+*/
+
+app.directive("filterButton", function() {
+    return {
+        restrict: "E",
+        require: "^state",
+        controller:  function($state) {
+            $state.current.data.filterClass = function() {
+                if ($state.current.data.filter.value)
+                {
+                    $state.current.data.filter.string = 'laravelerator';
+                    return 'toggle-on';
+                }
+                else
+                {
+                    $state.current.data.filter.string = '';
+                    return 'toggle-off';
+                }
+            };
+            $state.current.data.filterLabel = function() {
+                return $state.current.data.filter.value && "Laravelerator Routes Omitted" || "Laravelerator Routes Included";
+            };
+            $state.current.data.filterToggle = function() {
+                $state.current.data.filter.value = !$state.current.data.filter.value;
+                return $state.current.data.filter.value;
+            };
+        },
+        template: '<a id="filter-button" class="form-control btn" data-ng-class="$state.current.data.filterClass()" data-ng-click="$state.current.data.filterToggle()">{{$state.current.data.filterLabel()}}</a>'
     };
 });

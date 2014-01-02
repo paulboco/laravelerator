@@ -29,7 +29,6 @@ class LaraveleratorServiceProvider extends ServiceProvider {
 		$this->customValidators();
 
 		include __DIR__.'/../../routes.php';
-		include __DIR__.'/../../macros.php';
 		include __DIR__.'/../../helpers.php';
 	}
 

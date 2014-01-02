@@ -1,6 +1,7 @@
 <?php
 
 use Laravelerator\Alg\Schema;
+use Laravelerator\Alg\Template;
 
 if ( ! function_exists('get_routes'))
 {
@@ -29,7 +30,6 @@ if ( ! function_exists('get_routes'))
         return $routes;
 	}
 }
-
 
 if ( ! function_exists('mute_base_path'))
 {
@@ -86,6 +86,40 @@ if ( ! function_exists('compile_command'))
 
 		return $command;
 	}
+}
 
+if ( ! function_exists('path_exists'))
+{
+    /**
+     * Test is a file exists
+     *
+     * @param  string  $relativePath
+     * @return string
+     */
+    function path_exists($relativePath)
+    {
+        $requestedPath = Template::getWritePath($relativePath);
 
+        if (is_dir($requestedPath))
+        {
+            $realpath = realpath($requestedPath);
+
+            if (str_contains($realpath, base_path()))
+            {
+                $msg = $realpath == base_path() ? ' (project root)' : '';
+            }
+            else
+            {
+                $class = 'has-error';
+                $msg = 'Error! You may not write outside the project root.';
+            }
+        }
+        else
+        {
+            $class = 'has-error';
+            $realpath = 'Path not found';
+        }
+
+        return compact('relative', 'realpath', 'class', 'msg');
+    }
 }

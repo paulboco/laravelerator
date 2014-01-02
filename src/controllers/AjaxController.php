@@ -1,10 +1,11 @@
 <?php namespace Laravelerator\Laravelerator;
 
+use Controller;
 use Input;
 use Response;
 use Laravelerator\Alg\Template;
 
-class AjaxController extends BaseController {
+class AjaxController extends Controller {
 
     /**
      * Ajax request for available templates
@@ -19,33 +20,9 @@ class AjaxController extends BaseController {
      */
     public function path()
     {
-        $relative = Input::get('path');
-        $requestedPath = Template::getWritePath($relative);
+        $relativePath = Input::get('path');
 
-        if (is_dir($requestedPath))
-        {
-            $realpath = realpath($requestedPath);
-
-            if (str_contains($realpath, base_path()))
-            {
-                $class = 'path-found';
-                $msg = $realpath == base_path() ? ' (project root)' : '';
-                $msg = '';
-            }
-            else
-            {
-                $class = 'path-not-found';
-                $msg = 'Error! You may not write outside the project root.';
-            }
-        }
-        else
-        {
-            $realpath = 'Path not found';
-            $class = 'path-not-found';
-            $msg = '';
-        }
-
-        return compact('relative', 'realpath', 'class', 'msg');
+        return path_exists($relativePath);
     }
 
     /**
@@ -56,3 +33,4 @@ class AjaxController extends BaseController {
         return get_routes();
     }
 }
+

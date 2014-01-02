@@ -1,10 +1,10 @@
 /**
  * Templates Service
  */
-app.service('templatesService', function($http, laravel, promiseService) {
+app.service('templatesService', function($http, LARAVEL, promiseService) {
     this.all = function() {
-        url = laravel.urlBase + 'ajax/templates';
-        params = {'_token': laravel.csrfToken};
+        url = '/laravelerator/ajax/templates';
+        params = {'_token': LARAVEL.token};
         cache = true;
 
         return promiseService.get(url, params, cache);
@@ -14,11 +14,11 @@ app.service('templatesService', function($http, laravel, promiseService) {
 /**
  * Path Display Service
  */
-app.service('pathDisplayService', function($http, laravel, promiseService) {
-    this.params = {'_token': laravel.csrfToken, 'path': ''};
+app.service('pathDisplayService', function($http, LARAVEL, promiseService) {
+    this.params = {'_token': LARAVEL.token, 'path': ''};
 
     this.get = function(path) {
-        url = laravel.urlBase + 'ajax/path';
+        url = '/laravelerator/ajax/path';
         this.params.path = path;
         cache = false;
 
@@ -29,9 +29,9 @@ app.service('pathDisplayService', function($http, laravel, promiseService) {
 /**
  * Schema Service
  */
-app.service('schemaService', function($http, laravel, promiseService) {
+app.service('schemaService', function($http, promiseService) {
     this.all = function() {
-        url = laravel.urlBase + 'assets/json';
+        url = '/laravelerator/assets/json';
         params = {'f': 'schema.json'};
         cache = true;
 
@@ -42,10 +42,10 @@ app.service('schemaService', function($http, laravel, promiseService) {
 /**
  * Routes Service
  */
-app.service('routesService', function($http, laravel, promiseService) {
+app.service('routesService', function($http, LARAVEL, promiseService) {
     this.all = function() {
-        url = laravel.urlBase + 'ajax/routes';
-        params = {'_token': laravel.csrfToken};
+        url = '/laravelerator/ajax/routes';
+        params = {'_token': LARAVEL.token};
         cache = true;
 
         return promiseService.get(url, params, cache);
@@ -64,4 +64,3 @@ app.service('promiseService', function($http) {
         return promise;
     };
 });
-

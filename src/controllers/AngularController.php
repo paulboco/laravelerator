@@ -1,16 +1,25 @@
 <?php namespace Laravelerator\Laravelerator;
 
+use Controller;
 use Input;
 use View;
 
-class AngularController extends BaseController {
+class AngularController extends Controller {
 
     /**
      * Single Page App view
      */
     public function spa()
     {
-        return View::make('laravelerator::angular.spa');
+        return View::make('laravelerator::spa');
+    }
+
+    /**
+     * Navbar partial
+     */
+    public function nav()
+    {
+        return View::make('laravelerator::nav');
     }
 
     /**
@@ -18,7 +27,7 @@ class AngularController extends BaseController {
      */
     public function home()
     {
-        return View::make('laravelerator::controllers.pages.home');
+        return View::make('laravelerator::pages.home');
     }
 
     /**
@@ -26,7 +35,23 @@ class AngularController extends BaseController {
      */
     public function generateCreate()
     {
-        return View::make('laravelerator::controllers.generate.create');
+        return View::make('laravelerator::pages.generate.create');
+    }
+
+    /**
+     * Template description partial
+     */
+    public function templateDescription()
+    {
+        return View::make('laravelerator::pages.generate.partials.template_description');
+    }
+
+    /**
+     * Schema notation partial
+     */
+    public function schemaNotation()
+    {
+        return View::make('laravelerator::pages.generate.partials.schema_notation');
     }
 
     /**
@@ -44,7 +69,7 @@ dd($input);
      */
     public function routes()
     {
-        return View::make('laravelerator::controllers.pages.routes');
+        return View::make('laravelerator::pages.routes');
     }
 
 

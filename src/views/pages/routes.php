@@ -7,14 +7,18 @@
 </div>
 <div class="row">
     <div class="col-md-1">
-        <h4>Filter</h4>
+        <label>Filter List</label>
     </div>
-    <div class="col-md-11">
+    <div class="col-md-5">
         <input data-ng-model="search.$" class="form-control" autofocus>
+    </div>
+    <div class="col-md-offset-3 col-md-3">
+        <filter-button></filter-button>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
+        <br>
         <table class="table">
             <thead>
                 <tr>
@@ -28,7 +32,7 @@
                 </tr>
             </thead>
             <tbody class="no-wrap">
-                    <tr data-ng-repeat="route in routes | filter:search">
+                    <tr data-ng-repeat="route in routes | filter:search | routesFilter">
                         <td>{{ route.domain }}</td>
                         <td>{{ route.verb }}</td>
                         <td ng-switch="route.verb==='GET'">

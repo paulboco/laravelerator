@@ -1,8 +1,10 @@
 <?php namespace Laravelerator\Laravelerator;
 
+use Controller;
 use Request;
+use Response;
 
-class AssetsController extends BaseController {
+class AssetsController extends Controller {
 
     protected $mime = [
         'css' => 'text/css',
@@ -27,6 +29,18 @@ class AssetsController extends BaseController {
         $headers = ['Content-Type' => $this->mime[$type]];
 
         return $this->sendResponse($contents, $headers);
+    }
+
+    protected function sendResponse($contents, $headers = [])
+    {
+        $response = Response::make($contents);
+
+        foreach ($headers as $key => $value)
+        {
+            $response->header($key, $value);
+        }
+
+        return $response;
     }
 
 

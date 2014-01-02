@@ -21,23 +21,23 @@ var app = angular.module('laravelerator', ['ui.router', 'ngSanitize'])
 |--------------------------------------------------------------------------
 */
 
-app.config(function($stateProvider, $urlRouterProvider, laravel) {
+app.config(function($stateProvider, $urlRouterProvider) {
 
     // For any unmatched url, redirect to /laravelerator/home
-    $urlRouterProvider.otherwise(laravel.urlBase + 'home');
+    $urlRouterProvider.otherwise('/laravelerator/home');
 
     // Now set up the states
     $stateProvider
         .state('home', {
-            url: laravel.urlBase + 'home',
-            templateUrl: laravel.urlBase + 'home',
+            url: '/laravelerator/home',
+            templateUrl: '/laravelerator/home',
             data: {
                 title: 'Home'
             }
         })
         .state('generate', {
-            url: laravel.urlBase + 'generate',
-            templateUrl: laravel.urlBase + 'generate',
+            url: '/laravelerator/generate',
+            templateUrl: '/laravelerator/generate',
             controller: 'GenerateController',
             resolve:{
                 templatesService: 'templatesService',
@@ -51,18 +51,22 @@ app.config(function($stateProvider, $urlRouterProvider, laravel) {
                 table: '',
                 namespace: '',
                 schema: '',
-                mock: 'true'
+                mock: true
             },
         })
         .state('routes', {
-            url: laravel.urlBase + 'routes',
-            templateUrl: laravel.urlBase + 'routes',
+            url: '/laravelerator/routes',
+            templateUrl: '/laravelerator/routes',
             controller: 'RoutesController',
             resolve:{
                 routesService: 'routesService'
             },
             data: {
-                title: 'Routes'
+                title: 'Routes',
+                filter: {
+                    value: true,
+                    string: 'laravelerator'
+                }
             }
         });
 });

@@ -32,6 +32,17 @@ th {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(0, 255, 0, 0.6);
 }
 
+a.btn.toggle-off,
+span#path-status.has-error {
+    color: #ffd700;
+}
+
+a.btn.toggle-on {
+    color: #00ff00;
+    -webkit-box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 5px 7px rgba(0, 0, 0, 0.2);
+}
+
 div.form-group.write-path {
     margin-bottom: 2px;
 }
@@ -39,6 +50,10 @@ div.form-group.write-path {
 .table > tbody > tr > td {
     font-size: 1.05em;
     font-family: 'Source Code Pro', monospace;
+}
+
+tbody.no-wrap > tr > td {
+    white-space: nowrap;
 }
 
 /******************************************************************

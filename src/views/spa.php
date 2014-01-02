@@ -8,9 +8,12 @@
     <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=laravelerator-bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=fonts.css">
     <link rel="stylesheet" type="text/css" href="/laravelerator/assets/css?f=laravelerator-style-dark.css">
+    <script src="/laravelerator/assets/javascript?f=vendor/angular.js"></script>
+    <script src="/laravelerator/assets/javascript?f=vendor/angular-sanitize.js"></script>
+    <script src="/laravelerator/assets/javascript?f=vendor/ui-router.js"></script>
 </head>
 <body data-ng-controller="PageController">
-    @include('laravelerator::angular.nav')
+    <data-ng-include src="'/laravelerator/nav'"></data-ng-include>
     <div class="container">
         <div data-ng-show="stateLoading" class="page-header">
             <h1><small>Loading ...</small></h1>
@@ -19,17 +22,15 @@
             <div data-ui-view></div>
         </div>
     </div>
-    <script src="/laravelerator/assets/javascript?f=vendor/angular.js"></script>
-    <script src="/laravelerator/assets/javascript?f=vendor/angular-sanitize.js"></script>
-    <script src="/laravelerator/assets/javascript?f=vendor/ui-router.js"></script>
     <script src="/laravelerator/assets/javascript?f=states.js"></script>
     <script src="/laravelerator/assets/javascript?f=services.js"></script>
     <script src="/laravelerator/assets/javascript?f=directives.js"></script>
     <script src="/laravelerator/assets/javascript?f=controllers.js"></script>
+    <script src="/laravelerator/assets/javascript?f=filters.js"></script>
     <script type="text/javascript">
-        app.constant('laravel', {
-            urlBase: '/laravelerator/',
-            csrfToken: '{{ Session::token() }}'
+        app.constant('LARAVEL', {
+            token: '<?php echo Session::token() ?>',
+            root: '<?php echo base_path() ?>'
         });
     </script>
 </body>
