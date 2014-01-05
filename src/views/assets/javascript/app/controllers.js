@@ -28,10 +28,9 @@ app.controller('PageController', ['$scope', function($scope) {
 |--------------------------------------------------------------------------
 */
 
-app.controller(
-    'GenerateController',
-    ['$scope', 'LARAVEL', 'templatesService', 'pathDisplayService', 'schemaService',
-    function($scope, LARAVEL, templatesService, pathDisplayService, schemaService) {
+app.controller('GenerateController',
+    ['$scope', 'LARAVEL', 'templatesService', 'pathService', 'schemaService',
+    function($scope, LARAVEL, templatesService, pathService, schemaService) {
 
     // set the csrf token
     $scope.token = LARAVEL.token;
@@ -48,7 +47,7 @@ console.log($scope.form);
 
     // Get path display
     $scope.fetch = function(path) {
-        pathDisplayService.get(path).then(function(pathDisplay) {
+        pathService.get(path).then(function(pathDisplay) {
             $scope.pathDisplay = pathDisplay;
         });
     };

@@ -10,7 +10,7 @@
         <label>Filter List</label>
     </div>
     <div class="col-md-5">
-        <input data-ng-model="search.$" class="form-control" autofocus>
+        <input data-ng-model="$state.current.data.search.$" class="form-control" autofocus>
     </div>
     <div class="col-md-offset-3 col-md-3">
         <filter-button></filter-button>
@@ -32,7 +32,7 @@
                 </tr>
             </thead>
             <tbody class="no-wrap">
-                    <tr data-ng-repeat="route in routes | filter:search | routesFilter">
+                    <tr data-ng-repeat="route in routes | filter:$state.current.data.search | routesFilter">
                         <td>{{ route.domain }}</td>
                         <td>{{ route.verb }}</td>
                         <td ng-switch="route.verb==='GET'">

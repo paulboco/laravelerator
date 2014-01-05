@@ -14,7 +14,7 @@ app.service('templatesService', function($http, LARAVEL, promiseService) {
 /**
  * Path Display Service
  */
-app.service('pathDisplayService', function($http, LARAVEL, promiseService) {
+app.service('pathService', function($http, LARAVEL, promiseService) {
     this.params = {'_token': LARAVEL.token, 'path': ''};
 
     this.get = function(path) {

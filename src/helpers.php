@@ -93,33 +93,60 @@ if ( ! function_exists('path_exists'))
     /**
      * Test is a file exists
      *
-     * @param  string  $relativePath
+     * @param  string  $relative
      * @return string
      */
-    function path_exists($relativePath)
+    function path_exists($relative)
     {
-        $requestedPath = Template::getWritePath($relativePath);
+        $basePath = base_path();
+
+        $requestedPath = Template::getWritePath($relative);
 
         if (is_dir($requestedPath))
         {
-            $realpath = realpath($requestedPath);
+            $realPath = realPath($requestedPath);
 
-            if (str_contains($realpath, base_path()))
+            if (str_contains($realPath, $basePath))
             {
-                $msg = $realpath == base_path() ? ' (project root)' : '';
+                $valid = true;
+
+                switch ($realPath) {
+
+                    case $basePath:
+                        $msg = 'Project Root';
+                        break;
+
+                    case app_path():
+                        $msg = 'Application path';
+                        break;
+
+                    case storage_path():
+                        $msg = 'Storage path';
+                        break;
+
+                    case public_path():
+                        $msg = 'Public path';
+                        break;
+
+                    default:
+                        $msg = 'root://' . $relative;
+                        break;
+                }
             }
             else
             {
-                $class = 'has-error';
+                $valid = false;
                 $msg = 'Error! You may not write outside the project root.';
             }
         }
         else
         {
-            $class = 'has-error';
-            $realpath = 'Path not found';
+            $valid = false;
+            $msg = 'path not found';
         }
 
-        return compact('relative', 'realpath', 'class', 'msg');
+        $invalid = ! $valid;
+
+        return compact('relative', 'basePath', 'valid', 'invalid', 'msg');
     }
 }

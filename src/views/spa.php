@@ -22,11 +22,11 @@
             <div data-ui-view></div>
         </div>
     </div>
-    <script src="/laravelerator/assets/javascript?f=states.js"></script>
-    <script src="/laravelerator/assets/javascript?f=services.js"></script>
-    <script src="/laravelerator/assets/javascript?f=directives.js"></script>
-    <script src="/laravelerator/assets/javascript?f=controllers.js"></script>
-    <script src="/laravelerator/assets/javascript?f=filters.js"></script>
+    <script src="/laravelerator/assets/javascript?f=app/states.js"></script>
+    <script src="/laravelerator/assets/javascript?f=app/services.js"></script>
+    <script src="/laravelerator/assets/javascript?f=app/directives.js"></script>
+    <script src="/laravelerator/assets/javascript?f=app/controllers.js"></script>
+    <script src="/laravelerator/assets/javascript?f=app/filters.js"></script>
     <script type="text/javascript">
         app.constant('LARAVEL', {
             token: '<?php echo Session::token() ?>',

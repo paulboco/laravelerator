@@ -41,17 +41,19 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'GenerateController',
             resolve:{
                 templatesService: 'templatesService',
-                pathDisplayService: 'pathDisplayService'
+                pathService: 'pathService'
                 // schemaService: 'schemaService'
             },
             data: {
                 title: 'Generate',
-                template: '',
-                path: 'app',
-                table: '',
-                namespace: '',
-                schema: '',
-                mock: true
+                form: {
+                    template: '',
+                    path: 'app',
+                    table: '',
+                    namespace: '',
+                    schema: '',
+                    mock: true
+                },
             },
         })
         .state('routes', {
@@ -66,7 +68,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
                 filter: {
                     value: true,
                     string: 'laravelerator'
-                }
+                },
+                search: ''
             }
         });
 });

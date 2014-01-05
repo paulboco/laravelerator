@@ -1,25 +1,30 @@
 /*
 |--------------------------------------------------------------------------
-| Templates select
+| Template select
 |--------------------------------------------------------------------------
 */
 
 app.directive("templateSelect", function() {
     return {
         restrict: "E",
-        require: "^state",
-        controller:  function($state) {
-            $state.current.data.templateClass = function() {
-                if ($state.current.data.template === '')
-                    return 'has-warning';
-            };
+        controller: function($scope) {
+            $scope.$watch('$state.current.data.template.basename', function(n) {
+                if ( !n)
+                    $scope.templateWarning = 'has-warning';
+                else
+                    $scope.templateWarning = '';
+            });
         },
-
-        template: '<div ng-class="$state.current.data.templateClass()" class="form-group">' +
-                  '<label for="template" class="control-label">* Template</label>' +
-                  '<select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control" required>' +
-                  '</select>' +
-                  '</div>'
+        template:   '<div class="form-group nullable" data-ng-class="templateWarning">' +
+                    '<label for="template" class="control-label">* Template</label>' +
+                    '<select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control" required>' +
+                    '<option value="">-- select template --</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '<div data-ng-if="$state.current.data.template">' +
+                    '<data-ng-include src="\'/laravelerator/template-description\'">' +
+                    '</data-ng-include>' +
+                    '</div>'
     };
 });
 
@@ -32,16 +37,26 @@ app.directive("templateSelect", function() {
 app.directive("pathInput", function() {
     return {
         restrict: "E",
-        require: "^state",
-        template: '<div class="form-group write-path">' +
-                  '<label for="path" class="control-label">* Write Path</label>' +
-                  '<input data-ng-model="$state.current.data.path" data-ng-change="fetch($state.current.data.path)" name="path" class="form-control">' +
-                  '</div>' +
-                  '<div class="form-group">' +
-                  '<span id="path-status" class="{{pathDisplay.class}}">{{pathDisplay.realpath}}' +
-                  '<br>{{pathDisplay.msg}}' +
-                  '</span>' +
-                  '</div>'
+        controller: function($scope) {
+            $scope.pathClass = function() {
+                if ($scope.pathDisplay && $scope.pathDisplay.invalid)
+                    return 'has-warning';
+            };
+        },
+        template:   '<div class="form-group" data-ng-class="pathClass()">' +
+                    '<label for="path" class="control-label">* Write Path</label>' +
+                    '<input name="path" class="form-control"' +
+                        'data-ng-model="$state.current.data.path"' +
+                        'data-ng-change="fetch($state.current.data.path)"' +
+                        'data-ng-class="\'ng-invalid\'">' +
+                    '</div>' +
+                    '<div class="form-group path-display">' +
+                    '<span id="path-status"' +
+                        'title="{{pathDisplay.basePath}}"' +
+                        'data-ng-class="pathClass()">' +
+                        '{{pathDisplay.msg}}' +
+                    '</span>' +
+                    '</div>'
     };
 });
 
@@ -54,17 +69,18 @@ app.directive("pathInput", function() {
 app.directive("tableInput", function() {
     return {
         restrict: "E",
-        require: "^state",
-        controller:  function($state) {
-            $state.current.data.tableClass = function() {
-                if ($state.current.data.table === '')
-                    return 'has-warning';
-            };
+        controller: function($scope) {
+            $scope.$watch('$state.current.data.table', function(n) {
+                if ( !n)
+                    $scope.tableWarning = 'has-warning';
+                else
+                    $scope.tableWarning = '';
+            });
         },
-        template: '<div ng-class="$state.current.data.tableClass()" class="form-group">' +
-                  '<label for="table" class="control-label">* Table Name</label>' +
-                  '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control" required>' +
-                  '</div>'
+        template:   '<div class="form-group" ng-class="tableWarning">' +
+                    '<label for="table" class="control-label">* Table Name</label>' +
+                    '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control" required>' +
+                    '</div>'
     };
 });
 
@@ -77,14 +93,15 @@ app.directive("tableInput", function() {
 app.directive("namespaceInput", function() {
     return {
         restrict: "E",
-        require: "^state",
-        controller:  function($state) {
-            $state.current.data.namespaceClass = function() {
-                if ($state.current.data.namespace === '')
-                    return 'has-warning';
-            };
+        controller: function($scope) {
+            $scope.$watch('$state.current.data.namespace', function(n) {
+                if ( !n)
+                    $scope.namespaceWarning = 'has-warning';
+                else
+                    $scope.namespaceWarning = '';
+            });
         },
-        template: '<div ng-class="$state.current.data.namespaceClass()" class="form-group">' +
+        template: '<div ng-class="namespaceWarning" class="form-group">' +
                   '<label for="namespace" class="control-label">* Namespace</label>' +
                   '<input data-ng-model="$state.current.data.namespace" name="namespace" type="text" class="form-control" required>' +
                   '</div>'
@@ -93,21 +110,22 @@ app.directive("namespaceInput", function() {
 
 /*
 |--------------------------------------------------------------------------
-| Schema input
+| Schema textarea
 |--------------------------------------------------------------------------
 */
 
-app.directive("schemaInput", function() {
+app.directive("schemaTextarea", function() {
     return {
         restrict: "E",
-        require: "^state",
-        controller:  function($state) {
-            $state.current.data.schemaClass = function() {
-                if ($state.current.data.schema === '')
-                    return 'has-warning';
-            };
+        controller: function($scope) {
+            $scope.$watch('$state.current.data.schema', function(n) {
+                if ( !n)
+                    $scope.schemaWarning = 'has-warning';
+                else
+                    $scope.schemaWarning = '';
+            });
         },
-        template: '<div ng-class="$state.current.data.schemaClass()" class="form-group">' +
+        template: '<div class="form-group" ng-class="schemaWarning">' +
                   '<label for="schema" class="control-label">* Schema</label>' +
                   '<textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5" required></textarea>' +
                   '</div>'
@@ -139,10 +157,10 @@ app.directive("mockButton", function() {
                 return $state.current.data.mock;
             };
         },
-        template: '<div class="form-group">' +
-                  '<label for="mock" class="control-label">Mock</label>' +
-                  '<a id="mock-button" class="form-control btn active" data-ng-class="$state.current.data.mockClass()" data-ng-click="$state.current.data.mockToggle()">{{$state.current.data.mockLabel()}}</a>' +
-                  '<input type="hidden" name="mock" value="{{ $state.current.data.mock }}">'
+        template:   '<div class="form-group">' +
+                    '<label for="mock" class="control-label">Mock</label>' +
+                    '<a id="mock-button" class="form-control btn active" data-ng-class="$state.current.data.mockClass()" data-ng-click="$state.current.data.mockToggle()">{{$state.current.data.mockLabel()}}</a>' +
+                    '<input type="hidden" name="mock" value="{{ $state.current.data.mock }}">'
     };
 });
 
