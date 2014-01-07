@@ -5,9 +5,15 @@
         </div>
         <ul class="list-group" style="font-size:larger;">
             <li class="list-group-item">
-                <h3>To Do</h3>
+                <h3 style="color: gold;">Next Task</h3>
                 <ul>
-                    <li class="todo-priority">Generate: First page is template selection. Full description and code example.</li>
+                    <li style="color: gold;" class="todo-priority">
+<!-- MAIN TODO -->
+Get key=>value pair only for template dropdown select. Load template description and fields once template option is selected.
+<br>
+<code>{title: 'Repo Scaffold', basename: 'scaffold'}</code>
+<!-- MAIN TODO -->
+                    </li>
                 </ul>
             </li>
             <li class="list-group-item">

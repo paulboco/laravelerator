@@ -4,19 +4,28 @@ use Controller;
 use Input;
 use Response;
 use Laravelerator\Alg\Template;
+use Laravelerator\Laravelerator\Services\Validation\GenerateValidator;
 
 class AjaxController extends Controller {
 
+    protected $validator;
+
+
+    public function __construct(GenerateValidator $validator)
+    {
+        $this->validator = $validator;
+    }
+
     /**
-     * Ajax request for available templates
+     * Get available templates
      */
-    public function templates()
+    public function template()
     {
         return Template::getAvailable();
     }
 
     /**
-     * Ajax request for write path display
+     * Get write path display
      */
     public function path()
     {
@@ -26,11 +35,28 @@ class AjaxController extends Controller {
     }
 
     /**
-     * Ajax request for registered routes
+     * Get registered routes
      */
     public function routes()
     {
         return get_routes();
     }
+
+    /**
+     * Validate generate form
+     */
+    public function generateCreate()
+    {
+        $input = Input::all();
+return $input;
+        if ($this->validator->fails($input))
+        {
+            // return failed response
+        }
+
+        // return an ok to display generated files
+    }
+
+
 }
 

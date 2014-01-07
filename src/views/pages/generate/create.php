@@ -1,5 +1,3 @@
-{{ $state.current.data.form }}
-
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
@@ -13,7 +11,7 @@
         <template-select></template-select>
     </div>
     <div class="col-md-3">
-        <div data-ng-if="$state.current.data.template">
+        <div data-ng-if="$state.current.data.form.template">
                 <!-- write path -->
                 <path-input></path-input>
 
@@ -22,15 +20,15 @@
                     name="table"
                     label="* Table Name"
                     model="$state.current.data.table"
-                    data-ng-if="$state.current.data.template.fields.table"></table-input>
+                    data-ng-if="$state.current.data.form.template.fields.table"></table-input>
 
                 <!-- namespace -->
                 <namespace-input
-                    data-ng-if="$state.current.data.template.fields.namespace"></namespace-input>
+                    data-ng-if="$state.current.data.form.template.fields.namespace"></namespace-input>
 
                 <!-- schema -->
                 <schema-textarea
-                    data-ng-if="$state.current.data.template.fields.schema"></schema-textarea>
+                    data-ng-if="$state.current.data.form.template.fields.schema"></schema-textarea>
 
                 <!-- mock -->
                 <mock-button></mock-button>
@@ -43,7 +41,7 @@
             </div>
     </div>
     <div class="col-md-offset-1 col-md-3"
-        data-ng-if="$state.current.data.template.fields.schema">
+        data-ng-if="$state.current.data.form.template.fields.schema">
         <data-ng-include src="'/laravelerator/schema-notation'"></data-ng-include>
     </div>
 </div>

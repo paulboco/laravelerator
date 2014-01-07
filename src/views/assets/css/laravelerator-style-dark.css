@@ -73,3 +73,10 @@ li.todo-priority {
     color: #fff;
     font-size: larger;
 }
+
+/************************************************
+Batarang
+************************************************/
+div.bat-indent {
+    color: #000;
+}

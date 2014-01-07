@@ -8,7 +8,7 @@ app.directive("templateSelect", function() {
     return {
         restrict: "E",
         controller: function($scope) {
-            $scope.$watch('$state.current.data.template.basename', function(n) {
+            $scope.$watch('$state.current.data.form.template.basename', function(n) {
                 if ( !n)
                     $scope.templateWarning = 'has-warning';
                 else
@@ -17,11 +17,11 @@ app.directive("templateSelect", function() {
         },
         template:   '<div class="form-group nullable" data-ng-class="templateWarning">' +
                     '<label for="template" class="control-label">* Template</label>' +
-                    '<select data-ng-model="$state.current.data.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control" required>' +
+                    '<select data-ng-model="$state.current.data.form.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control" required>' +
                     '<option value="">-- select template --</option>' +
                     '</select>' +
                     '</div>' +
-                    '<div data-ng-if="$state.current.data.template">' +
+                    '<div data-ng-if="$state.current.data.form.template">' +
                     '<data-ng-include src="\'/laravelerator/template-description\'">' +
                     '</data-ng-include>' +
                     '</div>'
@@ -45,14 +45,14 @@ app.directive("pathInput", function() {
         },
         template:   '<div class="form-group" data-ng-class="pathClass()">' +
                     '<label for="path" class="control-label">* Write Path</label>' +
-                    '<input name="path" class="form-control"' +
-                        'data-ng-model="$state.current.data.path"' +
-                        'data-ng-change="fetch($state.current.data.path)"' +
+                    '<input name="path" class="form-control" autofocus ' +
+                        'data-ng-model="$state.current.data.form.path" ' +
+                        'data-ng-change="fetch($state.current.data.form.path)" ' +
                         'data-ng-class="\'ng-invalid\'">' +
                     '</div>' +
                     '<div class="form-group path-display">' +
-                    '<span id="path-status"' +
-                        'title="{{pathDisplay.basePath}}"' +
+                    '<span id="path-status" ' +
+                        'title="{{pathDisplay.basePath}}" ' +
                         'data-ng-class="pathClass()">' +
                         '{{pathDisplay.msg}}' +
                     '</span>' +
@@ -70,7 +70,7 @@ app.directive("tableInput", function() {
     return {
         restrict: "E",
         controller: function($scope) {
-            $scope.$watch('$state.current.data.table', function(n) {
+            $scope.$watch('$state.current.data.form.table', function(n) {
                 if ( !n)
                     $scope.tableWarning = 'has-warning';
                 else
@@ -79,7 +79,7 @@ app.directive("tableInput", function() {
         },
         template:   '<div class="form-group" ng-class="tableWarning">' +
                     '<label for="table" class="control-label">* Table Name</label>' +
-                    '<input data-ng-model="$state.current.data.table" name="table" type="text" class="form-control" required>' +
+                    '<input data-ng-model="$state.current.data.form.table" name="table" type="text" class="form-control" required>' +
                     '</div>'
     };
 });
@@ -94,7 +94,7 @@ app.directive("namespaceInput", function() {
     return {
         restrict: "E",
         controller: function($scope) {
-            $scope.$watch('$state.current.data.namespace', function(n) {
+            $scope.$watch('$state.current.data.form.namespace', function(n) {
                 if ( !n)
                     $scope.namespaceWarning = 'has-warning';
                 else
@@ -103,7 +103,7 @@ app.directive("namespaceInput", function() {
         },
         template: '<div ng-class="namespaceWarning" class="form-group">' +
                   '<label for="namespace" class="control-label">* Namespace</label>' +
-                  '<input data-ng-model="$state.current.data.namespace" name="namespace" type="text" class="form-control" required>' +
+                  '<input data-ng-model="$state.current.data.form.namespace" name="namespace" type="text" class="form-control" required>' +
                   '</div>'
     };
 });
@@ -118,7 +118,7 @@ app.directive("schemaTextarea", function() {
     return {
         restrict: "E",
         controller: function($scope) {
-            $scope.$watch('$state.current.data.schema', function(n) {
+            $scope.$watch('$state.current.data.form.schema', function(n) {
                 if ( !n)
                     $scope.schemaWarning = 'has-warning';
                 else
@@ -127,7 +127,7 @@ app.directive("schemaTextarea", function() {
         },
         template: '<div class="form-group" ng-class="schemaWarning">' +
                   '<label for="schema" class="control-label">* Schema</label>' +
-                  '<textarea data-ng-model="$state.current.data.schema" name="schema" class="form-control" rows="5" required></textarea>' +
+                  '<textarea data-ng-model="$state.current.data.form.schema" name="schema" class="form-control" rows="5" required></textarea>' +
                   '</div>'
     };
 });
@@ -160,7 +160,7 @@ app.directive("mockButton", function() {
         template:   '<div class="form-group">' +
                     '<label for="mock" class="control-label">Mock</label>' +
                     '<a id="mock-button" class="form-control btn active" data-ng-class="$state.current.data.mockClass()" data-ng-click="$state.current.data.mockToggle()">{{$state.current.data.mockLabel()}}</a>' +
-                    '<input type="hidden" name="mock" value="{{ $state.current.data.mock }}">'
+                    '<input type="hidden" name="mock" value="{{ $state.current.data.form.mock }}">'
     };
 });
 

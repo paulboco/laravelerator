@@ -1,9 +1,9 @@
 /**
  * Templates Service
  */
-app.service('templatesService', function($http, LARAVEL, promiseService) {
+app.service('templateService', function($http, LARAVEL, promiseService) {
     this.all = function() {
-        url = '/laravelerator/ajax/templates';
+        url = '/laravelerator/ajax/template';
         params = {'_token': LARAVEL.token};
         cache = true;
 
@@ -20,6 +20,21 @@ app.service('pathService', function($http, LARAVEL, promiseService) {
     this.get = function(path) {
         url = '/laravelerator/ajax/path';
         this.params.path = path;
+        cache = false;
+
+        return promiseService.get(url, this.params, cache);
+    };
+});
+
+/**
+ * Generate service
+ */
+app.service('generateService', function($http, LARAVEL, promiseService) {
+    this.params = {'_token': LARAVEL.token, 'form': ''};
+
+    this.create = function(form) {
+        url = '/laravelerator/ajax/generate/create';
+        this.params.form = form;
         cache = false;
 
         return promiseService.get(url, this.params, cache);

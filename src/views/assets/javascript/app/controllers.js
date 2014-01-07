@@ -29,20 +29,21 @@ app.controller('PageController', ['$scope', function($scope) {
 */
 
 app.controller('GenerateController',
-    ['$scope', 'LARAVEL', 'templatesService', 'pathService', 'schemaService',
-    function($scope, LARAVEL, templatesService, pathService, schemaService) {
+    ['$scope', '$state', 'LARAVEL', 'templateService', 'pathService', 'schemaService', 'generateService',
+    function($scope, $state, LARAVEL, templateService, pathService, schemaService, generateService) {
 
     // set the csrf token
     $scope.token = LARAVEL.token;
 
     $scope.submit = function() {
-console.log($scope.form);
+        generateService.create($state.$current.data.form);
+console.log($state.$current.data.form);
         alert('here');
     };
 
     // Get available templates
-    templatesService.all().then(function(templates) {
-        $scope.templates = templates;
+    templateService.all().then(function(data) {
+        $scope.templates = data;
     });
 
     // Get path display
@@ -65,7 +66,7 @@ console.log($scope.form);
             $scope.getSchema();
     });
 
-    $scope.fetch($scope.$state.current.data.path);
+    $scope.fetch($scope.$state.current.data.form.path);
 }]);
 
 /*

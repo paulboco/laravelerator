@@ -9,6 +9,7 @@
 \_____/\_| |_/\_| \_|\_| |_/ \___/ \____/ \_____/\____/ \_| \_|\_| |_/ \_/   \___/ \_| \_|
 
 */
+
 Route::get('dummy', function() { return 'dummy index'; });
 Route::get('dummy/create', function() { return 'dummy create'; });
 Route::post('dummy', function() { return 'dummy store'; });
@@ -26,12 +27,8 @@ Route::delete('dummy/id', function() { return 'dummy destroy'; });
 */
 
 Route::group(
-	[
-		'prefix' => 'laravelerator',
-		'namespace' => 'Laravelerator\Laravelerator'
-	],
-	function()
-{
+    ['prefix' => 'laravelerator', 'namespace' => 'Laravelerator\Laravelerator'],
+	function() {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -47,11 +44,12 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::group(['before' => 'isJson'], function()
+	Route::group(['prefix' => 'ajax', 'before' => 'isJson'], function()
 	{
-		Route::get('ajax/templates', 'AjaxController@templates');
-		Route::get('ajax/path', 'AjaxController@path');
-		Route::get('ajax/routes', 'AjaxController@routes');
+		Route::get('template', 'AjaxController@template');
+		Route::get('path', 'AjaxController@path');
+        Route::get('routes', 'AjaxController@routes');
+        Route::get('generate/create', 'AjaxController@generateCreate');
 	});
 
 	/*

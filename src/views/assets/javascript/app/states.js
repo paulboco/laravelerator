@@ -39,11 +39,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             url: '/laravelerator/generate',
             templateUrl: '/laravelerator/generate',
             controller: 'GenerateController',
-            resolve:{
-                templatesService: 'templatesService',
-                pathService: 'pathService'
-                // schemaService: 'schemaService'
-            },
+            // resolve:{
+            //     templateService: 'templateService',
+            //     pathService: 'pathService'
+            //     schemaService: 'schemaService'
+            // },
             data: {
                 title: 'Generate',
                 form: {
