@@ -43,7 +43,8 @@ console.log($state.$current.data.form);
 
     // Get available templates
     templateService.all().then(function(data) {
-        $scope.templates = data;
+        $state.$current.data.templates = data;
+console.log(data);
     });
 
     // Get path display

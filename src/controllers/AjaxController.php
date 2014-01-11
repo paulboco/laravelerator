@@ -19,9 +19,9 @@ class AjaxController extends Controller {
     /**
      * Get available templates
      */
-    public function template()
+    public function templateIndex()
     {
-        return Template::getAvailable();
+        return Template::getAvailable(false);
     }
 
     /**

@@ -46,6 +46,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             // },
             data: {
                 title: 'Generate',
+                templates: {},
                 form: {
                     template: '',
                     path: 'app',

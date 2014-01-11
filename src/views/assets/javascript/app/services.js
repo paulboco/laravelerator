@@ -1,5 +1,5 @@
 /**
- * Templates Service
+ * Template Service
  */
 app.service('templateService', function($http, LARAVEL, promiseService) {
     this.all = function() {

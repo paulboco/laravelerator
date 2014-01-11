@@ -17,7 +17,7 @@ app.directive("templateSelect", function() {
         },
         template:   '<div class="form-group nullable" data-ng-class="templateWarning">' +
                     '<label for="template" class="control-label">* Template</label>' +
-                    '<select data-ng-model="$state.current.data.form.template" data-ng-options="t.title for t in templates track by t.basename" name="template" class="form-control" required>' +
+                    '<select data-ng-model="$state.current.data.form.template" data-ng-options="t.title for t in $state.$current.data.templates track by t.basename" name="template" class="form-control" required>' +
                     '<option value="">-- select template --</option>' +
                     '</select>' +
                     '</div>' +

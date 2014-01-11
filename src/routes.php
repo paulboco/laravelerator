@@ -46,7 +46,8 @@ Route::group(
 
 	Route::group(['prefix' => 'ajax', 'before' => 'isJson'], function()
 	{
-		Route::get('template', 'AjaxController@template');
+        Route::get('template', 'AjaxController@templateIndex');
+        Route::get('template/{basename}', 'AjaxController@templateShow');
 		Route::get('path', 'AjaxController@path');
         Route::get('routes', 'AjaxController@routes');
         Route::get('generate/create', 'AjaxController@generateCreate');
