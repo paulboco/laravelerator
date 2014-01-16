@@ -1,8 +1,5 @@
-@extends('laravelerator::layouts.master')
-
-@section('subTitle', '- Generate')
-
-@section('content')
+<h3>@{{ $state.current.data }}</h3>
+asdf
 @if (isset($overwrites))
 	<div class="row">
 		<div class="col-md-12">
@@ -23,7 +20,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="page-header">
-				<h1 class="success">Generation complete</h1>
+				<h1 class="success">@{{ $state.current.data.title }}</h1>
 			</div>
 		</div>
 	</div>
@@ -47,19 +44,5 @@
 			</div>
 		</div>
 	@endif
-	@include('laravelerator::controllers.generate.partials.generated_files')
-	@include('laravelerator::controllers.generate.partials.display_tokens')
+	@include('laravelerator::pages.generate.partials.generated_files')
 @endif
-@stop
-
-@section('scripts')
-	@parent
-
-	<script>
-		$(document).ready(function() {
-			$("#compiled-command").click(function() {
-				$(this).select();
-			});
-		})
-	</script>
-@stop

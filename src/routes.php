@@ -61,8 +61,8 @@ Route::group(
 
     Route::get('schema-notation', 'AngularController@schemaNotation');
     Route::get('template-description', 'AngularController@templateDescription');
-    Route::get('generate', 'AngularController@generateCreate');
-    Route::post('generate', 'AngularController@generateStore');
+    Route::get('generate/create', 'AngularController@generateCreate');
+    Route::get('generate/store', 'AngularController@generateStore');
     Route::get('routes', 'AngularController@routes');
     Route::get('home', 'AngularController@home');
     Route::get('nav', 'AngularController@nav');

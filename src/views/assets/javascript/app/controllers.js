@@ -35,16 +35,18 @@ app.controller('GenerateController',
     // set the csrf token
     $scope.token = LARAVEL.token;
 
+    // Submit the form
     $scope.submit = function() {
-        generateService.create($state.$current.data.form);
 console.log($state.$current.data.form);
+        $state.go('generate.store');
+        // generateService.create($state.$current.data.form);
+// console.log($state.$current.data.form);
         alert('here');
     };
 
     // Get available templates
     templateService.all().then(function(data) {
         $state.$current.data.templates = data;
-console.log(data);
     });
 
     // Get path display
@@ -67,7 +69,8 @@ console.log(data);
             $scope.getSchema();
     });
 
-    $scope.fetch($scope.$state.current.data.form.path);
+    if (typeof $scope.$state.current.data.form !== 'undefined')
+        $scope.fetch($scope.$state.current.data.form.path);
 }]);
 
 /*

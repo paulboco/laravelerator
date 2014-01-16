@@ -36,14 +36,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
             }
         })
         .state('generate', {
-            url: '/laravelerator/generate',
-            templateUrl: '/laravelerator/generate',
+            url: '/laravelerator/generate/create',
+            templateUrl: '/laravelerator/generate/create',
             controller: 'GenerateController',
-            // resolve:{
-            //     templateService: 'templateService',
-            //     pathService: 'pathService'
-            //     schemaService: 'schemaService'
-            // },
             data: {
                 title: 'Generate',
                 templates: {},
@@ -55,6 +50,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
                     schema: '',
                     mock: true
                 },
+            },
+        })
+        .state('generate.store', {
+            url: '/laravelerator/generate/store',
+            templateUrl: '/laravelerator/generate/store',
+            controller: 'GenerateController',
+            data: {
+                title: 'Generation Complete'
             },
         })
         .state('routes', {

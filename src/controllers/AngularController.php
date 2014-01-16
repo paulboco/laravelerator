@@ -3,6 +3,7 @@
 use Controller;
 use Input;
 use View;
+use Request;
 
 class AngularController extends Controller {
 
@@ -39,6 +40,16 @@ class AngularController extends Controller {
     }
 
     /**
+     * Generate store
+     */
+    public function generateStore()
+    {
+//         $input = Request::query();
+// dd($input);
+        return View::make('laravelerator::pages.generate.show');
+    }
+
+    /**
      * Template description partial
      */
     public function templateDescription()
@@ -52,16 +63,6 @@ class AngularController extends Controller {
     public function schemaNotation()
     {
         return View::make('laravelerator::pages.generate.partials.schema_notation');
-    }
-
-    /**
-     * Generate store
-     */
-    public function generateStore()
-    {
-        $input = Input::all();
-dd($input);
-        return $input;
     }
 
     /**
