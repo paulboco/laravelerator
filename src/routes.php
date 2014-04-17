@@ -20,11 +20,10 @@
 */
 
 Route::group([
-		'prefix' => 'laravelerator',
-		'namespace' => 'Laravelerator\Laravelerator',
-		// 'domain' => 'laravel-alg.dev'
-	],
-	function() {
+	'prefix' => 'laravelerator',
+	'namespace' => 'Laravelerator\Laravelerator',
+	// 'domain' => 'laravel-alg.dev'
+], function() {
 
 	/*
 	|--------------------------------------------------------------------------
