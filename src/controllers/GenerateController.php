@@ -1,8 +1,9 @@
 <?php namespace Laravelerator\Laravelerator;
 
+use DB;
 use Input;
-use View;
 use Redirect;
+use View;
 use Laravelerator\Alg\Manifest;
 use Laravelerator\Alg\Template;
 use Laravelerator\Laravelerator\Services\Validation\GenerateValidator;
@@ -29,7 +30,30 @@ class GenerateController extends BaseController {
 
 		$templatesAvailable = Template::getAvailable();
 
-		return View::make('laravelerator::controllers.generate.create', get_defined_vars());
+		return View::make('laravelerator::controllers.generate.from_form', get_defined_vars());
+	}
+
+	public function fromTable()
+	{
+		$pdo = DB::connection()->getPdo();
+		$databases = $pdo->query('SHOW DATABASES')->fetchAll(\PDO::FETCH_OBJ);
+
+		foreach ($databases as $database)
+		{
+			if (in_array($database->Database, ['information_schema', 'mysql', 'performance_schema', 'phpmyadmin', 'test'])) continue;
+
+			$tables = $pdo->query('SHOW TABLES FROM ' . $database->Database)->fetchAll(\PDO::FETCH_NUM);
+
+			$arr = [];
+			foreach ($tables as $table)
+			{
+				array_push($arr, $table[0]);
+			}
+
+			$data[$database->Database] = $arr;
+		}
+dv($data);
+		return View::make('laravelerator::controllers.generate.from_table', get_defined_vars());
 	}
 
 	/**

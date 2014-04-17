@@ -75,7 +75,8 @@
 	.list-group-item,
 	div.directories,
 	.directories pre,
-	.overwrites pre {
+	.overwrites pre,
+	.dropdown-menu {
 		background-color: #404040 !important;
 		border-color: #555 !important;
 		border-radius: 4px;
@@ -161,6 +162,14 @@
 
 	.table > thead > tr > th {
 		border: 0;
+	}
+
+	.dropdown-menu > li > a {
+		color: #fff;
+	}
+
+	.dropdown-menu > li > a:hover {
+		background-color: #222;
 	}
 
 </style>

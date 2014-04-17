@@ -4,7 +4,17 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-left">
-            <li><a href="{{ action('Laravelerator\Laravelerator\GenerateController@fromForm') }}">Generate</a></li>
+            <li class="dropdown {{ segment_is_active(2, 'receipts') }}">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Generate <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        {{ link_to_action('Laravelerator\Laravelerator\GenerateController@fromForm', 'From Form') }}
+                    </li>
+                    <li>
+                        {{ link_to_action('Laravelerator\Laravelerator\GenerateController@fromTable', 'From Table') }}
+                    </li>
+                </ul>
+            </li>
         </ul>
         <ul class="nav navbar-nav navbar-left">
             <li><a href="{{ action('Laravelerator\Laravelerator\PagesController@routes') }}">Routes</a></li>
