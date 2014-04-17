@@ -23,7 +23,7 @@ Route::group(
 	[
 		'prefix' => 'laravelerator',
 		'namespace' => 'Laravelerator\Laravelerator',
-		'domain' => 'laravel-alg.dev'
+		// 'domain' => 'laravel-alg.dev'
 	],
 	function()
 {
@@ -33,7 +33,8 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('generate/create', ['as' => 'foo', 'uses' => 'GenerateController@create']);
+	Route::get('generate/from/form', ['as' => 'generate.from.form', 'uses' => 'GenerateController@fromForm']);
+	Route::get('generate/from/table', ['as' => 'generate.from.table', 'uses' => 'GenerateController@fromTable']);
 	Route::post('generate/show', 'GenerateController@show');
 
 	/*

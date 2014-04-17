@@ -17,7 +17,7 @@ class GenerateController extends BaseController {
 		$this->validator = $validator;
 	}
 
-	public function create()
+	public function fromForm()
 	{
 		// Set testing defaults here
 		$template = Input::old('template', 'scaffold');
@@ -41,7 +41,7 @@ class GenerateController extends BaseController {
 
 		if ($this->validator->fails($input))
 		{
-			return Redirect::action('Laravelerator\Laravelerator\GenerateController@create')
+			return Redirect::action('Laravelerator\Laravelerator\GenerateController@fromForm')
 				->withInput()
 				->withErrors($this->validator->errors());
 		}

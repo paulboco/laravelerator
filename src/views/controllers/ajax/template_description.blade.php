@@ -1,4 +1,5 @@
 <aside>
+	<h4>Template Description</h4>
 	@if (isset($title))
 		<div class="panel panel-default">
 			<div class="panel-body">
