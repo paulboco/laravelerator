@@ -1,6 +1,6 @@
 <?php namespace Laravelerator\Laravelerator;
 
-use DB;
+use Win\DbUtil;
 use Input;
 use Redirect;
 use View;
@@ -33,27 +33,22 @@ class GenerateController extends BaseController {
 		return View::make('laravelerator::controllers.generate.from_form', get_defined_vars());
 	}
 
-	public function fromTable()
+	public function fromTable($selectedDatabase = null, $selectedTable = null)
 	{
-		$pdo = DB::connection()->getPdo();
-		$databases = $pdo->query('SHOW DATABASES')->fetchAll(\PDO::FETCH_OBJ);
-
-		foreach ($databases as $database)
+		foreach (DbUtil::showDatabases() as $database)
 		{
-			if (in_array($database->Database, ['information_schema', 'mysql', 'performance_schema', 'phpmyadmin', 'test'])) continue;
-
-			$tables = $pdo->query('SHOW TABLES FROM ' . $database->Database)->fetchAll(\PDO::FETCH_NUM);
-
-			$arr = [];
-			foreach ($tables as $table)
-			{
-				array_push($arr, $table[0]);
-			}
-
-			$data[$database->Database] = $arr;
+			$databases[$database] = DbUtil::showTables($database);
 		}
-dv($data);
-		return View::make('laravelerator::controllers.generate.from_table', get_defined_vars());
+
+		$databases = array_except($databases, ['test', 'information_schema', 'performance_schema', 'phpmyadmin', 'mysql']);
+
+		if ($selectedDatabase and $selectedTable)
+		{
+$schema = DbUtil::schema($selectedDatabase, $selectedTable);
+// dd($schema);
+		}
+
+		return View::make('laravelerator::controllers.generate.from_table', compact('databases', 'selectedDatabase', 'selectedTable', 'schema'));
 	}
 
 	/**

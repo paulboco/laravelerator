@@ -36,7 +36,7 @@ Route::group([
 		'uses' => 'GenerateController@fromForm'
 	]);
 
-	Route::get('generate/from/table', [
+	Route::get('generate/from/table/{database?}/{table?}', [
 		'as' => 'laravelerator.generate.from.table',
 		'uses' => 'GenerateController@fromTable'
 	]);
