@@ -19,23 +19,33 @@
 |--------------------------------------------------------------------------
 */
 
-Route::group(
-	[
+Route::group([
 		'prefix' => 'laravelerator',
 		'namespace' => 'Laravelerator\Laravelerator',
 		// 'domain' => 'laravel-alg.dev'
 	],
-	function()
-{
+	function() {
+
 	/*
 	|--------------------------------------------------------------------------
 	| Generate
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('generate/from/form', ['as' => 'generate.from.form', 'uses' => 'GenerateController@fromForm']);
-	Route::get('generate/from/table', ['as' => 'generate.from.table', 'uses' => 'GenerateController@fromTable']);
-	Route::post('generate/show', 'GenerateController@show');
+	Route::get('generate/from/form', [
+		'as' => 'laravelerator.generate.from.form',
+		'uses' => 'GenerateController@fromForm'
+	]);
+
+	Route::get('generate/from/table', [
+		'as' => 'laravelerator.generate.from.table',
+		'uses' => 'GenerateController@fromTable'
+	]);
+
+	Route::post('generate/show', [
+		'as' => 'laravelerator.generate.show',
+		'uses' => 'GenerateController@show'
+	]);
 
 	/*
 	|--------------------------------------------------------------------------
@@ -45,8 +55,15 @@ Route::group(
 
 	Route::group(['before' => 'ajax|csrf'], function()
 	{
-		Route::get('ajax/template', 'AjaxController@template');
-		Route::get('ajax/path', 'AjaxController@path');
+		Route::get('ajax/template', [
+			'as' => 'laravelerator.ajax.template',
+			'uses' => 'AjaxController@template'
+		]);
+
+		Route::get('ajax/path', [
+			'as' => 'laravelerator.ajax.path',
+			'uses' => 'AjaxController@path'
+		]);
 	});
 
 	/*
@@ -55,8 +72,15 @@ Route::group(
 	|--------------------------------------------------------------------------
 	*/
 
-	Route::get('routes', 'PagesController@routes');
-	Route::get('/', 'PagesController@home');
+	Route::get('routes', [
+		'as' => 'laravelerator.routes',
+		'uses' => 'PagesController@routes'
+	]);
+
+	Route::get('/', [
+		'as' => 'laravelerator.home',
+		'uses' => 'PagesController@home'
+	]);
 });
 
 
