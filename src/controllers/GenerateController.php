@@ -20,11 +20,12 @@ class GenerateController extends BaseController {
 
 	public function fromForm()
 	{
+// dv(Input::all());
 		// Set testing defaults here
 		$template = Input::old('template', 'scaffold');
 		$table = Input::old('table', 'problems');
 		$namespace = Input::old('namespace', 'Shiphed');
-		$schema = Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n");
+		$schema = Input::get('schema', Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n"));
 		$path = Input::old('path', 'app');
 		$mock = Input::old('mock', '');
 
@@ -44,8 +45,7 @@ class GenerateController extends BaseController {
 
 		if ($selectedDatabase and $selectedTable)
 		{
-$schema = DbUtil::schema($selectedDatabase, $selectedTable);
-// dd($schema);
+			$schema = DbUtil::schema($selectedDatabase, $selectedTable);
 		}
 
 		return View::make('laravelerator::controllers.generate.from_table', compact('databases', 'selectedDatabase', 'selectedTable', 'schema'));
@@ -57,7 +57,7 @@ $schema = DbUtil::schema($selectedDatabase, $selectedTable);
 	public function show()
 	{
 		$input = Input::all();
-
+// dv($input);die;
 		if ($this->validator->fails($input))
 		{
 			return Redirect::action('Laravelerator\Laravelerator\GenerateController@fromForm')

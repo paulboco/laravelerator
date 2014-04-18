@@ -23,7 +23,7 @@
 			</div>
 			{{ Form::groupText('table', '* Table name', $table, [], [4,8]) }}
 			{{ Form::groupText('namespace', '* Namespace', $namespace, [], [4,8]) }}
-			{{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], 4) }}
+			{{ Form::groupTextarea('schema', 'Schema', $schema, [], [4,8], substr_count( $schema, "\n" ) + 1) }}
 			<!-- mock -->
 			<div class="form-group">
 				<label for="mock" class="col-md-4 control-label">Mock</label>
@@ -35,7 +35,7 @@
 			<!-- button -->
 			<div class="form-group">
 				<div class="col-md-offset-4 col-md-8">
-					{{ Form::submit('Submit', ['class' => 'btn btn-default']) }}
+					<button class="btn btn-success btn-generate" type="submit">GENERATE</button>
 				</div>
 			</div>
 		{{ Form::close() }}

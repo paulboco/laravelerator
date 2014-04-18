@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-3">
         <h3>Databases</h3>
         <div class="panel-group" id="accordion">
             @foreach ($databases as $database => $tables)
@@ -32,23 +32,61 @@
         </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-9">
         @if ($selectedTable)
-            <h3>Schema</h3>
+            <h3>Schema for `{{ $selectedDatabase }}`.`{{ $selectedTable }}`</h3>
             <table class="table">
-                <tr>
-                    <td>Database:</td>
-                    <td>{{ $selectedDatabase }}</td>
-                </tr>
-                <tr>
-                    <td>Table:</td>
-                    <td>{{ $selectedTable }}</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th class="center">Null</th>
+                        <th>Key</th>
+                        <th>Default</th>
+                        <th>Extra</th>
+                        <th class="center">Length</th>
+                        <th>Attr</th>
+                    </tr>
+                </thead>
+                <tbody class="no-wrap">
+                    @foreach ($schema as $schemata)
+                        <tr>
+                            <td>{{ $schemata['Field'] }}</th>
+                            <td>{{ $schemata['Type'] }}</th>
+                            <td class="center">{{ $schemata['Null'] }}</th>
+                            <td>{{ $schemata['Key'] }}</th>
+                            <td>{{ $schemata['Default'] }}</th>
+                            <td>{{ $schemata['Extra'] }}</th>
+                            <td class="center">{{ $schemata['Length'] }}</th>
+                            <td>{{ $schemata['Attr'] }}</th>
+                        </tr>
+                    @endforeach
+                </tbody>
             </table>
-            {{ dv($schema) }}
+            {{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@fromForm', 'class' => 'form-horizontal', 'role' => 'form']) }}
+                <textarea name="schema" class="form-control" rows="{{ count($schema) + 1 }}">
+@foreach ($schema as $schemata)
+{{ $schemata['Field'] }}:{{ $schemata['Type'] }},{{ PHP_EOL }}
+@endforeach
+                </textarea>
+            <button class="btn btn-success btn-generate" type="submit">GENERATE</button>
+            {{ Form::close() }}
+
         @endif
     </div>
 </div>
 @stop
 
 @include('laravelerator::assets.js.laravelerator')
+array (
+  '_token' => 'emlHyvMQ7mm8aOVtzxbTvbto9EBsSphgyiGNrENO',
+  'template' => 'scaffold',
+  'path' => 'app',
+  'table' => 'problems',
+  'namespace' => 'Shiphed',
+  'schema' => 'id : increments
+username : string(100)
+password : string(100)
+',
+  'mock' => '',
+)

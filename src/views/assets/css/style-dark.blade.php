@@ -8,6 +8,10 @@
 		background-color: #4e4e4e;
 	}
 
+	footer {
+		margin: 60px 0;
+	}
+
 	::selection {
 		background: RoyalBlue;
 		color: white;
@@ -26,7 +30,8 @@
 	div.directories,
 	.popover,
 	.directories pre,
-	.table > tbody > tr > td {
+	.table > tbody > tr > td,
+	.panel-body > a {
 		color: lime !important;
 	}
 
@@ -59,6 +64,14 @@
 	.popover-content,
 	.table > tbody > tr > td {
 		font-size: 1.05em;
+		font-family: 'Source Code Pro', monospace;
+	}
+
+	.btn-generate {
+		border: solid green 1px;
+		background-color: lime;
+		color: black;
+		font-weight: bold;
 		font-family: 'Source Code Pro', monospace;
 	}
 
@@ -164,6 +177,12 @@
 		border: 0;
 	}
 
+	th.center,
+	td.center {
+		text-align: center;
+	}
+
+	/* Links */
 	.dropdown-menu > li > a {
 		color: #fff;
 	}

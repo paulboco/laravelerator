@@ -18,6 +18,9 @@
         @include('laravelerator::layouts.partials.navbar')
         <div class="container">
             @yield('content')
+            <footer>
+                &copy; {{ date('Y') }} LARAVELERATOR
+            </footer>
         </div>
         <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
