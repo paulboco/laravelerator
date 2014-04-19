@@ -11,7 +11,7 @@
 	pre.prettyprint {
 	    tab-size: 4;
 		padding: 15px !important;
-		border-color: #555 !important;
+		border-color: transparent !important;
 		line-height: 2em;
 	}
 

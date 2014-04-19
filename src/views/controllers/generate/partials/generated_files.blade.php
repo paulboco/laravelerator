@@ -2,16 +2,16 @@
     <div class="row">
         <div class="col-md-12">
             <h3>Files to be created</h3>
-            <div class="panel-group" id="accordion">
+            <div class="panel-group" id="accordion-files">
                 @foreach ($files as $path => $contents)
                     <?php $in = $path == '/home/pbc/git/laravelerator/laravel-alg.dev/app/views/problems/_inputs.blade.php' ? ' in' : '' ?>
                     <div class="panel panel-default">
-                        <div class="panel-heading directories" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{ md5($path) }}">
+                        <div class="panel-heading directories" data-toggle="collapse" data-parent="#accordion-files" href="#collapse-{{ md5($path) }}">
                             {{ mute_base_path($path) }}
                         </div>
                         <div id="collapse-{{ md5($path) }}" class="panel-collapse collapse{{ $in }}">
                             <div class="panel-body">
-                                <pre class="prettyprint linenums">{{ htmlentities($contents) }}</pre>
+                                <pre class="prettyprint linenums">{{{ $contents }}}</pre>
                             </div>
                         </div>
                     </div>
