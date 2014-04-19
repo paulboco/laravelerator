@@ -39,7 +39,7 @@
 	span.help-block,
 	div.has-error label.control-label,
 	div#path-status span.path-outside-root,
-	.overwrites pre,
+	.overwrites,
 	button#mock-button {
 		color: Gold !important;
 	}
@@ -63,8 +63,9 @@
 	div.directories,
 	.popover-content,
 	.table > tbody > tr > td {
-		font-size: 1.05em;
-		font-family: 'Source Code Pro', monospace;
+		/*font-size: 1.05em;*/
+		/*font-family: 'Source Code Pro', monospace;*/
+		font-family: monospace;
 	}
 
 	.btn-generate {
@@ -189,6 +190,16 @@
 
 	.dropdown-menu > li > a:hover {
 		background-color: #222;
+	}
+
+	ul.file-listing {
+		padding-left: 0;
+		line-height: 2em;
+		list-style-type: none;
+	}
+
+	ul.file-listing li:hover {
+		background-color: #555;
 	}
 
 </style>

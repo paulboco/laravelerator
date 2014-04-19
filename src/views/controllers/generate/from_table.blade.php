@@ -64,12 +64,10 @@
                 </tbody>
             </table>
             {{ Form::open(['action' => 'Laravelerator\Laravelerator\GenerateController@fromForm', 'class' => 'form-horizontal', 'role' => 'form']) }}
-                <textarea name="schema" class="form-control" rows="{{ count($schema) + 1 }}">
-@foreach ($schema as $schemata)
-{{ $schemata['Field'] }}:{{ $schemata['Type'] }},{{ PHP_EOL }}
-@endforeach
-                </textarea>
-            <button class="btn btn-success btn-generate" type="submit">GENERATE</button>
+                <input type="hidden" name="table" value="{{ $selectedTable }}">
+                <input type="hidden" name="namespace" value="{{ ucwords($selectedDatabase) }}">
+                <textarea name="schema" style="display:none;">{{ trim($schemaString) }}</textarea>
+                <button class="btn btn-success btn-generate" type="submit">GENERATE</button>
             {{ Form::close() }}
 
         @endif
@@ -78,15 +76,3 @@
 @stop
 
 @include('laravelerator::assets.js.laravelerator')
-array (
-  '_token' => 'emlHyvMQ7mm8aOVtzxbTvbto9EBsSphgyiGNrENO',
-  'template' => 'scaffold',
-  'path' => 'app',
-  'table' => 'problems',
-  'namespace' => 'Shiphed',
-  'schema' => 'id : increments
-username : string(100)
-password : string(100)
-',
-  'mock' => '',
-)

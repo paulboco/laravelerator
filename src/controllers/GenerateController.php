@@ -20,14 +20,13 @@ class GenerateController extends BaseController {
 
 	public function fromForm()
 	{
-// dv(Input::all());
 		// Set testing defaults here
-		$template = Input::old('template', 'scaffold');
-		$table = Input::old('table', 'problems');
-		$namespace = Input::old('namespace', 'Shiphed');
+		$template = Input::get('template', Input::old('template', 'shiphed'));
+		$table = Input::get('table', Input::old('table', 'problems'));
+		$namespace = Input::get('namespace', Input::old('namespace', 'Shiphed'));
 		$schema = Input::get('schema', Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n"));
-		$path = Input::old('path', 'app');
-		$mock = Input::old('mock', '');
+		$path = Input::get('path', Input::old('path', 'app'));
+		$mock = Input::get('mock', Input::old('mock', '1'));
 
 		$templatesAvailable = Template::getAvailable();
 
@@ -46,9 +45,16 @@ class GenerateController extends BaseController {
 		if ($selectedDatabase and $selectedTable)
 		{
 			$schema = DbUtil::schema($selectedDatabase, $selectedTable);
+
+			foreach ($schema as $schemata)
+			{
+				$schemaString[] = $schemata['Field'] . ':' . $schemata['Type'];
+			}
+
+			$schemaString = implode($schemaString, ",\n");
 		}
 
-		return View::make('laravelerator::controllers.generate.from_table', compact('databases', 'selectedDatabase', 'selectedTable', 'schema'));
+		return View::make('laravelerator::controllers.generate.from_table', compact('databases', 'selectedDatabase', 'selectedTable', 'schema', 'schemaString'));
 	}
 
 	/**
