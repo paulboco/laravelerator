@@ -26,7 +26,7 @@ class GenerateController extends BaseController {
 		$namespace = Input::get('namespace', Input::old('namespace', 'Shiphed'));
 		$schema = Input::get('schema', Input::old('schema', "id : increments\nusername : string(100)\npassword : string(100)\n"));
 		$path = Input::get('path', Input::old('path', 'app'));
-		$mock = Input::get('mock', Input::old('mock', '1'));
+		$mock = Input::get('mock', Input::old('mock', 'mock'));
 
 		$templatesAvailable = Template::getAvailable();
 

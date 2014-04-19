@@ -28,7 +28,7 @@
 			<div class="form-group">
 				<label for="mock" class="col-md-4 control-label">Mock</label>
 				<div class="col-md-8">
-					<button id="mock-button" type="button" class="form-control btn btn-primary" data-toggle="button"></button>
+					<button id="mock-button" type="button" class="form-control btn btn-primary" value="{{$mock}}" data-toggle="button"></button>
 					{{ Form::hidden('mock', $mock, ['id' => 'mock-hidden']) }}
 				</div>
 			</div>
