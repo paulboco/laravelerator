@@ -10,11 +10,11 @@
                                 <td width="10%">{{ $key }}</td>
                                 <td>
                                     @if (substr_count($value, "\n" ))
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading directories" data-toggle="collapse" data-parent="#accordion-files" href="#collapse-{{ $key }}">
+                                        <div class="panel">
+                                            <div class="directories" data-toggle="collapse" data-parent="#accordion-files" href="#collapse-{{ $key }}">
                                                 {{{ substr($value, 0, strpos($value, "\n"))  }}} ...
                                             </div>
-                                            <div id="collapse-{{ $key }}" class="panel-collapse collapse">
+                                            <div id="collapse-{{ $key }}" class="collapse">
                                                 <pre class="prettyprint">{{{ $value }}}</pre>
                                             </div>
                                         </div>
